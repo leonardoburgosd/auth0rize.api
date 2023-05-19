@@ -1,15 +1,19 @@
+using cens.auth.application;
+
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddApplicationLayer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddCors(p => p.AddPolicy("corspolicy", build => { build.WithOrigins(configuration["cors"].ToString()).AllowAnyMethod().AllowAnyHeader(); }));
+builder.Services.AddCors(p => p.AddPolicy("corspolicy", build =>
+{
+    List<string> corsList = configuration.GetSection("cors")!.Get<string[]>().ToList();
+    build.WithOrigins(string.Join(",", corsList)).AllowAnyMethod().AllowAnyHeader();
+}));
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
