@@ -1,0 +1,6 @@
+CREATE SCHEMA [identity]
+GO
+CREATE SCHEMA [security]
+GO
+CREATE SCHEMA [domain]
+GO 
