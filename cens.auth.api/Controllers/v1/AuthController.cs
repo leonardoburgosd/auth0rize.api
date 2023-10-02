@@ -7,7 +7,7 @@ namespace cens.auth.api.Controllers.v1
     [ApiVersion("1.0")]
     public class AuthController : BaseApiController
     {
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> login(string userName, string password, string key/*[FromBody] LoginRequest login*/)
         {
             LoginQuery loginQuery = new LoginQuery() { Key = key, Password = password, UserName = userName, HttpContext = HttpContext };
