@@ -8,9 +8,10 @@ namespace cens.auth.api.Controllers.v1
     public class AuthController : BaseApiController
     {
         [HttpPost]
-        public async Task<IActionResult> login([FromBody] LoginRequest login)
+        public async Task<IActionResult> login(string userName, string password, string key/*[FromBody] LoginRequest login*/)
         {
-            LoginQuery loginQuery = new LoginQuery() { Key = login.Key, Password = login.Password, UserName = login.UserName, HttpContext = HttpContext };
+            LoginQuery loginQuery = new LoginQuery() { Key = key, Password = password, UserName = userName, HttpContext = HttpContext };
+            //LoginQuery loginQuery = new LoginQuery() { Key = login.Key, Password = login.Password, UserName = login.UserName, HttpContext = HttpContext };
 
             return Ok(await Mediator.Send(loginQuery));
         }
