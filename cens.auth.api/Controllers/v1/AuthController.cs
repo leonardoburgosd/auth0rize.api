@@ -23,7 +23,7 @@ namespace cens.auth.api.Controllers.v1
         }
 
         [HttpGet]
-        [Route("sessionClose/{key}/{redirecturl}")]
+        [Route("sessionClose")]
         public async Task<IActionResult> sessionClose(string key, string redirecturl)
         {
             HttpContext.Session.Clear();
