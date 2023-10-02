@@ -3,6 +3,7 @@ using cens.auth.application.Wrappers;
 using cens.auth.domain.Bussines;
 using cens.auth.infraestructure.Persistence.Interfaces;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 
 namespace cens.auth.application.Features.Authentication.Queries.Login
@@ -12,7 +13,9 @@ namespace cens.auth.application.Features.Authentication.Queries.Login
         public string UserName { get; set; } //email or username
         public string Password { get; set; }
         public string Key { get; set; }
+        public HttpContext HttpContext { get; set; }
     }
+
     public class LoginQueryHandler : IRequestHandler<LoginQuery, Response<LoginResponse>>
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -58,6 +61,7 @@ namespace cens.auth.application.Features.Authentication.Queries.Login
                 Token = token,
                 UsuarioNombre = $"{user.Name} {user.LastName} {user.MotherLastName}",
             };
+            request.HttpContext.Session.SetString("authCENSTknService", token);
 
             return response;
         }

@@ -7,6 +7,8 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 var configuration = builder.Configuration;
 builder.Services.AddControllers();
 builder.Services.AddInjectionApplication(configuration)
@@ -23,8 +25,13 @@ builder.Services.AddCors(p => p.AddPolicy("corspolicy",
         //    build.WithOrigins(string.Join(",", corsList)).AllowAnyMethod().AllowAnyHeader();
         //}
     ));
-
-
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromHours(4);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
     AddJwtBearer(options =>
@@ -46,7 +53,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseSession();
 
 app.UseCors("corspolicy");
 app.useErrorHandlingMiddleware();
