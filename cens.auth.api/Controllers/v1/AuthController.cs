@@ -21,5 +21,13 @@ namespace cens.auth.api.Controllers.v1
         {
             return Ok(await Mediator.Send(new SessionExistQuery() { HttpContext = HttpContext }));
         }
+
+        [HttpGet]
+        [Route("sessionClose/{key}/{redirecturl}")]
+        public async Task<IActionResult> sessionClose(string key, string redirecturl)
+        {
+            HttpContext.Session.Clear();
+            return Redirect($"https://auth.censperu.com/?secretkey={key}&redirecturl={redirecturl}");
+        }
     }
 }
