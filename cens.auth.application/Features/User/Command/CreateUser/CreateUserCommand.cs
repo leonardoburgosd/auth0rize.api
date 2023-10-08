@@ -1,4 +1,5 @@
-﻿using cens.auth.application.Common.Entities;
+﻿using cens.auth.application.Common;
+using cens.auth.application.Common.Entities;
 using cens.auth.application.Common.Security;
 using cens.auth.application.Wrappers;
 using cens.auth.infraestructure.Persistence.Interfaces;
@@ -44,7 +45,7 @@ namespace cens.auth.application.Features.User.Command.CreateUser
             if (create == 0)
                 throw new KeyNotFoundException("Error al crear un usuario.");
 
-            response.Message = "Usuario creado correctamente.";
+            response.Message = Message.CREATE;
             response.Success = true;
             response.Data = true;
 

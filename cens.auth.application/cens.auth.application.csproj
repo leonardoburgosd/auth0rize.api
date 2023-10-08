@@ -21,4 +21,9 @@
     <ProjectReference Include="..\cens.auth.infraestructure\cens.auth.infraestructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Authentication\Command\" />
+    <Folder Include="Features\Authentication\Deleted\" />
+  </ItemGroup>
+
 </Project>

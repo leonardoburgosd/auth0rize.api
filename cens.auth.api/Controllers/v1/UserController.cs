@@ -1,5 +1,6 @@
 ﻿using cens.auth.application.Common.Entities;
 using cens.auth.application.Features.User.Command.CreateUser;
+using cens.auth.application.Features.User.Queries.GetUser;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -31,5 +32,10 @@ namespace cens.auth.api.Controllers.v1
             }));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> get()
+        {
+            return Ok(await Mediator.Send(new GetUserQuery()));
+        }
     }
 }

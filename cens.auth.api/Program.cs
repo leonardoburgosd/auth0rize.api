@@ -8,21 +8,11 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
-builder.Services.AddControllers();
-builder.Services.AddInjectionApplication(configuration)
-                .AddInjectionInfraestructure(configuration);
-
-builder.Services.AddApiVersioningExtension();
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddCors(p => p.AddPolicy("corspolicy",
-        app => app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
-        //build =>
-        //{
-        //    List<string> corsList = configuration.GetSection("cors")!.Get<string[]>().ToList();
-        //    build.WithOrigins(string.Join(",", corsList)).AllowAnyMethod().AllowAnyHeader();
-        //}
-    ));
+builder.Services.AddCors(p =>
+{
+    p.AddPolicy("corspolicy", app => app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+});
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -37,6 +27,13 @@ builder.Services
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["security:symmetricKey"]!.ToString())),
         ClockSkew = TimeSpan.Zero
     });
+builder.Services.AddControllers();
+builder.Services.AddInjectionApplication(configuration)
+                .AddInjectionInfraestructure(configuration);
+
+builder.Services.AddApiVersioningExtension();
+builder.Services.AddEndpointsApiExplorer();
+
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
@@ -44,11 +41,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseCors("corspolicy");
 app.useErrorHandlingMiddleware();
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
 app.MapControllers();

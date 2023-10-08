@@ -42,7 +42,11 @@ namespace cens.auth.application.Common.Security
                 new Claim("Email", tokenParams.Email),
                 new Claim("TwoFactor",tokenParams.MultipleFactor.ToString())
             };
-            var token = new JwtSecurityToken(tokenParams.Issuer, tokenParams.Audience, claims, expires: DateTime.Now.AddHours(tokenParams.HoursExpires), signingCredentials: credentials);
+            var token = new JwtSecurityToken(issuer: tokenParams.Issuer,
+                                             audience: tokenParams.Audience,
+                                             claims: claims,
+                                             expires: DateTime.Now.AddHours(tokenParams.HoursExpires),
+                                             signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }

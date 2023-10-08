@@ -29,5 +29,15 @@ namespace cens.auth.infraestructure.Persistence.Repositories
             commandType: CommandType.StoredProcedure
             );
         }
+
+        public async Task<IEnumerable<UserGet>> get()
+        {
+            return await _connection.QueryAsync<UserGet>("identity.User_Get",
+                                                        new
+                                                        {
+                                                        },
+                                                        commandType: CommandType.StoredProcedure
+                                                      );
+        }
     }
 }

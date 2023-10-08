@@ -6,5 +6,6 @@ namespace cens.auth.infraestructure.Persistence.Interfaces
     {
         Task<UserDetail> get(string userName, string key);
         Task<int> create(UserCreate user);
+        Task<IEnumerable<UserGet>> get();
     }
 }
