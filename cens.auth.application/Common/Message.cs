@@ -1,4 +1,4 @@
-﻿namespace cens.auth.application.Common
+namespace cens.auth.application.Common
 {
     public static class Message
     {

@@ -1,4 +1,4 @@
-﻿namespace cens.auth.application.Wrappers
+namespace cens.auth.application.Wrappers
 {
     public class Response<T>
     {

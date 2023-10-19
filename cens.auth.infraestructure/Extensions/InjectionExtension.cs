@@ -1,16 +1,14 @@
-﻿using cens.auth.infraestructure.Persistence.Interfaces;
-using cens.auth.infraestructure.Persistence.Repositories;
+using cens.auth.domain.Primitives;
+using cens.auth.infraestructure.Persistence;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace cens.auth.infraestructure.Extensions
+namespace cens.auth.infraestructure.Extensions;
+public static class InjectionExtension
 {
-    public static class InjectionExtension
+    public static IServiceCollection AddInjectionInfraestructure(this IServiceCollection services, IConfiguration configuration)
     {
-        public static IServiceCollection AddInjectionInfraestructure(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
-            return services;
-        }
+        services.AddTransient<IUnitOfWork, UnitOfWork>();
+        return services;
     }
 }

@@ -1,7 +1,8 @@
-﻿using System.Globalization;
+using System.Globalization;
 
 namespace cens.auth.application.Extensions
 {
+
     public class ApiException : Exception
     {
         public ApiException() : base() { }

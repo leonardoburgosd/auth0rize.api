@@ -1,4 +1,4 @@
-﻿using cens.auth.application.Extensions;
+using cens.auth.application.Extensions;
 using cens.auth.application.Wrappers;
 using System.Net;
 using System.Text.Json;
@@ -56,4 +56,5 @@ namespace cens.auth.api.Middlewares
             return name.ToLower();
         }
     }
+
 }

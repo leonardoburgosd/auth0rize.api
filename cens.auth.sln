@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cens.auth.api", "cens.auth.api\cens.auth.api.csproj", "{8FAAA3E3-0CA3-4D84-A641-C9F24AB19362}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cens.auth.application", "cens.auth.application\cens.auth.application.csproj", "{F20AF330-314E-4C10-BC4F-EE9D07784D4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cens.auth.domain", "cens.auth.domain\cens.auth.domain.csproj", "{5F341B88-3527-400E-80D3-78EB39264AA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cens.auth.infraestructure", "cens.auth.infraestructure\cens.auth.infraestructure.csproj", "{82F64D45-A983-47B5-9E48-C14ED5004702}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cens.auth.notification", "cens.auth.notification\cens.auth.notification.csproj", "{6088E8F8-EA6A-4774-9E6B-89BCA5AAB890}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8FAAA3E3-0CA3-4D84-A641-C9F24AB19362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FAAA3E3-0CA3-4D84-A641-C9F24AB19362}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FAAA3E3-0CA3-4D84-A641-C9F24AB19362}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FAAA3E3-0CA3-4D84-A641-C9F24AB19362}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F20AF330-314E-4C10-BC4F-EE9D07784D4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F20AF330-314E-4C10-BC4F-EE9D07784D4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F20AF330-314E-4C10-BC4F-EE9D07784D4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F20AF330-314E-4C10-BC4F-EE9D07784D4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F341B88-3527-400E-80D3-78EB39264AA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F341B88-3527-400E-80D3-78EB39264AA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F341B88-3527-400E-80D3-78EB39264AA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F341B88-3527-400E-80D3-78EB39264AA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82F64D45-A983-47B5-9E48-C14ED5004702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82F64D45-A983-47B5-9E48-C14ED5004702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82F64D45-A983-47B5-9E48-C14ED5004702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82F64D45-A983-47B5-9E48-C14ED5004702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6088E8F8-EA6A-4774-9E6B-89BCA5AAB890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6088E8F8-EA6A-4774-9E6B-89BCA5AAB890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6088E8F8-EA6A-4774-9E6B-89BCA5AAB890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6088E8F8-EA6A-4774-9E6B-89BCA5AAB890}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

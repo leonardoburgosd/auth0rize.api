@@ -1,4 +1,4 @@
-﻿namespace cens.auth.application.Features.User.Command.CreateUser
+namespace cens.auth.application.Features.User.Command.CreateUser
 {
     public class CreateUserRequest
     {

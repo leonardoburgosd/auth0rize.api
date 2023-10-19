@@ -1,4 +1,4 @@
-﻿using Microsoft.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -6,7 +6,8 @@ using System.Text;
 
 namespace cens.auth.application.Common.Security
 {
-    public static class Encrypt
+
+    public class Encrypt
     {
         public static bool compareHash(string password, byte[] bytePassword, byte[] salt)
         {
@@ -27,27 +28,27 @@ namespace cens.auth.application.Common.Security
             }
         }
 
-        public static string generateTokenValidation(TokenParameters tokenParams)
+        public static JwtSecurityToken generateTokenValidation(TokenParameters tokenParams)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenParams.SecretKey));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-            var claims = new[] {
-                new Claim(JwtRegisteredClaimNames.UniqueName, tokenParams.Name),
+            Claim[] claims = new[] {
+                new Claim("user_id", tokenParams.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.UniqueName, tokenParams.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.NameId, tokenParams.UserName),
-                new Claim("UserId", tokenParams.Id.ToString()),
-                new Claim("UserRol", tokenParams.Role),
-                new Claim("Avatar", tokenParams.Avatar),
-                new Claim("BaseCensDrive", tokenParams.Drive),
-                new Claim("Email", tokenParams.Email),
-                new Claim("TwoFactor",tokenParams.MultipleFactor.ToString())
+                new Claim("user_rol", tokenParams.Role),
+                new Claim("avatar", tokenParams.Avatar),
+                new Claim("base_censdrive", tokenParams.Drive),
+                new Claim("email", tokenParams.Email),
+                new Claim("two_factor",tokenParams.MultipleFactor.ToString())
             };
-            var token = new JwtSecurityToken(issuer: tokenParams.Issuer,
+            JwtSecurityToken token = new JwtSecurityToken(
+                                             issuer: tokenParams.Issuer,
                                              audience: tokenParams.Audience,
                                              claims: claims,
                                              expires: DateTime.Now.AddHours(tokenParams.HoursExpires),
                                              signingCredentials: credentials);
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            return token;
         }
     }
 }

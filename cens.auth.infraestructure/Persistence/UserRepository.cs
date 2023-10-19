@@ -1,10 +1,12 @@
-﻿using cens.auth.domain.Bussines;
-using cens.auth.infraestructure.Persistence.Interfaces;
+using cens.auth.domain.User;
+using cens.auth.domain.User.Business;
 using Dapper;
 using System.Data;
 
-namespace cens.auth.infraestructure.Persistence.Repositories
+
+namespace cens.auth.infraestructure.Persistence
 {
+
     public class UserRepository : IUserRepository
     {
         private readonly IDbConnection _connection;
@@ -18,7 +20,7 @@ namespace cens.auth.infraestructure.Persistence.Repositories
             return await _connection.ExecuteAsync("identity.User_Create", user, commandType: CommandType.StoredProcedure);
         }
 
-        public async Task<UserDetail> get(string userName, string key)
+        public async Task<UserDetail?> get(string userName, string key)
         {
             return await _connection.QueryFirstOrDefaultAsync<UserDetail>("identity.User_GetByKey",
                 new
@@ -33,9 +35,7 @@ namespace cens.auth.infraestructure.Persistence.Repositories
         public async Task<IEnumerable<UserGet>> get()
         {
             return await _connection.QueryAsync<UserGet>("identity.User_Get",
-                                                        new
-                                                        {
-                                                        },
+                                                        null,
                                                         commandType: CommandType.StoredProcedure
                                                       );
         }

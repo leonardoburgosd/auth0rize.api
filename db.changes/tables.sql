@@ -81,3 +81,7 @@ CREATE TABLE [domain].[ApplicationUser](
     DeleteUser VARCHAR(100),
     [Delete] BIT DEFAULT 0
 )
+
+
+alter table [domain].[Application]
+add Icon NVARCHAR(50) default 'default.png'

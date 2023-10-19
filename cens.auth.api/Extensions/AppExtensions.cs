@@ -1,4 +1,4 @@
-﻿using cens.auth.api.Middlewares;
+using cens.auth.api.Middlewares;
 
 namespace cens.auth.api.Extensions
 {
