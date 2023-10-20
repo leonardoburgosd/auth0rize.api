@@ -9,7 +9,7 @@ namespace cens.auth.api.Extensions
         private static string[] autorizacionManejoPersonal = { "Superadmin", "Admin", "GestionHumana" };
         public static IServiceCollection AddPresentation(this IServiceCollection services, ConfigurationManager configuration)
         {
-
+            string? symmetricKey = Environment.GetEnvironmentVariable(configuration["security:symmetricKey"]!.ToString());
             services.AddSwaggerGen();
             // services.AddAuthorization(options =>
             // {
@@ -34,7 +34,7 @@ namespace cens.auth.api.Extensions
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = configuration["security:issuer"]?.ToString(),
                     ValidAudience = configuration["security:audience"]?.ToString(),
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["security:symmetricKey"]!.ToString())),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(symmetricKey)),
                     ClockSkew = TimeSpan.Zero
                 }
             );
