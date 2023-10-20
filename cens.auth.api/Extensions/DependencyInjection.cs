@@ -22,21 +22,23 @@ namespace cens.auth.api.Extensions
             {
                 p.AddPolicy("authpolicy", app => app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
+            string? symmetricKey = Environment.GetEnvironmentVariable(configuration["security:symmetricKey"]!.ToString());
+            string? issuer = Environment.GetEnvironmentVariable(configuration["security:issuer"]!.ToString());
+            string? audience = Environment.GetEnvironmentVariable(configuration["security:audience"]!.ToString());
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
+                    AddJwtBearer(options =>
+                    options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = "https://localhost:44375",
+                        ValidAudience = "https://localhost:44375",
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(symmetricKey)),
+                        ClockSkew = TimeSpan.Zero
+                    });
 
-                options.TokenValidationParameters = new TokenValidationParameters()
-                {
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = configuration["security:issuer"]?.ToString(),
-                    ValidAudience = configuration["security:audience"]?.ToString(),
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable(configuration["security:symmetricKey"]!.ToString()))),
-                    ClockSkew = TimeSpan.Zero
-                }
-            );
             services.AddControllers();
 
             services.AddApiVersioningExtension();
