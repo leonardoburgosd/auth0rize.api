@@ -12,7 +12,8 @@ public class UnitOfWork : IUnitOfWork
 
     public UnitOfWork(IConfiguration configuration)
     {
-        _connection = new SqlConnection(configuration["connectionStrings:auth"]);
+        string? connectionString = Environment.GetEnvironmentVariable(configuration["connectionStrings:auth"]!.ToString());
+        _connection = new SqlConnection(connectionString);
         User = new UserRepository(_connection);
     }
 
