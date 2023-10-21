@@ -33,8 +33,8 @@ namespace cens.auth.api.Extensions
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = "https://localhost:44375",
-                        ValidAudience = "https://localhost:44375",
+                        ValidIssuer = issuer,
+                        ValidAudience = audience,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(symmetricKey)),
                         ClockSkew = TimeSpan.Zero
                     });
