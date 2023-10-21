@@ -37,7 +37,7 @@ namespace cens.auth.infraestructure.Persistence
 
         public async Task<IEnumerable<UserGet>> get()
         {
-            return await _connection.QueryAsync<UserGet>(UserProcedure.getByKey,
+            return await _connection.QueryAsync<UserGet>(UserProcedure.get,
                                                         null,
                                                         commandType: CommandType.StoredProcedure
                                                       );
