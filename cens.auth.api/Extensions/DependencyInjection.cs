@@ -10,14 +10,14 @@ namespace cens.auth.api.Extensions
         public static IServiceCollection AddPresentation(this IServiceCollection services, ConfigurationManager configuration)
         {
             services.AddSwaggerGen();
-            // services.AddAuthorization(options =>
-            // {
-            //     options.AddPolicy("ManejoDePersonal", policy => policy.RequireRole(autorizacionManejoPersonal));
-            // });
-            // services.AddHttpsRedirection(options =>
-            // {
-            //     options.HttpsPort = 5001;
-            // });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ManejoDePersonal", policy => policy.RequireRole(autorizacionManejoPersonal));
+            });
+            services.AddHttpsRedirection(options =>
+            {
+                options.HttpsPort = 5001;
+            });
             services.AddCors(p =>
             {
                 p.AddPolicy("authpolicy", app => app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
@@ -40,7 +40,6 @@ namespace cens.auth.api.Extensions
                     });
 
             services.AddControllers();
-
             services.AddApiVersioningExtension();
             services.AddEndpointsApiExplorer();
 

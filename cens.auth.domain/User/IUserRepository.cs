@@ -5,5 +5,6 @@ public interface IUserRepository
 {
     Task<UserDetail?> get(string userName, string key);
     Task<int> create(UserCreate user);
+    Task update(UserUpdate user);
     Task<IEnumerable<UserGet>> get();
 }

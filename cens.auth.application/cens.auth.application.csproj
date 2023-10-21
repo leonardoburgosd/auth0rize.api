@@ -14,8 +14,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Application\" />
+    <Folder Include="Features\Application\Command\" />
+    <Folder Include="Features\Application\Command\CreateApplication\" />
+    <Folder Include="Features\Application\Queries\" />
+    <Folder Include="Features\Application\Queries\GetApplication\" />
+    <Folder Include="Features\User\Delete\" />
+    <Folder Include="Features\User\Delete\DeleteUser\" />
     <Folder Include="Features\User\Queries\" />
     <Folder Include="Features\User\Queries\GetUser\" />
+    <Folder Include="Features\User\Update\" />
+    <Folder Include="Features\User\Update\UpdateUser\" />
   </ItemGroup>
 
   <PropertyGroup>

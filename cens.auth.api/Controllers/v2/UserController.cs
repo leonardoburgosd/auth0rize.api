@@ -1,6 +1,8 @@
 using cens.auth.application.Common.Entities;
 using cens.auth.application.Features.User.Command.CreateUser;
+using cens.auth.application.Features.User.Delete.DeleteUser;
 using cens.auth.application.Features.User.Queries.GetUser;
+using cens.auth.application.Features.User.Update.UpdateUser;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -39,16 +41,22 @@ namespace cens.auth.api.Controllers.v2
 
         [HttpPut]
         [Route("{userId}")]
-        public async Task<IActionResult> update()
+        public async Task<IActionResult> update([FromBody] UpdateUserRequest user, int userId)
         {
-            return Ok();
+            return Ok(await Mediator.Send(new UpdateUser(userId, user.Name, user.LastName, user.MotherLastName, user.Birthday, user.UserName, user.Password, user.Email,
+                                                                new SecurityTokenData()
+                                                                {
+                                                                    UserId = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == "user_id").Value),
+                                                                    UserName = HttpContext.User.Claims.First(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name").Value,
+                                                                    TypeUser = HttpContext.User.Claims.First(c => c.Type == "user_rol").Value
+                                                                })));
         }
 
         [HttpPost]
         [Route("{userId}")]
         public async Task<IActionResult> delete(int userId)
         {
-            return Ok();
+            return Ok(await Mediator.Send(new DeleteUser(userId)));
         }
     }
 }
