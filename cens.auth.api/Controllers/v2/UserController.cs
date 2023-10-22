@@ -52,11 +52,12 @@ namespace cens.auth.api.Controllers.v2
                                                                 })));
         }
 
-        [HttpPost]
+        [HttpDelete]
         [Route("{userId}")]
         public async Task<IActionResult> delete(int userId)
         {
             return Ok(await Mediator.Send(new DeleteUser(userId)));
         }
+
     }
 }
