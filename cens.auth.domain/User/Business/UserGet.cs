@@ -5,4 +5,5 @@ public class UserGet
     public string NameComplete { get; set; } = null!;
     public string Application { get; set; } = null!;
     public string Icon { get; set; } = null!;
+    public bool Delete { get; set; }
 }

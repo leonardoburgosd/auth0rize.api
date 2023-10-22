@@ -5,6 +5,7 @@ namespace cens.auth.application.Features.User.Queries.GetUser
         public int Id { get; set; }
         public string NameComplete { get; set; } = null!;
         public List<Application> Applications { get; set; } = null!;
+        public bool Deleted { get; set; }
     }
 
     public class Application
