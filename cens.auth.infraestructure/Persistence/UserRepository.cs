@@ -23,6 +23,16 @@ namespace cens.auth.infraestructure.Persistence
             return await _connection.ExecuteAsync(UserProcedure.create, user, commandType: CommandType.StoredProcedure);
         }
 
+        public async Task delete(int userId, string userName)
+        {
+            await _connection.ExecuteAsync(UserProcedure.delete, new
+            {
+                @UserId = userId,
+                @UserNameDelete = userName
+            },
+            commandType: CommandType.StoredProcedure);
+        }
+
         public async Task<UserDetail?> get(string userName, string key)
         {
             return await _connection.QueryFirstOrDefaultAsync<UserDetail>(UserProcedure.getByKey,

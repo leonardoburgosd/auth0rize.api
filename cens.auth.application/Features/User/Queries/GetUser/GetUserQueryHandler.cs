@@ -8,11 +8,13 @@ namespace cens.auth.application.Features.User.Queries.GetUser
 {
     public class GetUserQueryHandler : IRequestHandler<GetUserQuery, Response<List<GetUserResponse>>>
     {
+        #region Inyeccion
         private readonly IUnitOfWork _unitOfWork;
         public GetUserQueryHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
+        #endregion
 
         public async Task<Response<List<GetUserResponse>>> Handle(GetUserQuery request, CancellationToken cancellationToken)
         {

@@ -56,7 +56,13 @@ namespace cens.auth.api.Controllers.v2
         [Route("{userId}")]
         public async Task<IActionResult> delete(int userId)
         {
-            return Ok(await Mediator.Send(new DeleteUser(userId)));
+            return Ok(await Mediator.Send(new DeleteUser(userId,
+                                                                new SecurityTokenData()
+                                                                {
+                                                                    UserId = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == "user_id").Value),
+                                                                    UserName = HttpContext.User.Claims.First(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name").Value,
+                                                                    TypeUser = HttpContext.User.Claims.First(c => c.Type == "user_rol").Value
+                                                                })));
         }
 
     }
