@@ -1,5 +1,6 @@
 using cens.auth.application.Common.Entities;
 using cens.auth.application.Features.User.Command.CreateUser;
+using cens.auth.application.Features.User.Command.GeneratePassword;
 using cens.auth.application.Features.User.Delete.DeleteUser;
 using cens.auth.application.Features.User.Queries.GetUser;
 using cens.auth.application.Features.User.Update.UpdateUser;
@@ -65,5 +66,11 @@ namespace cens.auth.api.Controllers.v2
                                                                 })));
         }
 
+        [HttpGet]
+        [Route("newPassword")]
+        public async Task<IActionResult> getRandomPassword()
+        {
+            return Ok(await Mediator.Send(new GeneratePasswordCommand()));
+        }
     }
 }

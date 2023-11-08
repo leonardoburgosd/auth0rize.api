@@ -33,7 +33,6 @@ namespace cens.auth.application.Features.Authentication.Queries.Login
             if (!Encrypt.compareHash(request.Password, user.Password, user.Salt))
                 throw new KeyNotFoundException("Usuario o password incorrectos.");
 
-
             JwtSecurityToken token = Encrypt.generateTokenValidation(new TokenParameters()
             {
                 Id = user.Id,

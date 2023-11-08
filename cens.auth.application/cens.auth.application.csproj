@@ -19,6 +19,7 @@
     <Folder Include="Features\Application\Command\CreateApplication\" />
     <Folder Include="Features\Application\Queries\" />
     <Folder Include="Features\Application\Queries\GetApplication\" />
+    <Folder Include="Features\User\Command\GeneratePassword\" />
     <Folder Include="Features\User\Delete\" />
     <Folder Include="Features\User\Delete\DeleteUser\" />
     <Folder Include="Features\User\Queries\" />
