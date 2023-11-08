@@ -26,7 +26,7 @@ namespace cens.auth.application.Features.Authentication.Queries.BasicUser
 
             response.Success = true;
             response.Message = "Usuario encontrado en la applicación.";
-            response.Data = new BasicUserResponse() { Email = user.Email, Nombres = user.Name };
+            response.Data = new BasicUserResponse() { Email = user.Email, Nombres = user.Name, NombreUsuario = user.UserName };
 
             return response;
         }
