@@ -38,6 +38,7 @@ namespace cens.auth.application.Features.User.Queries.GetUser
                     {
                         Id = u.Id,
                         NameComplete = u.NameComplete,
+                        Avatar = u.Avatar,
                         Applications = applications(users.ToList().Where(us => us.Id == u.Id).ToList()),
                         Deleted = u.Delete
                     });
