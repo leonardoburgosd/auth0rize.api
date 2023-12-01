@@ -9,6 +9,9 @@ builder.Services
                 .AddInjectionInfraestructure(configuration)
                 .AddPresentation(configuration)
                 ;
+builder.Services.AddCors(p => p.AddPolicy("corspolicy",
+        app => app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
+    ));
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
