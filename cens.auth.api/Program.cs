@@ -14,8 +14,8 @@ builder.Services.AddCors(p => p.AddPolicy("authpolicy",
         app =>
         {
             app.WithOrigins(
-                "https://workforce.censperu.com",
-                "auth.censperu.com"
+                "https://workforce.censperu.com/",
+                "https://auth.censperu.com/"
             ).AllowAnyOrigin().AllowAnyMethod();
         }
     ));
