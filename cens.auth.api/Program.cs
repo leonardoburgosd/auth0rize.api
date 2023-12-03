@@ -9,8 +9,15 @@ builder.Services
                 .AddInjectionInfraestructure(configuration)
                 .AddPresentation(configuration)
                 ;
-builder.Services.AddCors(p => p.AddPolicy("corspolicy",
-        app => app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
+builder.Services.AddCors(p => p.AddPolicy("authpolicy",
+        //app => app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
+        app =>
+        {
+            app.WithOrigins(
+                "https://workforce.censperu.com",
+                "auth.censperu.com"
+            ).AllowAnyOrigin().AllowAnyMethod();
+        }
     ));
 
 var app = builder.Build();
