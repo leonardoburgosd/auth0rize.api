@@ -28,8 +28,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("authpolicy");
 app.UseRouting();
+app.UseCors("authpolicy");
 app.useErrorHandlingMiddleware();
 app.UseHttpsRedirection();
 app.UseAuthorization();
