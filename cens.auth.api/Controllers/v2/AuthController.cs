@@ -13,11 +13,16 @@ namespace cens.auth.api.Controllers.v2
             return Ok(await Mediator.Send(new LoginQuery(login.UserName, login.Password, login.Key)));
         }
 
-        [HttpPost]
-        [Route("user")]
+        [HttpPost("user")]
         public async Task<IActionResult> basicUser([FromBody] BasicUserRequest basicUser)
         {
             return Ok(await Mediator.Send(new BasicUserQuery(basicUser.UserName, basicUser.Key)));
+        }
+
+        [HttpPost("renewpassword")]
+        public async Task<IActionResult> renewPassword()
+        {
+            return Ok("renovado");
         }
     }
 }
