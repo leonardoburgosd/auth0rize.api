@@ -16,7 +16,7 @@ builder.Services.AddCors(p => p.AddPolicy("authpolicy",
             app.WithOrigins(
                 "https://workforce.censperu.com",
                 "https://auth.censperu.com"
-            ).AllowAnyMethod();
+            ).AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
         }
     ));
 builder.Services.AddControllers();
@@ -29,9 +29,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseRouting();
 app.useErrorHandlingMiddleware();
 app.UseHttpsRedirection();
+app.UseRouting();
 app.UseCors("authpolicy");
 app.UseAuthorization();
 
