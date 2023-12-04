@@ -1,10 +1,12 @@
 using cens.auth.application.Features.Authentication.Queries.BasicUser;
 using cens.auth.application.Features.Authentication.Queries.Login;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace cens.auth.api.Controllers.v2
 {
     [ApiVersion("2.0")]
+    [EnableCors("authenticationPolicy")]
     public class AuthController : BaseApiController
     {
         [HttpPost]

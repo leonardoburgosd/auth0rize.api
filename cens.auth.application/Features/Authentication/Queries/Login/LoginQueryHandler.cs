@@ -33,6 +33,11 @@ namespace cens.auth.application.Features.Authentication.Queries.Login
             if (!Encrypt.compareHash(request.Password, user.Password, user.Salt))
                 throw new KeyNotFoundException("Usuario o password incorrectos.");
 
+            string? issuer =  Environment.GetEnvironmentVariable(_configuration["security:issuer"]!.ToString());
+            string? audience =  Environment.GetEnvironmentVariable(_configuration["security:audience"]!.ToString());
+            int hours = Convert.ToInt32(_configuration["security:hourExpiring"]);
+            string? symmetricKey = Environment.GetEnvironmentVariable(_configuration["security:symmetricKey"]!.ToString());
+
             JwtSecurityToken token = Encrypt.generateTokenValidation(new TokenParameters()
             {
                 Id = user.Id,
@@ -42,10 +47,10 @@ namespace cens.auth.application.Features.Authentication.Queries.Login
                 Role = user.Detail,
                 Key = request.Key,
                 MultipleFactor = user.IsDoubleFactorActivate,
-                Issuer = Environment.GetEnvironmentVariable(_configuration["security:issuer"]!.ToString()),
-                Audience = Environment.GetEnvironmentVariable(_configuration["security:audience"]!.ToString()),
-                HoursExpires = Convert.ToInt32(_configuration["security:hourExpiring"]),
-                SecretKey = Environment.GetEnvironmentVariable(_configuration["security:symmetricKey"]!.ToString()),
+                Issuer = issuer,
+                Audience = audience,
+                HoursExpires = hours,
+                SecretKey = symmetricKey,
                 Avatar = user.Avatar,
                 Drive = "",
             });

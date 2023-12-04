@@ -6,11 +6,13 @@ using cens.auth.application.Features.User.Queries.GetUser;
 using cens.auth.application.Features.User.Update.UpdateUser;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace cens.auth.api.Controllers.v2
 {
     [ApiVersion("2.0")]
+    [EnableCors("consultingPolicy")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class UserController : BaseApiController
     {

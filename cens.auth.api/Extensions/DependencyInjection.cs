@@ -18,10 +18,26 @@ namespace cens.auth.api.Extensions
             // {
             //     options.HttpsPort = 5001;
             // });
+
             services.AddCors(p =>
             {
-                p.AddPolicy("authpolicy", app => app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+                p.AddPolicy("consultingPolicy", app =>
+                {
+                    app.WithOrigins("https://workforce.censperu.com")
+                       .WithMethods("POST", "GET", "DELETE", "PUT");
+                });
+
+                p.AddPolicy("authenticationPolicy", policy =>
+                {
+                    policy.WithOrigins("https://auth.censperu.com").WithMethods("POST");
+                });
+
             });
+
+            //services.AddCors(p =>
+            //{
+            //    p.AddPolicy("authpolicy", app => app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            //});
             string? symmetricKey = Environment.GetEnvironmentVariable(configuration["security:symmetricKey"]!.ToString());
             string? issuer = Environment.GetEnvironmentVariable(configuration["security:issuer"]!.ToString());
             string? audience = Environment.GetEnvironmentVariable(configuration["security:audience"]!.ToString());
