@@ -29,7 +29,7 @@ namespace cens.auth.api.Extensions
 
                 p.AddPolicy("authenticationPolicy", policy =>
                 {
-                    policy.WithOrigins("https://auth.censperu.com").WithMethods("POST");
+                    policy.WithOrigins("https://auth.censperu.com").WithMethods("POST").AllowAnyHeader();
                 });
 
             });
