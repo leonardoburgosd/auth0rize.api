@@ -24,7 +24,8 @@ namespace cens.auth.api.Extensions
                 p.AddPolicy("consultingPolicy", app =>
                 {
                     app.WithOrigins("https://workforce.censperu.com")
-                       .WithMethods("POST", "GET", "DELETE", "PUT");
+                       .WithMethods("POST", "GET", "DELETE", "PUT")
+                       .WithHeaders("Authorization");;
                 });
 
                 p.AddPolicy("authenticationPolicy", policy =>
