@@ -21,7 +21,10 @@ namespace cens.auth.api.Extensions
 
 
             string? urlPermissions = Environment.GetEnvironmentVariable(configuration["urlPermission:consultingPolicy"]!.ToString());
+            string? urlAuthentication = Environment.GetEnvironmentVariable(configuration["urlPermission:authenticationPolicy"]!.ToString());
             string[] permissionsArray = urlPermissions!.Split(',');
+            string[] authenticationArray = urlAuthentication!.Split(',');
+
             services.AddCors(p =>
             {
                 p.AddPolicy("consultingPolicy", app =>
@@ -33,7 +36,7 @@ namespace cens.auth.api.Extensions
 
                 p.AddPolicy("authenticationPolicy", policy =>
                 {
-                    policy.WithOrigins("https://auth.censperu.com").WithMethods("POST").AllowAnyHeader();
+                    policy.WithOrigins(authenticationArray).WithMethods("POST").AllowAnyHeader();
                 });
 
             });
