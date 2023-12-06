@@ -19,11 +19,14 @@ namespace cens.auth.api.Extensions
             //     options.HttpsPort = 5001;
             // });
 
+
+            string? urlPermissions = Environment.GetEnvironmentVariable(configuration["urlPermission:consultingPolicy"]!.ToString());
+            string[] permissionsArray = urlPermissions!.Split(',');
             services.AddCors(p =>
             {
                 p.AddPolicy("consultingPolicy", app =>
                 {
-                    app.WithOrigins("https://workforce.censperu.com")
+                    app.WithOrigins(permissionsArray)
                        .WithMethods("POST", "GET", "DELETE", "PUT")
                        .WithHeaders("Authorization");;
                 });
