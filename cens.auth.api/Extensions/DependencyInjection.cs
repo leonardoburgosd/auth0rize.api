@@ -30,7 +30,7 @@ namespace cens.auth.api.Extensions
                 {
                     app.WithOrigins(permissionsArray)
                        .WithMethods("POST", "GET", "DELETE", "PUT")
-                       .WithHeaders("Authorization");
+                       .AllowAnyHeader();
                 });
 
                 p.AddPolicy("authenticationPolicy", policy =>
