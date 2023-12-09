@@ -19,7 +19,6 @@ namespace cens.auth.api.Extensions
             //     options.HttpsPort = 5001;
             // });
 
-
             string? urlPermissions = Environment.GetEnvironmentVariable(configuration["urlPermission:consultingPolicy"]!.ToString());
             string? urlAuthentication = Environment.GetEnvironmentVariable(configuration["urlPermission:authenticationPolicy"]!.ToString());
             string[] permissionsArray = urlPermissions!.Split(',');
@@ -31,7 +30,7 @@ namespace cens.auth.api.Extensions
                 {
                     app.WithOrigins(permissionsArray)
                        .WithMethods("POST", "GET", "DELETE", "PUT")
-                       .WithHeaders("Authorization");;
+                       .WithHeaders("Authorization");
                 });
 
                 p.AddPolicy("authenticationPolicy", policy =>
@@ -41,10 +40,6 @@ namespace cens.auth.api.Extensions
 
             });
 
-            //services.AddCors(p =>
-            //{
-            //    p.AddPolicy("authpolicy", app => app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-            //});
             string? symmetricKey = Environment.GetEnvironmentVariable(configuration["security:symmetricKey"]!.ToString());
             string? issuer = Environment.GetEnvironmentVariable(configuration["security:issuer"]!.ToString());
             string? audience = Environment.GetEnvironmentVariable(configuration["security:audience"]!.ToString());
