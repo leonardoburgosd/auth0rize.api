@@ -34,7 +34,8 @@ namespace cens.auth.application.Features.Application.Queries.GetApplication
                 {
                     ApplicationId = a.Id,
                     Icon = a.Icon,
-                    Name = a.Name
+                    Name = a.Name,
+                    Description = a.Description
                 });
             });
 
