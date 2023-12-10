@@ -3,11 +3,13 @@ using cens.auth.application.Features.Application.Command.CreateApplication;
 using cens.auth.application.Features.Application.Queries.GetApplication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace cens.auth.api.Controllers.v2
 {
     [ApiVersion("2.0")]
+    [EnableCors("consultingPolicy")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ApplicationController : BaseApiController
     {
