@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\cens.auth.domain\cens.auth.domain.csproj" />
+    <ProjectReference Include="..\cens.auth.drive\cens.auth.drive.csproj" />
     <ProjectReference Include="..\cens.auth.notification\cens.auth.notification.csproj" />
   </ItemGroup>
 
