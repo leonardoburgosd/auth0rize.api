@@ -15,7 +15,7 @@ namespace cens.auth.api.Controllers.v2
     {
 
         [HttpPost]
-        public async Task<IActionResult> create([FromBody] CreateApplicationCommandRequest application)
+        public async Task<IActionResult> create([FromForm] CreateApplicationCommandRequest application)
         {
             return Ok(await Mediator.Send(new CreateApplicationCommand(application.Name, application.Icon, application.Description, new SecurityTokenData()
             {

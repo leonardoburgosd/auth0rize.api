@@ -20,9 +20,11 @@ namespace cens.auth.application.Features.Application.Command.CreateApplication
         {
             Response<bool> response = new Response<bool>();
 
+            string baseFileIcon = "";
+
             int applicationId = await _unitOfWork.Application.create(new ApplicationCreate()
             {
-                Icon = request.Icon,
+                Icon = baseFileIcon,
                 Name = request.name,
                 Description = request.Description,
                 RegistrationUser = request.SecurityTokenData.UserName
