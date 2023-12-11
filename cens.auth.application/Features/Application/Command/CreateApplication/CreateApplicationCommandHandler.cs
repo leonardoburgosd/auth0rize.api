@@ -20,7 +20,13 @@ namespace cens.auth.application.Features.Application.Command.CreateApplication
         {
             Response<bool> response = new Response<bool>();
 
-            int applicationId = await _unitOfWork.Application.create(new ApplicationCreate() { Icon = request.Icon, Name = request.name, UserNameRegister = request.SecurityTokenData.UserName });
+            int applicationId = await _unitOfWork.Application.create(new ApplicationCreate()
+            {
+                Icon = request.Icon,
+                Name = request.name,
+                Description = request.Description,
+                RegistrationUser = request.SecurityTokenData.UserName
+            });
 
             if (applicationId == 0)
             {
@@ -28,7 +34,7 @@ namespace cens.auth.application.Features.Application.Command.CreateApplication
                 response.Message = "Applicación no se pudo crear.";
                 response.Data = false;
             }
-            
+
             response.Success = true;
             response.Message = "Applicación creada correctamete.";
             response.Data = true;

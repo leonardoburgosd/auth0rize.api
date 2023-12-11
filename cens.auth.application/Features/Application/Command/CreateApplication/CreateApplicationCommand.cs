@@ -4,7 +4,7 @@ using MediatR;
 
 namespace cens.auth.application.Features.Application.Command.CreateApplication
 {
-    public record CreateApplicationCommand(string name, string Icon,
+    public record CreateApplicationCommand(string name, string Icon, string Description,
                                     SecurityTokenData SecurityTokenData) : IRequest<Response<bool>>;
 
 }

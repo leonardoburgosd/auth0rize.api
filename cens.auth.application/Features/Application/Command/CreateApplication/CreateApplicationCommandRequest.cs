@@ -5,5 +5,6 @@ namespace cens.auth.application.Features.Application.Command.CreateApplication
     {
         public string Name { get; set; } = null!;
         public string Icon { get; set; } = null!;
+        public string Description { get; set; } = null!;
     }
 }

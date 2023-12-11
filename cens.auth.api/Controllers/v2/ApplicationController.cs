@@ -13,11 +13,11 @@ namespace cens.auth.api.Controllers.v2
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ApplicationController : BaseApiController
     {
-        
+
         [HttpPost]
         public async Task<IActionResult> create([FromBody] CreateApplicationCommandRequest application)
         {
-            return Ok(await Mediator.Send(new CreateApplicationCommand(application.Name, application.Icon, new SecurityTokenData()
+            return Ok(await Mediator.Send(new CreateApplicationCommand(application.Name, application.Icon, application.Description, new SecurityTokenData()
             {
                 UserId = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == "user_id").Value),
                 UserName = HttpContext.User.Claims.First(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name").Value,
