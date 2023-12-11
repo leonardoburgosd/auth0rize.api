@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using cens.auth.drive.Entities;
+using Microsoft.AspNetCore.Http;
 
 namespace cens.auth.drive.Intefaces
 {
     public interface IDriveRepository
     {
-        
+        Task<ResponseDrive<UpdateFileResponse>> uploadFile(IFormFile file, string token);
+        Task<LoginResponse> auth(string usuario, string password);
     }
 }
