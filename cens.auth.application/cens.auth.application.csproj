@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features/User/Queries/GetAllById/" />
     <Folder Include="Features\Application\" />
     <Folder Include="Features\Application\Command\" />
     <Folder Include="Features\Application\Command\CreateApplication\" />

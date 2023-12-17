@@ -53,6 +53,18 @@ namespace cens.auth.infraestructure.Persistence
                                                       );
         }
 
+        public async Task<UserGetById> get(int userId)
+        {
+            return await _connection.QueryFirstAsync<UserGetById>(
+                UserProcedure.getById,
+                new
+                {
+                    @Id = userId
+                },
+                commandType: CommandType.StoredProcedure
+                );
+        }
+
         public async Task update(UserUpdate user)
         {
             await _connection.ExecuteAsync(UserProcedure.update, user, commandType: CommandType.StoredProcedure);
