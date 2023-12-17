@@ -7,6 +7,7 @@ namespace cens.auth.domain.Application
         Task<int> create(ApplicationCreate application);
         Task upadte(ApplicationUpdate application);
         Task<IEnumerable<Application>> get();
+        Task<IEnumerable<Application>> get(int userId);
         Task delete(int applicationId, string userName);
     }
 }

@@ -2,6 +2,7 @@ using cens.auth.application.Common.Entities;
 using cens.auth.application.Features.User.Command.CreateUser;
 using cens.auth.application.Features.User.Command.GeneratePassword;
 using cens.auth.application.Features.User.Delete.DeleteUser;
+using cens.auth.application.Features.User.Queries.GetAllById;
 using cens.auth.application.Features.User.Queries.GetUser;
 using cens.auth.application.Features.User.Update.UpdateUser;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -16,6 +17,12 @@ namespace cens.auth.api.Controllers.v2
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class UserController : BaseApiController
     {
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> getDetail(int Id)
+        {
+            return Ok(await Mediator.Send(new GetAllById(Id)));
+        }
+
         [HttpPost]
         public async Task<IActionResult> create([FromBody] CreateUserRequest user)
         {

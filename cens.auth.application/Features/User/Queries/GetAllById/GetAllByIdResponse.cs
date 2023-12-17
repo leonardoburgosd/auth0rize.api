@@ -16,5 +16,14 @@ namespace cens.auth.application.Features.User.Queries.GetAllById
         public bool IsDoubleFactorActive { get; set; }
         public string Type { get; set; }
         public int TypeId { get; set; }
+        public List<ApplicationsByUser> Applications { get; set; }
+    }
+
+    public class ApplicationsByUser
+    {
+        public int Id { get; set; }
+        public string Key { get; set; }
+        public string Name { get; set; }
+        public string Icon { get; set; }
     }
 }
