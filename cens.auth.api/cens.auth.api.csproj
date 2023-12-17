@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\cens.auth.application\cens.auth.application.csproj" />
+    <ProjectReference Include="..\cens.auth.drive\cens.auth.drive.csproj" />
     <ProjectReference Include="..\cens.auth.infraestructure\cens.auth.infraestructure.csproj" />
   </ItemGroup>
 

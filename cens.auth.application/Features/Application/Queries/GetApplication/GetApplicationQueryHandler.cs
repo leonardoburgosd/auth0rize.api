@@ -33,6 +33,7 @@ namespace cens.auth.application.Features.Application.Queries.GetApplication
                 applicationsResponse.Add(new GetApplicationQueryResponse()
                 {
                     ApplicationId = a.Id,
+                    Key = a.Key,
                     Icon = a.Icon,
                     Name = a.Name,
                     Description = a.Description

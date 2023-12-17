@@ -1,11 +1,13 @@
 using cens.auth.api.Extensions;
 using cens.auth.application;
+using cens.auth.drive;
 using cens.auth.infraestructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 builder.Services
                 .AddInjectionApplication()
+                .AddInjectionDrive(configuration)
                 .AddInjectionInfraestructure(configuration)
                 .AddPresentation(configuration)
                 ;
