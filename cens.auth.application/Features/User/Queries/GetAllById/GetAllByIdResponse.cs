@@ -14,7 +14,6 @@ namespace cens.auth.application.Features.User.Queries.GetAllById
         public DateTime Birthday { get; set; }
         public string Avatar { get; set; }
         public bool IsDoubleFactorActive { get; set; }
-        public string Type { get; set; }
         public int TypeId { get; set; }
         public List<ApplicationsByUser> Applications { get; set; }
     }
