@@ -1,0 +1,11 @@
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.domain\bin\Debug\net7.0\auth0rize.auth.domain.deps.json
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.domain\bin\Debug\net7.0\auth0rize.auth.domain.dll
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.domain\bin\Debug\net7.0\auth0rize.auth.domain.pdb
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.domain\obj\Debug\net7.0\auth0rize.auth.domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.domain\obj\Debug\net7.0\auth0rize.auth.domain.AssemblyInfoInputs.cache
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.domain\obj\Debug\net7.0\auth0rize.auth.domain.AssemblyInfo.cs
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.domain\obj\Debug\net7.0\auth0rize.auth.domain.csproj.CoreCompileInputs.cache
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.domain\obj\Debug\net7.0\auth0rize.auth.domain.dll
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.domain\obj\Debug\net7.0\refint\auth0rize.auth.domain.dll
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.domain\obj\Debug\net7.0\auth0rize.auth.domain.pdb
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.domain\obj\Debug\net7.0\ref\auth0rize.auth.domain.dll

@@ -1,0 +1,15 @@
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\bin\Debug\net7.0\auth0rize.auth.infraestructure.deps.json
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\bin\Debug\net7.0\auth0rize.auth.infraestructure.dll
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\bin\Debug\net7.0\auth0rize.auth.infraestructure.pdb
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\bin\Debug\net7.0\auth0rize.auth.domain.dll
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\bin\Debug\net7.0\auth0rize.auth.domain.pdb
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.csproj.AssemblyReference.cache
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.AssemblyInfoInputs.cache
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.AssemblyInfo.cs
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.csproj.CopyComplete
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.dll
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\obj\Debug\net7.0\refint\auth0rize.auth.infraestructure.dll
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.pdb
+C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\obj\Debug\net7.0\ref\auth0rize.auth.infraestructure.dll

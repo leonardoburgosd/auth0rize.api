@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "lQBD38lpcPRJ0HrsurBaRBac1mDAd+/ldEdsfOkYqrU=",
+  "Source": "auth0rize.auth.api",
+  "BasePath": "_content/auth0rize.auth.api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

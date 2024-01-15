@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\auth0rize.auth.api.props" />
+</Project>
