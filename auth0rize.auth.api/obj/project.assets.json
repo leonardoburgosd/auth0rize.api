@@ -2159,11 +2159,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.api\\auth0rize.auth.api.csproj",
+      "projectUniqueName": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj",
       "projectName": "auth0rize.auth.api",
-      "projectPath": "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.api\\auth0rize.auth.api.csproj",
+      "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj",
       "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.api\\obj\\",
+      "outputPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -2186,14 +2186,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.application\\auth0rize.auth.application.csproj": {
-              "projectPath": "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.application\\auth0rize.auth.application.csproj"
+            "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj": {
+              "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj"
             },
-            "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
-              "projectPath": "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
+            "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
+              "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
             },
-            "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj": {
-              "projectPath": "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj"
+            "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj": {
+              "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj"
             }
           }
         }

@@ -14,12 +14,9 @@ builder.Services.AddControllers();
 builder.Services.AddControllers();
 
 var app = builder.Build();
-if (app.Environment.IsDevelopment())
-{
-    app.UseForwardedHeaders();
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseForwardedHeaders();
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.useErrorHandlingMiddleware();
 app.UseHttpsRedirection();

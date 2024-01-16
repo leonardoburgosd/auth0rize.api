@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj": {}
+    "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj": {
+    "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj",
+        "projectUniqueName": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj",
         "projectName": "auth0rize.auth.notification",
-        "projectPath": "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj",
+        "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj",
         "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.notification\\obj\\",
+        "outputPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.notification\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

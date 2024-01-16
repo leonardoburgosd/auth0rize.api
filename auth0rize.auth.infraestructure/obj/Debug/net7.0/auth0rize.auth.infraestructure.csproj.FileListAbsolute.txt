@@ -13,3 +13,18 @@ C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\obj\Debug
 C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\obj\Debug\net7.0\refint\auth0rize.auth.infraestructure.dll
 C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.pdb
 C:\Users\Leo\Desktop\auth0rize.api.auth\auth0rize.auth.infraestructure\obj\Debug\net7.0\ref\auth0rize.auth.infraestructure.dll
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.infraestructure\bin\Debug\net7.0\auth0rize.auth.infraestructure.deps.json
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.infraestructure\bin\Debug\net7.0\auth0rize.auth.infraestructure.dll
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.infraestructure\bin\Debug\net7.0\auth0rize.auth.infraestructure.pdb
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.infraestructure\bin\Debug\net7.0\auth0rize.auth.domain.dll
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.infraestructure\bin\Debug\net7.0\auth0rize.auth.domain.pdb
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.csproj.AssemblyReference.cache
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.AssemblyInfoInputs.cache
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.AssemblyInfo.cs
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.csproj.CoreCompileInputs.cache
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.csproj.CopyComplete
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.dll
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\refint\auth0rize.auth.infraestructure.dll
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.pdb
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\ref\auth0rize.auth.infraestructure.dll

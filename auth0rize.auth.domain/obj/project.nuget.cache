@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iNUHawUF2d8q4MV2QMkgTeg2xHGyo79Pp2k7GShuz1DEIklx2BFdFplVDR9nh4Ldy3i3s0AhWuRdBjNVF+Furg==",
+  "dgSpecHash": "cutE4pklF6cLA2ZW3yFBlZjdE7ohStgcCkZpb4c7u29AD/U2LTVa2iHamd5ey6GLpaR70NgpYh1zlNfPPBg2yg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
+  "projectFilePath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

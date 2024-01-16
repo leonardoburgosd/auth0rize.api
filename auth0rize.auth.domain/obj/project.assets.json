@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
+      "projectUniqueName": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
       "projectName": "auth0rize.auth.domain",
-      "projectPath": "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
+      "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
       "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Leo\\Desktop\\auth0rize.api.auth\\auth0rize.auth.domain\\obj\\",
+      "outputPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
