@@ -10,7 +10,7 @@ namespace auth0rize.auth.infraestructure.Persistence
 
         public async Task<UserDetail> get(string userName)
         {
-            UserDetail response = new UserDetail();
+            UserDetail response = null;
 
             User? user = LocalData.users
                                .Where(u => u.UserName.Equals(userName))
