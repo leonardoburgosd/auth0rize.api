@@ -363,7 +363,7 @@ namespace auth0rize.auth.infraestructure.Extensions
                 UserRegistration = 1
             });
 
-            code = generateHash("`q`Xd;118W");
+            code = generateHash("qXd;118W");
             response.Add(new User()
             {
                 Id = 4,

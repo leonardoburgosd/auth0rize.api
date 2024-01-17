@@ -31,7 +31,8 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.BasicUser
             response.Message = "Usuario encontrado.";
             response.Data = new BasicUserResponse()
             {
-                Email = user.Email
+                Email = user.Email,
+                UserName = user.UserName
             };
 
             return response;
