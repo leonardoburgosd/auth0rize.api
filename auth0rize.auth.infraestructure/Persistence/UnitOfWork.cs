@@ -22,9 +22,8 @@ namespace auth0rize.auth.infraestructure.Persistence
         public UnitOfWork(IConfiguration configuration)
         {
             User = new UserRepository();
+            Application = new ApplicationRepository();
         }
-
-
 
         public void Dispose()
         {
