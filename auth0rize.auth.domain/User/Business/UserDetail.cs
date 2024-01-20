@@ -14,6 +14,9 @@
         public string MotherLastName { get; set; } = null!;
         public bool IsDoubleFactorActivate { get; set; }
         public string Avatar { get; set; } = null!;
-        public string Application { get; set; } = null!;
+        public long Domain { get; set; } = 0!;
+        public string DomainName { get; set; } = null!;
+        public long Application { get; set; } = 0!;
+        public string ApplicationName { get; set; }
     }
 }

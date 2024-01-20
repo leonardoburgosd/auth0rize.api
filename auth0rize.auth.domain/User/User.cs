@@ -12,5 +12,6 @@
         public bool IsDoubleFactorActivate { get; set; } = false;
         public string Avatar { get; set; } = null!;
         public int Type { get; set; }
+        public long Domain {  get; set; }
     }
 }

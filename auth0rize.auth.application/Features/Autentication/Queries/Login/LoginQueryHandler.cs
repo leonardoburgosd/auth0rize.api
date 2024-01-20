@@ -56,7 +56,8 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
                     Audience = audience,
                     HoursExpires = hours,
                     SecretKey = symmetricKey,
-                    Avatar = user.Avatar
+                    Avatar = user.Avatar,
+                    Domain = user.DomainName
                 });
                 token = new JwtSecurityTokenHandler().WriteToken(tokenGenerated);
             }
@@ -73,5 +74,7 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
 
             return response;
         }
+
+        public async Task<int> CodeGenerate() { return 0; }
     }
 }

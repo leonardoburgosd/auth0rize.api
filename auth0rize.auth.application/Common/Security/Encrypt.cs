@@ -33,6 +33,7 @@ namespace auth0rize.auth.application.Common.Security
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             Claim[] claims = new[] {
                 new Claim("user_id", tokenParams.Id.ToString()),
+                new Claim("domain", tokenParams.Domain),
                 new Claim(JwtRegisteredClaimNames.UniqueName, tokenParams.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim("user_rol", tokenParams.Role),

@@ -14,5 +14,6 @@
         public int HoursExpires { get; set; } = 0!;
         public string SecretKey { get; set; } = null!;
         public string Avatar { get; set; } = null!;
+        public string Domain { get; set; } = null!;
     }
 }

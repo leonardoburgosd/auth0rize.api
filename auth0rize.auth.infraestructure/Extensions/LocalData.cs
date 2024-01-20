@@ -1,6 +1,7 @@
 ﻿using auth0rize.auth.domain.Application;
 using auth0rize.auth.domain.ApplicationMenu;
 using auth0rize.auth.domain.ApplicationUser;
+using auth0rize.auth.domain.Domain;
 using auth0rize.auth.domain.Menu;
 using auth0rize.auth.domain.MenuOption;
 using auth0rize.auth.domain.Option;
@@ -18,9 +19,10 @@ namespace auth0rize.auth.infraestructure.Extensions
         public static List<Option> options = listOptions();
         public static List<TypeUser> types = listType();
         public static List<User> users = listUser();
+        public static List<Domain> domains = listDomain();
 
         public static List<ApplicationMenu> applicationMenus = listApplicationsMenu();
-        public static List<ApplicationUser> applicationUsers = listApplicationUser();
+        public static List<ApplicationDomain> applicationDomain = listApplicationDomain();
         public static List<MenuOption> menuOptions = listMenuOptions();
 
         private static List<Application> listApplications()
@@ -302,6 +304,57 @@ namespace auth0rize.auth.infraestructure.Extensions
             return response;
         }
 
+        private static List<Domain> listDomain()
+        {
+            List<Domain> response = new List<Domain>();
+
+            response.Add(new Domain()
+            {
+                Id = 1,
+                Name = "1645TIYGWJ",
+                IsDeleted = false,
+                RegistrationDate = DateTime.Now,
+                UserRegistration = 1
+            });
+
+            response.Add(new Domain()
+            {
+                Id = 2,
+                Name = "ZI8956G46V",
+                IsDeleted = false,
+                RegistrationDate = DateTime.Now,
+                UserRegistration = 1
+            });
+
+            response.Add(new Domain()
+            {
+                Id = 3,
+                Name = "A3612JQ2AZ",
+                IsDeleted = false,
+                RegistrationDate = DateTime.Now,
+                UserRegistration = 1
+            });
+
+            response.Add(new Domain()
+            {
+                Id = 4,
+                Name = "YMK6J61374",
+                IsDeleted = false,
+                RegistrationDate = DateTime.Now,
+                UserRegistration = 1
+            });
+
+            response.Add(new Domain()
+            {
+                Id = 5,
+                Name = "C469817GE8",
+                IsDeleted = false,
+                RegistrationDate = DateTime.Now,
+                UserRegistration = 1
+            });
+
+            return response;
+        }
         private static List<User> listUser()
         {
             List<User> response = new List<User>();
@@ -316,6 +369,7 @@ namespace auth0rize.auth.infraestructure.Extensions
                 Avatar = "default.png",
                 Email = "leburgosdiaz@gmail.com",
                 UserName = "leburgos",
+                Domain = 1,
                 Password = code.hashPassword,
                 Salt = code.salt,
                 IsDoubleFactorActivate = false,
@@ -335,6 +389,7 @@ namespace auth0rize.auth.infraestructure.Extensions
                 Avatar = "default.png",
                 Email = "alejandrogrodriguez@gmail.com",
                 UserName = "agrodriguez",
+                Domain = 1,
                 Password = code.hashPassword,
                 Salt = code.salt,
                 IsDoubleFactorActivate = false,
@@ -354,6 +409,7 @@ namespace auth0rize.auth.infraestructure.Extensions
                 Avatar = "default.png",
                 Email = "vmendozasanchez@gmail.com",
                 UserName = "vmendonza",
+                Domain = 1,
                 Password = code.hashPassword,
                 Salt = code.salt,
                 IsDoubleFactorActivate = false,
@@ -373,6 +429,7 @@ namespace auth0rize.auth.infraestructure.Extensions
                 Avatar = "default.png",
                 Email = "dherreraflores@gmail.com",
                 UserName = "dherrera",
+                Domain = 2,
                 Password = code.hashPassword,
                 Salt = code.salt,
                 IsDoubleFactorActivate = false,
@@ -392,6 +449,7 @@ namespace auth0rize.auth.infraestructure.Extensions
                 Avatar = "default.png",
                 Email = "cmartinezgomez@gmail.com",
                 UserName = "cmartinez",
+                Domain = 3,
                 Password = code.hashPassword,
                 Salt = code.salt,
                 IsDoubleFactorActivate = false,
@@ -411,6 +469,7 @@ namespace auth0rize.auth.infraestructure.Extensions
                 Avatar = "default.png",
                 Email = "jperezlopez@gmail.com",
                 UserName = "jperez",
+                Domain = 4,
                 Password = code.hashPassword,
                 Salt = code.salt,
                 IsDoubleFactorActivate = false,
@@ -422,7 +481,7 @@ namespace auth0rize.auth.infraestructure.Extensions
 
             return response;
         }
-
+         
         private static List<ApplicationMenu> listApplicationsMenu()
         {
             List<ApplicationMenu> response = new List<ApplicationMenu>();
@@ -481,110 +540,80 @@ namespace auth0rize.auth.infraestructure.Extensions
             return response;
         }
 
-        private static List<ApplicationUser> listApplicationUser()
+        private static List<ApplicationDomain> listApplicationDomain()
         {
-            List<ApplicationUser> response = new List<ApplicationUser>();
+            List<ApplicationDomain> response = new List<ApplicationDomain>();
 
-            response.Add(new ApplicationUser()
+            response.Add(new ApplicationDomain()
             {
                 Application = 1,
-                User = 1
+                Domain = 1
             });
 
-            response.Add(new ApplicationUser()
+            response.Add(new ApplicationDomain()
             {
                 Application = 2,
-                User = 1
+                Domain = 1
             });
 
-            response.Add(new ApplicationUser()
+            response.Add(new ApplicationDomain()
             {
                 Application = 3,
-                User = 1
+                Domain = 1
             });
 
-            response.Add(new ApplicationUser()
+            response.Add(new ApplicationDomain()
             {
                 Application = 1,
-                User = 2
+                Domain = 2
             });
 
-            response.Add(new ApplicationUser()
+            response.Add(new ApplicationDomain()
             {
                 Application = 2,
-                User = 2
+                Domain = 2
             });
 
-            response.Add(new ApplicationUser()
+            response.Add(new ApplicationDomain()
             {
                 Application = 5,
-                User = 2
+                Domain = 2
             });
 
-            response.Add(new ApplicationUser()
+            response.Add(new ApplicationDomain()
             {
                 Application = 4,
-                User = 3
+                Domain = 3
             });
 
-            response.Add(new ApplicationUser()
+            response.Add(new ApplicationDomain()
             {
                 Application = 5,
-                User = 3
+                Domain = 3
             });
 
-            response.Add(new ApplicationUser()
+            response.Add(new ApplicationDomain()
             {
                 Application = 1,
-                User = 4
+                Domain = 4
             });
 
-            response.Add(new ApplicationUser()
+            response.Add(new ApplicationDomain()
             {
                 Application = 2,
-                User = 4
+                Domain = 4
             });
 
-            response.Add(new ApplicationUser()
+            response.Add(new ApplicationDomain()
             {
                 Application = 4,
-                User = 4
+                Domain = 4
             });
 
-            response.Add(new ApplicationUser()
+            response.Add(new ApplicationDomain()
             {
                 Application = 2,
-                User = 5
-            });
-
-            response.Add(new ApplicationUser()
-            {
-                Application = 1,
-                User = 6
-            });
-
-            response.Add(new ApplicationUser()
-            {
-                Application = 2,
-                User = 6
-            });
-
-            response.Add(new ApplicationUser()
-            {
-                Application = 3,
-                User = 6
-            });
-
-            response.Add(new ApplicationUser()
-            {
-                Application = 4,
-                User = 6
-            });
-
-            response.Add(new ApplicationUser()
-            {
-                Application = 5,
-                User = 6
+                Domain = 5
             });
 
             return response;
@@ -636,6 +665,6 @@ namespace auth0rize.auth.infraestructure.Extensions
                 return (salt, hashPassword);
             }
         }
-    
+
     }
 }

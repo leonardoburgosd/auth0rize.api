@@ -19,8 +19,8 @@ namespace auth0rize.auth.infraestructure.Persistence
             if (user is null)
                 return response;
 
-            var applicationId = LocalData.applicationUsers.FirstOrDefault(au => au.User == user.Id);
             var type = LocalData.types.FirstOrDefault(u => u.Id == user.Type);
+            long application = LocalData.applicationDomain.First(ad => ad.Domain == user.Domain).Application;
 
             response = new UserDetail
             {
@@ -34,9 +34,12 @@ namespace auth0rize.auth.infraestructure.Persistence
                 Email = user.Email,
                 Avatar = user.Avatar,
                 IsDoubleFactorActivate = user.IsDoubleFactorActivate,
-                Application = applicationId is not null ? LocalData.applications.FirstOrDefault(a => a.Id == applicationId.Application)!.Code : "",
+                Domain = user.Domain,
+                DomainName = LocalData.domains.First(d => d.Id == user.Domain).Name,
                 TypeUser = type!.Id,
-                TypeUserName = type.Name
+                TypeUserName = type.Name,
+                Application = application,
+                ApplicationName = LocalData.applications.First(a => a.Id == application).Name
             };
 
             return response;
