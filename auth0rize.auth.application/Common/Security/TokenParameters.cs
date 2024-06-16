@@ -5,9 +5,10 @@
         public long Id { get; set; }
         public string UserName { get; set; } = null!;
         public string Name { get; set; } = null!;
+        public string LastName { get; set; } = null!;
+        public string MotherLastName { get; set; } = null!;
         public string Email { get; set; } = null!;
         public string Role { get; set; } = null!;
-        public string Key { get; set; } = null!;
         public bool MultipleFactor { get; set; } = false;
         public string Issuer { get; set; } = null!;
         public string Audience { get; set; } = null!;

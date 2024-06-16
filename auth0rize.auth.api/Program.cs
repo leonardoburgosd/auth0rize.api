@@ -11,7 +11,6 @@ builder.Services
                 ;
 
 builder.Services.AddControllers();
-builder.Services.AddControllers();
 
 var app = builder.Build();
 app.UseForwardedHeaders();

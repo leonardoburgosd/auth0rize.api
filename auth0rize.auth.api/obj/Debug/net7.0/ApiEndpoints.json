@@ -1,0 +1,118 @@
+[
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.ApplicationController",
+    "Method": "Get",
+    "RelativePath": "api/v{version}/Application",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.AuthController",
+    "Method": "login",
+    "RelativePath": "api/v{version}/Auth",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "auth0rize.auth.application.Features.Autentication.Queries.Login.LoginRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.AuthController",
+    "Method": "validationUser",
+    "RelativePath": "api/v{version}/Auth/user",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "auth0rize.auth.application.Features.Autentication.Queries.BasicUser.BasicUserRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.UserController",
+    "Method": "registerSuperadmin",
+    "RelativePath": "api/v{version}/User",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "auth0rize.auth.application.Features.User.Command.UserRegister.SuperUserRegisterRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.UserController",
+    "Method": "get",
+    "RelativePath": "api/v{version}/User",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.UserController",
+    "Method": "registerChildren",
+    "RelativePath": "api/v{version}/User/new",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "auth0rize.auth.application.Features.User.Command.UserRegister.UserRegisterRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

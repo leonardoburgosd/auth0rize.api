@@ -39,7 +39,11 @@ namespace auth0rize.auth.application.Common.Security
                 new Claim("user_rol", tokenParams.Role),
                 new Claim("avatar", tokenParams.Avatar),
                 new Claim("email", tokenParams.Email),
-                new Claim("two_factor",tokenParams.MultipleFactor.ToString())
+                new Claim("two_factor",tokenParams.MultipleFactor.ToString()),
+                new Claim("name",tokenParams.Name.ToString()),
+                new Claim("lastname",tokenParams.LastName.ToString()),
+                new Claim("motherlastname",tokenParams.MotherLastName.ToString()),
+                new Claim("username",tokenParams.UserName.ToString()),
             };
             JwtSecurityToken token = new JwtSecurityToken(
                                              issuer: tokenParams.Issuer,

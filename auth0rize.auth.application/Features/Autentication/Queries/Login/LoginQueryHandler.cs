@@ -24,7 +24,7 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
         public async Task<Response<LoginResponse>> Handle(LoginQuery request, CancellationToken cancellationToken)
         {
             Response<LoginResponse> response = new Response<LoginResponse>();
-
+            
             UserDetail user = await _unitOfWork.User.get(request.userName);
             if (user is null) throw new KeyNotFoundException("Usuario no existe.");
 
@@ -47,10 +47,11 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
                 {
                     Id = user.Id,
                     UserName = user.UserName,
-                    Name = $"{user.Name} {user.LastName} {user.MotherLastName}",
+                    Name = user.Name,
+                    MotherLastName = user.MotherLastName,
+                    LastName = user.LastName,
                     Email = user.Email,
                     Role = user.TypeUserName,
-                    Key = request.application,
                     MultipleFactor = user.IsDoubleFactorActivate,
                     Issuer = issuer,
                     Audience = audience,
@@ -74,7 +75,6 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
 
             return response;
         }
-
         public async Task<int> CodeGenerate() { return 0; }
     }
 }

@@ -124,9 +124,13 @@ H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticweb
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets.build.json
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets.development.json
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\scopedcss\bundle\auth0rize.auth.api.styles.css
-H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\auth0rize.auth.api.csproj.CopyComplete
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\auth0rize.auth.api.dll
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\refint\auth0rize.auth.api.dll
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\auth0rize.auth.api.pdb
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\auth0rize.auth.api.genruntimeconfig.cache
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\ref\auth0rize.auth.api.dll
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\auth0rize.auth.api.sourcelink.json
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\bin\Debug\net7.0\Dapper.dll
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\bin\Debug\net7.0\Npgsql.dll
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\auth0riz.688098B6.Up2Date

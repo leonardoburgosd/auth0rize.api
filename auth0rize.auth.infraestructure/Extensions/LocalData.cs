@@ -355,6 +355,7 @@ namespace auth0rize.auth.infraestructure.Extensions
 
             return response;
         }
+        
         private static List<User> listUser()
         {
             List<User> response = new List<User>();

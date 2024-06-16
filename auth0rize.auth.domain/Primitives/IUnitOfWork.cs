@@ -1,4 +1,5 @@
 ﻿using auth0rize.auth.domain.Application;
+using auth0rize.auth.domain.Domain;
 using auth0rize.auth.domain.Menu;
 using auth0rize.auth.domain.Option;
 using auth0rize.auth.domain.TypeUser;
@@ -13,5 +14,6 @@ namespace auth0rize.auth.domain.Primitives
         IOptionRepository Option { get; }
         IMenuRepository Menu { get; }
         IApplicationRepository Application { get; }
+        IDomainRepository Domain { get; }
     }
 }

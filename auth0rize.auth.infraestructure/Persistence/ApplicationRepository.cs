@@ -1,14 +1,24 @@
 ﻿using auth0rize.auth.domain.Application;
 using auth0rize.auth.domain.Application.Business;
 using auth0rize.auth.domain.ApplicationUser;
+using auth0rize.auth.domain.Primitives;
 using auth0rize.auth.domain.User;
 using auth0rize.auth.infraestructure.Extensions;
+using Dapper;
+using Npgsql;
+using System.Data;
 
 namespace auth0rize.auth.infraestructure.Persistence
 {
     public class ApplicationRepository : IApplicationRepository
     {
-        public ApplicationRepository() { }
+        #region Inyeccion
+        private readonly NpgsqlConnection _connection;
+        public ApplicationRepository(NpgsqlConnection connection)
+        {
+            _connection = connection;
+        }
+        #endregion
 
         public async Task<List<ApplicationGet>> get(long userId)
         {
@@ -39,6 +49,16 @@ namespace auth0rize.auth.infraestructure.Persistence
             });
 
             return response;
+        }
+
+        public async Task<int> create(ApplicationCreate application)
+        {
+            GenericResponseCreate response = await _connection.QueryFirstAsync<GenericResponseCreate>(
+                ApplicationProcedures.CREATE,
+                application,
+                commandType: CommandType.StoredProcedure
+                );
+            return response.Id;
         }
     }
 }
