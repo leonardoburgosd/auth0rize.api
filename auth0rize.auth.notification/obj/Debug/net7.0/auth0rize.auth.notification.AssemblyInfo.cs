@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("auth0rize.auth.notification")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+45d68f7a84c0b4d0724559b301de41f9b0ac0dbc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4fb5f3afc8c3fd5dad6278ae3f2c2e10eb50daa0")]
 [assembly: System.Reflection.AssemblyProductAttribute("auth0rize.auth.notification")]
 [assembly: System.Reflection.AssemblyTitleAttribute("auth0rize.auth.notification")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

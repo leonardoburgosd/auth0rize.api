@@ -2,6 +2,7 @@
 using auth0rize.auth.application.Common.Entities;
 using auth0rize.auth.application.Features.User.Command.UserRegister;
 using auth0rize.auth.application.Features.User.Queries.AllUsersQuery;
+using auth0rize.auth.application.Features.User.Update.UserUpdate;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,13 +16,13 @@ namespace auth0rize.auth.api.Controllers.v1
     {
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> registerSuperadmin(SuperUserRegisterRequest user)
+        public async Task<IActionResult> createSuperadmin([FromBody] SuperUserRegisterRequest user)
         {
             return Ok(await Mediator.Send(new UserRegister(user.Name, user.LastName, user.MotherLastName, user.UserName, user.Email, user.Password, null)));
         }
 
         [HttpPost("new")]
-        public async Task<IActionResult> registerChildren(UserRegisterRequest user)
+        public async Task<IActionResult> createChildren([FromBody] UserRegisterRequest user)
         {
             DataSession session = new DataSession()
             {
@@ -45,6 +46,21 @@ namespace auth0rize.auth.api.Controllers.v1
 
             return Ok(await Mediator.Send(new AllUsersQuery(session)));
 
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> updateChildren([FromBody] UserUpdateRequest user, long id)
+        {
+            DataSession session = new DataSession()
+            {
+                Id = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == "user_id").Value),
+                MotherLastName = HttpContext.User.Claims.First(c => c.Type == "motherlastname").Value,
+                DomainName = HttpContext.User.Claims.First(c => c.Type == "domain").Value,
+                LastName = HttpContext.User.Claims.First(c => c.Type == "lastname").Value,
+                Name = HttpContext.User.Claims.First(c => c.Type == "name").Value,
+                UserName = HttpContext.User.Claims.First(c => c.Type == "username").Value
+            };
+            return Ok(await Mediator.Send(new UserUpdate(id, user.Name, user.LastName, user.MotherLastName, user.Email, session, user.Type)));
         }
     }
 }

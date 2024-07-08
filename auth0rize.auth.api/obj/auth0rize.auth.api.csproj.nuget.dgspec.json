@@ -1,25 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj": {}
+    "F:\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj": {}
   },
   "projects": {
-    "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj": {
+    "F:\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj",
+        "projectUniqueName": "F:\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj",
         "projectName": "auth0rize.auth.api",
-        "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj",
-        "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-        "outputPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.api\\obj\\",
+        "projectPath": "F:\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj",
+        "packagesPath": "C:\\Users\\lebur\\.nuget\\packages\\",
+        "outputPath": "F:\\auth0rize.api\\auth0rize.auth.api\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\lebur\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,14 +29,14 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj": {
-                "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj"
+              "F:\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj": {
+                "projectPath": "F:\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj"
               },
-              "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
-                "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
+              "F:\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
+                "projectPath": "F:\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
               },
-              "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj": {
-                "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj"
+              "F:\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj": {
+                "projectPath": "F:\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj"
               }
             }
           }
@@ -111,26 +106,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj": {
+    "F:\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj",
+        "projectUniqueName": "F:\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj",
         "projectName": "auth0rize.auth.application",
-        "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj",
-        "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-        "outputPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.application\\obj\\",
+        "projectPath": "F:\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj",
+        "packagesPath": "C:\\Users\\lebur\\.nuget\\packages\\",
+        "outputPath": "F:\\auth0rize.api\\auth0rize.auth.application\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\lebur\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -145,8 +135,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
-                "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
+              "F:\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
+                "projectPath": "F:\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
               }
             }
           }
@@ -203,26 +193,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
+    "F:\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
+        "projectUniqueName": "F:\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
         "projectName": "auth0rize.auth.domain",
-        "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
-        "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-        "outputPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\obj\\",
+        "projectPath": "F:\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
+        "packagesPath": "C:\\Users\\lebur\\.nuget\\packages\\",
+        "outputPath": "F:\\auth0rize.api\\auth0rize.auth.domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\lebur\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -264,31 +249,40 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj": {
+    "F:\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj",
+        "projectUniqueName": "F:\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj",
         "projectName": "auth0rize.auth.infraestructure",
-        "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj",
-        "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-        "outputPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.infraestructure\\obj\\",
+        "projectPath": "F:\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj",
+        "packagesPath": "C:\\Users\\lebur\\.nuget\\packages\\",
+        "outputPath": "F:\\auth0rize.api\\auth0rize.auth.infraestructure\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\lebur\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -303,8 +297,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
-                "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
+              "F:\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
+                "projectPath": "F:\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
               }
             }
           }
@@ -326,7 +320,7 @@
           "dependencies": {
             "Dapper": {
               "target": "Package",
-              "version": "[2.1.28, )"
+              "version": "[2.1.35, )"
             },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
@@ -338,7 +332,7 @@
             },
             "Npgsql": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.3, )"
             }
           },
           "imports": [
@@ -357,7 +351,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

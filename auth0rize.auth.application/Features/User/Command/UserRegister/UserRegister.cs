@@ -4,5 +4,13 @@ using MediatR;
 
 namespace auth0rize.auth.application.Features.User.Command.UserRegister
 {
-    public record UserRegister(string name, string lastName, string motherLastName, string userName, string email, string password, DataSession session, long domain = 0, long type = 1) : IRequest<Response<UserRegisterResponse>>;
+    public record UserRegister(
+        string name, 
+        string lastName, 
+        string motherLastName, 
+        string userName, 
+        string email, 
+        string password, 
+        DataSession session, 
+        long type = 1) : IRequest<Response<UserRegisterResponse>>;
 }
