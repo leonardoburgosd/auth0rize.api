@@ -12,6 +12,7 @@ namespace auth0rize.auth.application.Features.User.Command.UserRegister
             RuleFor(r => r.name).NotEmpty().WithMessage("Debe ingresar su nombre.");
             RuleFor(r => r.motherLastName).NotEmpty().WithMessage("Debe ingresar su apellido materno.");
             RuleFor(r => r.password).NotEmpty().WithMessage("Debe ingresar su contraseña");
+            RuleFor(r => r.password).NotNull().WithMessage("Debe ingresar su contraseña");
             RuleFor(r => r.userName).NotEmpty().WithMessage("Debe ingresar su nombre de usuario");
             //RuleFor(r => r.Campo).Must(ValidacionEjemplo());
         }
