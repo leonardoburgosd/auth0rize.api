@@ -15,5 +15,9 @@ namespace auth0rize.auth.domain.Primitives
         IMenuRepository Menu { get; }
         IApplicationRepository Application { get; }
         IDomainRepository Domain { get; }
+
+        void BeginTransaction();
+        void Commit();
+        void Rollback();
     }
 }
