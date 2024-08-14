@@ -1,4 +1,6 @@
-﻿using FluentValidation;
+﻿using auth0rize.auth.application.Common;
+using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace auth0rize.auth.application
@@ -12,6 +14,7 @@ namespace auth0rize.auth.application
                 config.RegisterServicesFromAssemblyContaining<ApplicationAssemblyReference>();
             });
             services.AddValidatorsFromAssemblyContaining<ApplicationAssemblyReference>();
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             return services;
         }
     }

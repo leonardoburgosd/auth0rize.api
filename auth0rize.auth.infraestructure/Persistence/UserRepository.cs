@@ -3,7 +3,6 @@ using auth0rize.auth.domain.User;
 using auth0rize.auth.domain.User.Business;
 using auth0rize.auth.infraestructure.Extensions;
 using Dapper;
-using Npgsql;
 using System.Data;
 
 namespace auth0rize.auth.infraestructure.Persistence
@@ -11,11 +10,12 @@ namespace auth0rize.auth.infraestructure.Persistence
     public class UserRepository : IUserRepository
     {
         #region Inyeccion
-        private readonly NpgsqlConnection _connection;
-
-        public UserRepository(NpgsqlConnection connection)
+        private readonly IDbConnection _connection;
+        private readonly IDbTransaction _transaction;
+        public UserRepository(IDbConnection connection, IDbTransaction transaction = null)
         {
             _connection = connection;
+            _transaction = transaction;
         }
         #endregion
 
@@ -26,14 +26,14 @@ namespace auth0rize.auth.infraestructure.Persistence
             string parameterRows = parameterValues.Replace("@", "");
             string consult = UserConsulting.CREATE.Replace(EConsulting.parametersRows, parameterRows.ToLower())
                                                          .Replace(EConsulting.parametersValues, parameterValues);
-            return await _connection.ExecuteScalarAsync<long>(consult, user);
+            return await _connection.ExecuteScalarAsync<long>(consult, user, _transaction);
         }
 
         public async Task<UserDetail?> get(string userName)
         {
             string consult = UserConsulting.GET_BY_USERNAME.Replace("[username]", $"{userName}");
 
-            UserDetail? user = await _connection.QueryFirstOrDefaultAsync<UserDetail>(consult);
+            UserDetail? user = await _connection.QueryFirstOrDefaultAsync<UserDetail>(consult, transaction: _transaction);
 
             return user;
         }
@@ -74,7 +74,7 @@ namespace auth0rize.auth.infraestructure.Persistence
         public async Task<bool> userNameExist(string userName)
         {
             string consult = UserConsulting.COUNT_BY_USERNAME.Replace("[username]", $"{userName}");
-            long? countUserName = await _connection.ExecuteScalarAsync<long>(consult);
+            long? countUserName = await _connection.QueryFirstOrDefaultAsync<long>(consult, transaction: _transaction);
             if (countUserName is null || countUserName == 0) return false;
             return true;
         }
@@ -82,7 +82,7 @@ namespace auth0rize.auth.infraestructure.Persistence
         public async Task<bool> emailExist(string email)
         {
             string consult = UserConsulting.COUNT_BY_EMAIL.Replace("[email]", $"{email}");
-            long? countEmail = await _connection.ExecuteScalarAsync<long>(consult);
+            long? countEmail = await _connection.QueryFirstOrDefaultAsync<long>(consult, transaction: _transaction);
             if (countEmail is null || countEmail == 0) return false;
             return true;
         }

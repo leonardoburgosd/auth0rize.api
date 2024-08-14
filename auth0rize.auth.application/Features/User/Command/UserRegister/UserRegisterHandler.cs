@@ -32,16 +32,19 @@ namespace auth0rize.auth.application.Features.User.Command.UserRegister
 
         public async Task<Response<UserRegisterResponse>> Handle(UserRegister request, CancellationToken cancellationToken)
         {
+            _unitOfWork.BeginTransaction();
             Response<UserRegisterResponse> response = new Response<UserRegisterResponse>();
+            bool userNameExist = await _unitOfWork.User.userNameExist(request.userName);
+            bool emailExist = await _unitOfWork.User.emailExist(request.email);
+            TypeUser? typeExist = await _unitOfWork.TypeUser.get(request.type);
 
-            if (await _unitOfWork.User.userNameExist(request.userName))
+            if (userNameExist)
                 throw new KeyNotFoundException("Nombre de usuario ya existe.");
 
-            if (await _unitOfWork.User.emailExist(request.email))
+            if (emailExist)
                 throw new KeyNotFoundException("Correo electrónico ya existe.");
 
-            TypeUser? type = await _unitOfWork.TypeUser.get(request.type);
-            if (type is null) throw new KeyNotFoundException("Tipo de usuario no existe.");
+            if (typeExist is null) throw new KeyNotFoundException("Tipo de usuario no existe.");
 
             (byte[] salt, byte[] password) generate = Encrypt.generateHash(request.password);
             bool exist = true;
@@ -82,7 +85,7 @@ namespace auth0rize.auth.application.Features.User.Command.UserRegister
                 MotherLastName = request.motherLastName,
                 LastName = request.lastName,
                 Email = request.email,
-                Role = type.Name,
+                Role = typeExist.Name,
                 MultipleFactor = true,
                 Issuer = issuer,
                 Audience = audience,
@@ -92,6 +95,7 @@ namespace auth0rize.auth.application.Features.User.Command.UserRegister
                 Domain = domainCode
             }).ToString();
 
+            _unitOfWork.Commit();
             response.Success = true;
             response.Message = "Usuario creado correctamente.";
             response.Data = new UserRegisterResponse() { Token = token };

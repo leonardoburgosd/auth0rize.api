@@ -5,7 +5,6 @@ using auth0rize.auth.domain.Primitives;
 using auth0rize.auth.domain.User;
 using auth0rize.auth.infraestructure.Extensions;
 using Dapper;
-using Npgsql;
 using System.Data;
 
 namespace auth0rize.auth.infraestructure.Persistence
@@ -13,10 +12,12 @@ namespace auth0rize.auth.infraestructure.Persistence
     public class ApplicationRepository : IApplicationRepository
     {
         #region Inyeccion
-        private readonly NpgsqlConnection _connection;
-        public ApplicationRepository(NpgsqlConnection connection)
+        private readonly IDbConnection _connection;
+        private readonly IDbTransaction _transaction;
+        public ApplicationRepository(IDbConnection connection, IDbTransaction transaction = null)
         {
             _connection = connection;
+            _transaction = transaction;
         }
         #endregion
 
@@ -56,7 +57,8 @@ namespace auth0rize.auth.infraestructure.Persistence
             GenericResponseCreate response = await _connection.QueryFirstAsync<GenericResponseCreate>(
                 ApplicationProcedures.CREATE,
                 application,
-                commandType: CommandType.StoredProcedure
+                commandType: CommandType.StoredProcedure,
+                transaction: _transaction
                 );
             return response.Id;
         }
