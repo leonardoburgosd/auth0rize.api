@@ -5,9 +5,9 @@ using auth0rize.auth.infraestructure.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 builder.Services
+                .AddPresentation(configuration)
                 .AddInjectionApplication()
                 .AddInjectionInfraestructure(configuration)
-                .AddPresentation(configuration)
                 ;
 
 builder.Services.AddControllers();
@@ -20,7 +20,7 @@ app.UseSwaggerUI();
 app.useErrorHandlingMiddleware();
 app.UseHttpsRedirection();
 app.UseRouting();
-app.UseCors("AllowSpecificOrigin");
+app.UseCors("auth0rizeapi");
 app.UseAuthorization();
 
 app.MapControllers();

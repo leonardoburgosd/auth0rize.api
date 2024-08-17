@@ -18,7 +18,7 @@ namespace auth0rize.auth.domain.User
                                                     $"FROM {table} u " +
                                                     $"INNER JOIN security.type t on u.type = t.id " +
                                                     $"INNER JOIN security.domain d on u.domain = d.id " +
-                                                    $"WHERE u.isdeleted = false AND userName = [username]";
+                                                    $"WHERE u.isdeleted = false AND u.userName = [username]";
         public readonly static string COUNT_BY_USERNAME = $"SELECT COUNT(id) FROM {table} WHERE isdeleted = false AND userName = '[username]'";
         public readonly static string COUNT_BY_EMAIL = $"SELECT COUNT(id) FROM {table} WHERE isdeleted = false AND email = '[email]'";
     }

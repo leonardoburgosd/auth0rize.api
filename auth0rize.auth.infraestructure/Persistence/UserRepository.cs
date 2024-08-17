@@ -31,7 +31,7 @@ namespace auth0rize.auth.infraestructure.Persistence
 
         public async Task<UserDetail?> get(string userName)
         {
-            string consult = UserConsulting.GET_BY_USERNAME.Replace("[username]", $"{userName}");
+            string consult = UserConsulting.GET_BY_USERNAME.Replace("[username]", $"'{userName}'");
 
             UserDetail? user = await _connection.QueryFirstOrDefaultAsync<UserDetail>(consult, transaction: _transaction);
 

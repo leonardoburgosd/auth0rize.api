@@ -1,4 +1,5 @@
 ﻿using auth0rize.auth.application.Common.Security;
+using auth0rize.auth.application.Extensions;
 using auth0rize.auth.application.Wrappers;
 using auth0rize.auth.domain.Domain.Business;
 using auth0rize.auth.domain.Primitives;
@@ -39,12 +40,12 @@ namespace auth0rize.auth.application.Features.User.Command.UserRegister
             TypeUser? typeExist = await _unitOfWork.TypeUser.get(request.type);
 
             if (userNameExist)
-                throw new KeyNotFoundException("Nombre de usuario ya existe.");
+                throw new ApiException("Nombre de usuario ya existe.");
 
             if (emailExist)
-                throw new KeyNotFoundException("Correo electrónico ya existe.");
+                throw new ApiException("Correo electrónico ya existe.");
 
-            if (typeExist is null) throw new KeyNotFoundException("Tipo de usuario no existe.");
+            if (typeExist is null) throw new ApiException("Tipo de usuario no existe.");
 
             (byte[] salt, byte[] password) generate = Encrypt.generateHash(request.password);
             bool exist = true;
@@ -57,7 +58,7 @@ namespace auth0rize.auth.application.Features.User.Command.UserRegister
 
             long? domainId = await _unitOfWork.Domain.create(new DomainCreate() { Name = domainCode, UserRegistration = 1 });
 
-            if (domainId is null || domainId == 0) throw new KeyNotFoundException("Error al generar el dominio. Intente más tarde.");
+            if (domainId is null || domainId == 0) throw new ApiException("Error al generar el dominio. Intente más tarde.");
 
             long? userId = await _unitOfWork.User.create(new UserCreate()
             {
@@ -74,7 +75,7 @@ namespace auth0rize.auth.application.Features.User.Command.UserRegister
                 UserRegistration = request.session is null ? 0 : request.session.Id,
             });
 
-            if (userId is null || userId == 0) throw new KeyNotFoundException("Usuario no se pudo crear correctamente.");
+            if (userId is null || userId == 0) throw new ApiException("Usuario no se pudo crear correctamente.");
 
             string token = "";
             if (request.session is null) token = Encrypt.generateTokenValidation(new TokenParameters()
@@ -98,7 +99,10 @@ namespace auth0rize.auth.application.Features.User.Command.UserRegister
             _unitOfWork.Commit();
             response.Success = true;
             response.Message = "Usuario creado correctamente.";
-            response.Data = new UserRegisterResponse() { Token = token };
+            response.Data = new UserRegisterResponse()
+            {
+                Token = token
+            };
 
             return response;
         }

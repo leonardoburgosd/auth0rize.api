@@ -1,4 +1,5 @@
-﻿using auth0rize.auth.application.Wrappers;
+﻿using auth0rize.auth.application.Extensions;
+using auth0rize.auth.application.Wrappers;
 using auth0rize.auth.domain.Primitives;
 using auth0rize.auth.domain.User.Business;
 using MediatR;
@@ -22,7 +23,7 @@ namespace auth0rize.auth.application.Features.User.Queries.AllUsersQuery
 
             IEnumerable<UserDetail> users = await _unitOfWork.User.get(request.session.Id);
 
-            if (users is null) throw new KeyNotFoundException("No se encontraron datos de usuarios.");
+            if (users is null) throw new ApiException("No se encontraron datos de usuarios.");
 
 
             List<AllUsersQueryResponse> data = new List<AllUsersQueryResponse>();

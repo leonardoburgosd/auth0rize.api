@@ -9,10 +9,7 @@ namespace auth0rize.auth.application
     {
         public static IServiceCollection AddInjectionApplication(this IServiceCollection services)
         {
-            services.AddMediatR(config =>
-            {
-                config.RegisterServicesFromAssemblyContaining<ApplicationAssemblyReference>();
-            });
+            services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<ApplicationAssemblyReference>());
             services.AddValidatorsFromAssemblyContaining<ApplicationAssemblyReference>();
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             return services;

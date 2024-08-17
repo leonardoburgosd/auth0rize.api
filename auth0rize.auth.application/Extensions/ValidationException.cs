@@ -4,7 +4,7 @@ namespace auth0rize.auth.application.Extensions
 {
     public class ValidationException : Exception
     {
-        public List<string> Errors { get; set; }
+        public List<string> Errors { get; }
 
         public ValidationException() : base("Se han producido uno o más errores de validación.") => Errors = new List<string>();
 

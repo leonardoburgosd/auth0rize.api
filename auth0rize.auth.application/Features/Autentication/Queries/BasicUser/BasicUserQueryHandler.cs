@@ -1,4 +1,5 @@
-﻿using auth0rize.auth.application.Wrappers;
+﻿using auth0rize.auth.application.Extensions;
+using auth0rize.auth.application.Wrappers;
 using auth0rize.auth.domain.Primitives;
 using auth0rize.auth.domain.User.Business;
 using MediatR;
@@ -22,10 +23,10 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.BasicUser
 
             UserDetail user = await _unitOfWork.User.get(request.userName);
 
-            if (user is null) throw new KeyNotFoundException("Usuario no existe.");
+            if (user is null) throw new ApiException("Usuario no existe.");
 
             if (!string.IsNullOrEmpty(request.application) && !user.Application.Equals(request.application))
-                throw new KeyNotFoundException("Usuario no tiene acceso a esta aplicación.");
+                throw new ApiException("Usuario no tiene acceso a esta aplicación.");
 
             response.Success = true;
             response.Message = "Usuario encontrado.";

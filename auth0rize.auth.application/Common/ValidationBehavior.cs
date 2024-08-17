@@ -20,7 +20,7 @@ namespace auth0rize.auth.application.Common
                 var failures = validationResult.SelectMany(r => r.Errors).Where(f => f is not null).ToList();
                 if (failures.Count is not 0)
                 {
-                    throw new ValidationException(failures);
+                    throw new application.Extensions.ValidationException(failures);
                 }
             }
             return await next();

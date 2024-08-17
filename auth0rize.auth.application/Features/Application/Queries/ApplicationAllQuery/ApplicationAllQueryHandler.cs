@@ -1,4 +1,5 @@
-﻿using auth0rize.auth.application.Wrappers;
+﻿using auth0rize.auth.application.Extensions;
+using auth0rize.auth.application.Wrappers;
 using auth0rize.auth.domain.Application.Business;
 using auth0rize.auth.domain.Primitives;
 using MediatR;
@@ -22,7 +23,7 @@ namespace auth0rize.auth.application.Features.Application.Queries.ApplicationAll
 
             List<ApplicationGet> application = await _unitOfWork.Application.get(request.userId);
 
-            if (application is null) throw new KeyNotFoundException("No se encontraron aplicativos relacionados.");
+            if (application is null) throw new ApiException("No se encontraron aplicativos relacionados.");
 
             List<ApplicationAllQueryResponse> applicationQuery = new List<ApplicationAllQueryResponse>();
 

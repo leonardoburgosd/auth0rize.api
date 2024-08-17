@@ -1,4 +1,5 @@
 ﻿using auth0rize.auth.application.Common.Security;
+using auth0rize.auth.application.Extensions;
 using auth0rize.auth.application.Wrappers;
 using auth0rize.auth.domain.Primitives;
 using auth0rize.auth.domain.User.Business;
@@ -26,13 +27,13 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
             Response<LoginResponse> response = new Response<LoginResponse>();
             
             UserDetail user = await _unitOfWork.User.get(request.userName);
-            if (user is null) throw new KeyNotFoundException("Usuario no existe.");
+            if (user is null) throw new ApiException("Usuario no existe.");
 
             if (!string.IsNullOrEmpty(request.application) && !user.Application.Equals(request.application))
-                throw new KeyNotFoundException("Usuario no tiene acceso a esta aplicación.");
+                throw new ApiException("Usuario no tiene acceso a esta aplicación.");
 
             if (!Encrypt.compareHash(request.password, user.Password, user.Salt))
-                throw new KeyNotFoundException("Usuario o password incorrectos.");
+                throw new ApiException("Usuario o password incorrectos.");
 
             string token = "";
             int doubleFactorCode = 0;
