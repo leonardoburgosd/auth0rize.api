@@ -25,10 +25,10 @@ namespace auth0rize.auth.api.Middlewares
                 switch (error)
                 {
                     case ApiException e:
-                        response.StatusCode = (int)HttpStatusCode.BadRequest;
+                        response.StatusCode = (int)HttpStatusCode.OK;
                         break;
                     case ValidationException e:
-                        response.StatusCode = (int)HttpStatusCode.BadRequest;
+                        response.StatusCode = (int)HttpStatusCode.OK;
                         responseModel.Errors = e.Errors;
                         break;
                     case KeyNotFoundException e:

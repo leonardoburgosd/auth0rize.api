@@ -33,7 +33,6 @@ namespace auth0rize.auth.application.Features.User.Command.UserRegister
 
         public async Task<Response<UserRegisterResponse>> Handle(UserRegister request, CancellationToken cancellationToken)
         {
-            _unitOfWork.BeginTransaction();
             Response<UserRegisterResponse> response = new Response<UserRegisterResponse>();
             bool userNameExist = await _unitOfWork.User.userNameExist(request.userName);
             bool emailExist = await _unitOfWork.User.emailExist(request.email);
@@ -96,7 +95,6 @@ namespace auth0rize.auth.application.Features.User.Command.UserRegister
                 Domain = domainCode
             }).ToString();
 
-            _unitOfWork.Commit();
             response.Success = true;
             response.Message = "Usuario creado correctamente.";
             response.Data = new UserRegisterResponse()

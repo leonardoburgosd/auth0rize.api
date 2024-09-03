@@ -21,7 +21,7 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.BasicUser
         {
             Response<BasicUserResponse> response = new Response<BasicUserResponse>();
 
-            UserDetail user = await _unitOfWork.User.get(request.userName);
+            UserDetail? user = await _unitOfWork.User.get(request.userName);
 
             if (user is null) throw new ApiException("Usuario no existe.");
 

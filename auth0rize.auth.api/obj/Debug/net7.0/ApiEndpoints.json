@@ -38,6 +38,48 @@
   },
   {
     "ContainingType": "auth0rize.auth.api.Controllers.v1.AuthController",
+    "Method": "recoveryByEmail",
+    "RelativePath": "api/v{version}/Auth/recovery-by-email",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recoveryByEmail",
+        "Type": "auth0rize.auth.application.Features.Autentication.Queries.RecoveryByEmail.RecoveryByEmailRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.AuthController",
+    "Method": "recoveryByPhoneNumber",
+    "RelativePath": "api/v{version}/Auth/recovery-by-phonenumber",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "recoveryByEmail",
+        "Type": "auth0rize.auth.application.Features.Autentication.Queries.RecoveryByEmail.RecoveryByEmailRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.AuthController",
     "Method": "validationUser",
     "RelativePath": "api/v{version}/Auth/user",
     "HttpMethod": "POST",
@@ -59,7 +101,7 @@
   },
   {
     "ContainingType": "auth0rize.auth.api.Controllers.v1.UserController",
-    "Method": "registerSuperadmin",
+    "Method": "createSuperadmin",
     "RelativePath": "api/v{version}/User",
     "HttpMethod": "POST",
     "IsController": true,
@@ -96,7 +138,33 @@
   },
   {
     "ContainingType": "auth0rize.auth.api.Controllers.v1.UserController",
-    "Method": "registerChildren",
+    "Method": "updateChildren",
+    "RelativePath": "api/v{version}/User/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "auth0rize.auth.application.Features.User.Update.UserUpdate.UserUpdateRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.UserController",
+    "Method": "createChildren",
     "RelativePath": "api/v{version}/User/new",
     "HttpMethod": "POST",
     "IsController": true,
