@@ -21,7 +21,7 @@ namespace auth0rize.auth.application.Features.Application.Queries.ApplicationAll
         {
             Response<List<ApplicationAllQueryResponse>> response = new Response<List<ApplicationAllQueryResponse>>();
 
-            List<ApplicationGet> application = await _unitOfWork.Application.get(request.userId);
+            List<ApplicationGet>? application = await _unitOfWork.Application.get(request.userId);
 
             if (application is null) throw new ApiException("No se encontraron aplicativos relacionados.");
 
@@ -31,6 +31,7 @@ namespace auth0rize.auth.application.Features.Application.Queries.ApplicationAll
             {
                 applicationQuery.Add(new ApplicationAllQueryResponse()
                 {
+                    Id = a.Id,
                     Code = a.Code,
                     Description = a.Description,
                     Name = a.Name
@@ -43,6 +44,7 @@ namespace auth0rize.auth.application.Features.Application.Queries.ApplicationAll
 
             return response;
         }
+
 
     }
 }

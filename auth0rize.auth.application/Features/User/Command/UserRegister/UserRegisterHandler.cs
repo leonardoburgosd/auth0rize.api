@@ -51,11 +51,11 @@ namespace auth0rize.auth.application.Features.User.Command.UserRegister
             string domainCode = "";
             while (exist)
             {
-                domainCode = generateDomainCode();
+                domainCode = Generate.generateDomainCode();
                 exist = await _unitOfWork.Domain.exist(domainCode);
             }
 
-            long? domainId = await _unitOfWork.Domain.create(new DomainCreate() { Name = domainCode, UserRegistration = 1 });
+            long? domainId = await _unitOfWork.Domain.create(new DomainCreate() { Code = domainCode, Name = "default", UserRegistration = 1 });
 
             if (domainId is null || domainId == 0) throw new ApiException("Error al generar el dominio. Intente más tarde.");
 
@@ -105,19 +105,6 @@ namespace auth0rize.auth.application.Features.User.Command.UserRegister
             return response;
         }
 
-        private string generateDomainCode()
-        {
-            int length = 25;
-            Random random = new Random();
-            string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789;[{}]:,.><_-+=(*&^%$#@!|)";
-            var result = new StringBuilder(length);
-            var timestamp = DateTime.UtcNow.Ticks.ToString("x");
-            result.Append(timestamp);
-            for (int i = timestamp.Length; i < length; i++)
-            {
-                result.Append(characters[random.Next(characters.Length)]);
-            }
-            return result.ToString();
-        }
+        
     }
 }

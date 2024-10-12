@@ -2,8 +2,9 @@
 {
     public class ApplicationAllQueryResponse
     {
-        public string Code {  get; set; }
-        public string Name {  get; set; }
+        public long Id { get; set; }
+        public Guid Code { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
     }
 }

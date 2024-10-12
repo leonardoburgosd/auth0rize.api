@@ -1,6 +1,5 @@
 ﻿using auth0rize.auth.domain.Application;
 using auth0rize.auth.domain.Application.Business;
-using auth0rize.auth.domain.ApplicationUser;
 using auth0rize.auth.domain.Primitives;
 using auth0rize.auth.domain.User;
 using auth0rize.auth.infraestructure.Extensions;
@@ -21,46 +20,36 @@ namespace auth0rize.auth.infraestructure.Persistence
         }
         #endregion
 
-        public async Task<List<ApplicationGet>> get(long userId)
+        public async Task<List<ApplicationGet>?> get(long userId)
         {
-            List<ApplicationGet> response = null;
-
-            User? user = LocalData.users
-                               .Where(u => u.Id == userId)
-                               .FirstOrDefault();
-
-            if (user is null)
-                return null;
-
-            List<ApplicationDomain> applicationDomain = LocalData.applicationDomain.Where(ad => ad.Domain == user!.Domain).ToList();
-
-            response = new List<ApplicationGet>();
-
-            applicationDomain.ForEach(domain =>
-            {
-                Application? application = LocalData.applications.FirstOrDefault(a => a.Id == domain.Application);
-
-                if (application is not null)
-                    response.Add(new ApplicationGet()
-                    {
-                        Code = application.Code,
-                        Description = application.Description,
-                        Name = application.Name
-                    });
-            });
-
-            return response;
+            string consult = ApplicationProcedures.GET.Replace("[userId]", userId.ToString());
+            IEnumerable<ApplicationGet> response = await _connection.QueryAsync<ApplicationGet>(consult, transaction: _transaction);
+            return response.ToList();
         }
 
-        public async Task<int> create(ApplicationCreate application)
+        public async Task<ApplicationGet?> getById(long id)
         {
-            GenericResponseCreate response = await _connection.QueryFirstAsync<GenericResponseCreate>(
-                ApplicationProcedures.CREATE,
-                application,
-                commandType: CommandType.StoredProcedure,
-                transaction: _transaction
-                );
-            return response.Id;
+            string consult = ApplicationProcedures.GET_BYID.Replace("[applicationId]", id.ToString());
+            ApplicationGet? application = await _connection.QueryFirstOrDefault(consult, transaction: _transaction);
+            return application;
+        }
+
+        public async Task<long?> create(ApplicationCreate application)
+        {
+            string parameterValues = Parameters.GetPropertyNamesAsString<ApplicationCreate>();
+            string parameterRows = parameterValues.Replace("@", "");
+
+            string consult = ApplicationProcedures.CREATE.Replace(EConsulting.parametersRows, parameterRows.ToLower())
+                                                         .Replace(EConsulting.parametersValues, parameterValues);
+
+            return await _connection.ExecuteScalarAsync<long>(consult, application, _transaction);
+        }
+
+        public async Task deleted(long id, long userId)
+        {
+            string consult = ApplicationProcedures.DELETED.Replace("[userId]", userId.ToString())
+                                                          .Replace("[id]", id.ToString());
+            await _connection.ExecuteAsync(consult, transaction: _transaction);
         }
     }
 }

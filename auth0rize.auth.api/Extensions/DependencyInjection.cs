@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 namespace auth0rize.auth.api.Extensions
@@ -8,7 +9,33 @@ namespace auth0rize.auth.api.Extensions
     {
         public static IServiceCollection AddPresentation(this IServiceCollection services, ConfigurationManager configuration)
         {
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(s =>
+            {
+                s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    Name = "Authorization"
+                });
+                s.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        },
+                        Scheme = "oauth2",
+                        Name = "Bearer",
+                        In = ParameterLocation.Header
+                    },
+                    new List<string>()
+                     }
+                });
+            });
             string? origins = Environment.GetEnvironmentVariable(configuration["security:origins"]!.ToString());
             string? symmetricKey = Environment.GetEnvironmentVariable(configuration["security:symmetricKey"]!.ToString());
             string? issuer = Environment.GetEnvironmentVariable(configuration["security:issuer"]!.ToString());
@@ -22,7 +49,11 @@ namespace auth0rize.auth.api.Extensions
             services.AddCors(p =>
             {
                 p.AddPolicy("auth0rizeapi",
-                    builder => builder.WithOrigins(origins).AllowAnyHeader().AllowAnyOrigin());
+                    builder => builder.WithOrigins(origins)
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod()
+                                      .AllowCredentials()
+                );
             });
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).

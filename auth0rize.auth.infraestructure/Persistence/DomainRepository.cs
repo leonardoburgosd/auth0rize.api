@@ -36,5 +36,18 @@ namespace auth0rize.auth.infraestructure.Persistence
             if (count == 0) return false;
             return true;
         }
+
+        public async Task<List<DomainGetById>?> get(string code)
+        {
+            string consult = DomainConsulting.GET_ID.Replace("[domainCode]", code);
+            IEnumerable<DomainGetById>? response = await _connection.QueryAsync<DomainGetById>(consult, transaction: _transaction);
+            return response.ToList();
+        }
+
+        public async Task delete(long domainId, long userId)
+        {
+            string consult = DomainConsulting.DELETE.Replace("[userId]",userId.ToString()).Replace("[domainId]", domainId.ToString());
+            await _connection.ExecuteAsync(consult, transaction: _transaction);
+        }
     }
 }

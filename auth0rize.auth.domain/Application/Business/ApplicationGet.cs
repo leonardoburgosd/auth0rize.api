@@ -2,8 +2,10 @@
 {
     public class ApplicationGet
     {
+        public long Id { get; set; }
         public string Name { get; set; }
-        public string Code { get; set; }
+        public Guid Code { get; set; }
         public string Description { get; set; }
+        public DateTime Registrationdate { get; set; }
     }
 }

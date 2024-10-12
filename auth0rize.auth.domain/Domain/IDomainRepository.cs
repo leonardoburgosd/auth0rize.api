@@ -7,5 +7,7 @@ namespace auth0rize.auth.domain.Domain
     {
         Task<long?> create(DomainCreate domain);
         Task<bool> exist(string code);
+        Task<List<DomainGetById>?> get(string code);
+        Task delete(long domainId, long userId);
     }
 }
