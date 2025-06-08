@@ -40,6 +40,35 @@ namespace auth0rize.auth.infraestructure.Persistence
             return await _connection.ExecuteAsync(sql, new { Id = id, UserId = userId });
         }
 
+        public async Task InsertNonIdAsync<T1>(T1 entity, string schema = "public") where T1 : class, new()
+        {
+            var type = typeof(T1);
+            var tableName = GetTableName<T1>(schema);
+
+            var props = type.GetProperties()
+                .Where(p => !p.GetMethod.IsVirtual)
+                .Where(p =>
+                {
+                    if (typeof(BaseEntity).IsAssignableFrom(type) && type.GetProperty("UserRegistration") != null)
+                    {
+                        return p.DeclaringType != typeof(BaseEntity) || p.Name == "UserRegistration";
+                    }
+                    else
+                    {
+                        return p.DeclaringType != typeof(BaseEntity);
+                    }
+                })
+                .ToList();
+
+            var columns = string.Join(", ", props.Select(p => p.Name));
+            var parameters = string.Join(", ", props.Select(p => "@" + p.Name));
+
+            var sql = $"INSERT INTO {tableName} ({columns}) VALUES ({parameters})";
+
+            await _connection.ExecuteAsync(sql, entity);
+        }
+
+
         public async Task<int> InsertAsync<T1>(T1 entity, string schema = "public") where T1 : class, new()
         {
             var tableName = GetTableName<T>(schema);

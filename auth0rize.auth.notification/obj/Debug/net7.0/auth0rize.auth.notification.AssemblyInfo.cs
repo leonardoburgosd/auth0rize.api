@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("auth0rize.auth.notification")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< Updated upstream
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3566e9ee0623f953b7f3b2682e5c9509c6085ca7")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c7e81dc6c571e72c4248dfc5fb1e88c7794155a2")]
->>>>>>> Stashed changes
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac603f31c7a4e0f658153a25a01766c5bcebed6e")]
 [assembly: System.Reflection.AssemblyProductAttribute("auth0rize.auth.notification")]
 [assembly: System.Reflection.AssemblyTitleAttribute("auth0rize.auth.notification")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

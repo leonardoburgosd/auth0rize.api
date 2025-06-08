@@ -140,3 +140,4 @@ H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\bin\Debug\net7.0\auth0rize
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets.build.endpoints.json
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets\msbuild.auth0rize.auth.api.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets.upToDateCheck.txt
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Versioning.dll

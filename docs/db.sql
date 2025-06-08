@@ -118,10 +118,10 @@ CREATE TABLE security.UserDomain (
 
     RegistrationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     UserRegistration INT       NOT NULL REFERENCES security.user(Id) DEFERRABLE INITIALLY DEFERRED,
-    DateUpdate       TIMESTAMP,
-    UserUpdate       INT       REFERENCES security.user(Id),
-    DateDeleted      TIMESTAMP,
-    UserDeleted      INT       REFERENCES security.user(Id),
+    DateUpdate       TIMESTAMP NULL,
+    UserUpdate       INT       NULL,
+    DateDeleted      TIMESTAMP NULL,
+    UserDeleted      INT       NULL,
     IsDeleted        BOOLEAN   NOT NULL DEFAULT FALSE,
 
     PRIMARY KEY(UserId, DomainId)

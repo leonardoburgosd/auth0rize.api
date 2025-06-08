@@ -278,7 +278,8 @@ namespace auth0rize.auth.notification
             using (var message = new MailMessage(fromMail, toMail)
             {
                 Subject = "Confirm user register.",
-                Body = html
+                Body = html,
+                IsBodyHtml = true
             })
             {
                 smtp.Send(message);

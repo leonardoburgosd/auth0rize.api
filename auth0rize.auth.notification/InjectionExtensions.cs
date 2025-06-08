@@ -9,7 +9,6 @@ namespace auth0rize.auth.notification
     {
         public static IServiceCollection AddInjectionNotification(this IServiceCollection services, IConfiguration configuration)
         {
-            //var emailConfig = configuration.GetSection("notification");
             string? email = Environment.GetEnvironmentVariable(configuration["notification:email"].ToString());
             string? password = Environment.GetEnvironmentVariable(configuration["notification:password"].ToString());
             string? host = Environment.GetEnvironmentVariable(configuration["notification:host"].ToString());

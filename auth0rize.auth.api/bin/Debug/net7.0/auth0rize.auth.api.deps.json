@@ -11,6 +11,7 @@
           "Asp.Versioning.Mvc": "7.1.1",
           "MediatR": "12.2.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.15",
+          "Microsoft.AspNetCore.Mvc.Versioning": "5.1.0",
           "Microsoft.AspNetCore.OpenApi": "7.0.15",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.15",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.19.4",
@@ -57,11 +58,11 @@
           }
         }
       },
-      "Dapper/2.1.28": {
+      "Dapper/2.1.35": {
         "runtime": {
           "lib/net7.0/Dapper.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.1.28.55233"
+            "fileVersion": "2.1.35.13827"
           }
         }
       },
@@ -133,6 +134,14 @@
           "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
             "assemblyVersion": "7.0.15.0",
             "fileVersion": "7.0.1523.60110"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Mvc.Versioning/5.1.0": {
+        "runtime": {
+          "lib/net6.0/Microsoft.AspNetCore.Mvc.Versioning.dll": {
+            "assemblyVersion": "5.1.0.0",
+            "fileVersion": "5.1.8270.41513"
           }
         }
       },
@@ -383,14 +392,14 @@
           }
         }
       },
-      "Npgsql/8.0.2": {
+      "Npgsql/8.0.3": {
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "8.0.0"
         },
         "runtime": {
           "lib/net7.0/Npgsql.dll": {
-            "assemblyVersion": "8.0.2.0",
-            "fileVersion": "8.0.2.0"
+            "assemblyVersion": "8.0.3.0",
+            "fileVersion": "8.0.3.0"
           }
         }
       },
@@ -463,23 +472,8 @@
           "FluentValidation": "11.9.0",
           "FluentValidation.AspNetCore": "11.3.0",
           "MediatR": "12.2.0",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
           "Microsoft.IdentityModel.Tokens": "7.2.0",
           "System.IdentityModel.Tokens.Jwt": "7.2.0",
-          "auth0rize.auth.domain": "1.0.0"
-=======
-          "Microsoft.IdentityModel.Tokens": "8.0.1",
-          "System.IdentityModel.Tokens.Jwt": "8.0.1",
-          "auth0rize.auth.domain": "1.0.0",
-          "auth0rize.auth.notification": "1.0.0"
->>>>>>> Stashed changes
-        },
-        "runtime": {
-          "auth0rize.auth.application.dll": {}
-=======
-          "Microsoft.IdentityModel.Tokens": "8.0.1",
-          "System.IdentityModel.Tokens.Jwt": "8.0.1",
           "auth0rize.auth.domain": "1.0.0",
           "auth0rize.auth.notification": "1.0.0"
         },
@@ -488,53 +482,27 @@
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
->>>>>>> Stashed changes
         }
       },
       "auth0rize.auth.domain/1.0.0": {
         "runtime": {
-<<<<<<< Updated upstream
-          "auth0rize.auth.domain.dll": {}
-=======
           "auth0rize.auth.domain.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
->>>>>>> Stashed changes
         }
       },
       "auth0rize.auth.infraestructure/1.0.0": {
         "dependencies": {
-          "Dapper": "2.1.28",
+          "Dapper": "2.1.35",
           "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
-          "Npgsql": "8.0.2",
+          "Npgsql": "8.0.3",
           "auth0rize.auth.domain": "1.0.0"
         },
         "runtime": {
-<<<<<<< Updated upstream
-          "auth0rize.auth.infraestructure.dll": {}
-=======
           "auth0rize.auth.infraestructure.dll": {
             "assemblyVersion": "1.0.0.0",
-<<<<<<< Updated upstream
-=======
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "auth0rize.auth.notification/1.0.0": {
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Hosting.Abstractions": "7.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
-          "auth0rize.auth.domain": "1.0.0"
-        },
-        "runtime": {
-          "auth0rize.auth.notification.dll": {
-            "assemblyVersion": "1.0.0.0",
->>>>>>> Stashed changes
             "fileVersion": "1.0.0.0"
           }
         }
@@ -552,7 +520,6 @@
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
->>>>>>> Stashed changes
         }
       }
     }
@@ -584,12 +551,12 @@
       "path": "asp.versioning.mvc/7.1.1",
       "hashPath": "asp.versioning.mvc.7.1.1.nupkg.sha512"
     },
-    "Dapper/2.1.28": {
+    "Dapper/2.1.35": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ha49pzOEDmCPkMxwfPSR/wxa/6RD3r42TESIgpzpi7FXq/gNVUuJVEO+wtUzntNRhtmq3BKCl0s0aAlSZLkBUA==",
-      "path": "dapper/2.1.28",
-      "hashPath": "dapper.2.1.28.nupkg.sha512"
+      "sha512": "sha512-YKRwjVfrG7GYOovlGyQoMvr1/IJdn+7QzNXJxyMh0YfFF5yvDmTYaJOVYWsckreNjGsGSEtrMTpnzxTUq/tZQw==",
+      "path": "dapper/2.1.35",
+      "hashPath": "dapper.2.1.35.nupkg.sha512"
     },
     "FluentValidation/11.9.0": {
       "type": "package",
@@ -639,6 +606,13 @@
       "sha512": "sha512-ALtrIA59lv+vMVM3Fsr+nGTSHP8/FOi9EoQtJPZs44MI7kEa6JjJPmyRly0TJ0/xJwDpUpAFgF2mlPgt+IdXMg==",
       "path": "microsoft.aspnetcore.authentication.jwtbearer/7.0.15",
       "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.7.0.15.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Mvc.Versioning/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UX8w9BlCiZpr6Ox4YAve1w0CkI1CAovukGNzKd7v0+5pZc8lzuG5tRovucr1RWIKHs0E/Yx8563CN7KzaB3bpw==",
+      "path": "microsoft.aspnetcore.mvc.versioning/5.1.0",
+      "hashPath": "microsoft.aspnetcore.mvc.versioning.5.1.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.OpenApi/7.0.15": {
       "type": "package",
@@ -843,12 +817,12 @@
       "path": "mono.texttemplating/2.2.1",
       "hashPath": "mono.texttemplating.2.2.1.nupkg.sha512"
     },
-    "Npgsql/8.0.2": {
+    "Npgsql/8.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-MuJzLoWCaQhQAR3oh66YR0Ir6mxuezncGX3f8wxvAc21g0+9HICktJQlqMoODhxztZKXE5k9GxRxqUAN+vPb4g==",
-      "path": "npgsql/8.0.2",
-      "hashPath": "npgsql.8.0.2.nupkg.sha512"
+      "sha512": "sha512-6WEmzsQJCZAlUG1pThKg/RmeF6V+I0DmBBBE/8YzpRtEzhyZzKcK7ulMANDm5CkxrALBEC8H+5plxHWtIL7xnA==",
+      "path": "npgsql/8.0.3",
+      "hashPath": "npgsql.8.0.3.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.5.0": {
       "type": "package",

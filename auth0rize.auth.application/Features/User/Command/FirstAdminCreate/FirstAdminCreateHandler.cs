@@ -20,7 +20,8 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
         private readonly ILogger<FirstAdminCreateHandler> _logger;
         private readonly IServiceProvider _serviceProvider;
         private readonly IConfiguration _configuration;
-        string? symmetricKey = "";
+        private string? symmetricKey = "";
+        private string? url = "";
         public FirstAdminCreateHandler(IUnitOfWork unitOfWork, IBackgroundTaskQueue taskQueue, ILogger<FirstAdminCreateHandler> logger, IServiceProvider serviceProvider, IConfiguration configuration)
         {
             _unitOfWork = unitOfWork;
@@ -29,6 +30,8 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
             _serviceProvider = serviceProvider;
             _configuration = configuration;
             symmetricKey = Environment.GetEnvironmentVariable(_configuration["security:symmetricKey"]!.ToString());
+            url = Environment.GetEnvironmentVariable(_configuration["security:urlDeployAuth0rize"]!.ToString());
+            
         }
         #endregion 
 
@@ -72,7 +75,7 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
             }, "security");
 
             //registro el usuario y el dominio
-            await _unitOfWork.Repository<domain.UserDomain.UserDomain>().InsertAsync(new UserDomain()
+            await _unitOfWork.Repository<domain.UserDomain.UserDomain>().InsertNonIdAsync(new UserDomain()
             {
                 UserId = idUser,
                 DomainId = idDomain,

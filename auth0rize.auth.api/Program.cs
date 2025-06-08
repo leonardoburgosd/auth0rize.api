@@ -8,15 +8,9 @@ var configuration = builder.Configuration;
 builder.Services
                 .AddInjectionApplication()
                 .AddInjectionInfraestructure(configuration)
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
                 .AddPresentation(configuration)
-=======
                 .AddInjectionNotification(configuration)
->>>>>>> Stashed changes
-=======
                 .AddInjectionNotification(configuration)
->>>>>>> Stashed changes
                 ;
 
 builder.Services.AddControllers();

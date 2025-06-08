@@ -11,19 +11,10 @@
           "FluentValidation": "11.9.0",
           "FluentValidation.AspNetCore": "11.3.0",
           "MediatR": "12.2.0",
-<<<<<<< Updated upstream
           "Microsoft.IdentityModel.Tokens": "7.2.0",
           "System.IdentityModel.Tokens.Jwt": "7.2.0",
-          "auth0rize.auth.domain": "1.0.0"
-=======
-          "Microsoft.IdentityModel.Tokens": "8.0.1",
-          "System.IdentityModel.Tokens.Jwt": "8.0.1",
           "auth0rize.auth.domain": "1.0.0",
           "auth0rize.auth.notification": "1.0.0"
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         },
         "runtime": {
           "auth0rize.auth.application.dll": {}
@@ -100,12 +91,6 @@
           }
         }
       },
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "Microsoft.IdentityModel.Abstractions/7.2.0": {
-=======
-=======
->>>>>>> Stashed changes
       "Microsoft.Extensions.FileProviders.Abstractions/7.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "8.0.0"
@@ -119,8 +104,6 @@
         }
       },
       "Microsoft.Extensions.Logging.Abstractions/7.0.1": {
-<<<<<<< Updated upstream
-=======
         "runtime": {
           "lib/net7.0/Microsoft.Extensions.Logging.Abstractions.dll": {
             "assemblyVersion": "7.0.0.0",
@@ -136,25 +119,7 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Abstractions/8.0.1": {
->>>>>>> Stashed changes
-        "runtime": {
-          "lib/net7.0/Microsoft.Extensions.Logging.Abstractions.dll": {
-            "assemblyVersion": "7.0.0.0",
-            "fileVersion": "7.0.723.27404"
-          }
-        }
-      },
-      "Microsoft.Extensions.Primitives/8.0.0": {
-        "runtime": {
-          "lib/net7.0/Microsoft.Extensions.Primitives.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.23.53103"
-          }
-        }
-      },
-      "Microsoft.IdentityModel.Abstractions/8.0.1": {
->>>>>>> Stashed changes
+      "Microsoft.IdentityModel.Abstractions/7.2.0": {
         "runtime": {
           "lib/net6.0/Microsoft.IdentityModel.Abstractions.dll": {
             "assemblyVersion": "7.2.0.0",
@@ -209,29 +174,8 @@
       },
       "auth0rize.auth.domain/1.0.0": {
         "runtime": {
-<<<<<<< Updated upstream
-          "auth0rize.auth.domain.dll": {}
-=======
           "auth0rize.auth.domain.dll": {
             "assemblyVersion": "1.0.0.0",
-<<<<<<< Updated upstream
-=======
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "auth0rize.auth.notification/1.0.0": {
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Hosting.Abstractions": "7.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
-          "auth0rize.auth.domain": "1.0.0"
-        },
-        "runtime": {
-          "auth0rize.auth.notification.dll": {
-            "assemblyVersion": "1.0.0.0",
->>>>>>> Stashed changes
             "fileVersion": "1.0.0.0"
           }
         }
@@ -249,7 +193,6 @@
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
->>>>>>> Stashed changes
         }
       }
     }
@@ -309,12 +252,6 @@
       "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
     },
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    "Microsoft.IdentityModel.Abstractions/7.2.0": {
-=======
-=======
->>>>>>> Stashed changes
     "Microsoft.Extensions.FileProviders.Abstractions/7.0.0": {
       "type": "package",
       "serviceable": true,
@@ -343,8 +280,7 @@
       "path": "microsoft.extensions.primitives/8.0.0",
       "hashPath": "microsoft.extensions.primitives.8.0.0.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Abstractions/8.0.1": {
->>>>>>> Stashed changes
+    "Microsoft.IdentityModel.Abstractions/7.2.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-7YgmrhCORuOP8miZJLdQhSEzyHdD5PfRjaqINbqSzS9LKEfOoHq8S9o4FVmK9Mu7Gts8MfL46sshwCk4AgjNyw==",
