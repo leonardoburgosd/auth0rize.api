@@ -4,9 +4,12 @@
     {
         private static string table = "security.domain";
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         public static readonly string CREATE = $"INSERT INTO {table} ({EConsulting.parametersRows})" +
                                       $"VALUES({EConsulting.parametersValues}) RETURNING id;";
         public static readonly string EXIST = $"SELECT COUNT(id) FROM {table} WHERE Name = '[name]'";
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     }

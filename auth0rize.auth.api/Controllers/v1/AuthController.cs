@@ -4,7 +4,10 @@ using auth0rize.auth.application.Features.Autentication.Command.Register2fa;
 using auth0rize.auth.application.Features.Autentication.Command.Verification2fa;
 using auth0rize.auth.application.Features.Autentication.Queries.Login;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 using Microsoft.AspNetCore.Authorization;
 >>>>>>> Stashed changes
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +29,7 @@ namespace auth0rize.auth.api.Controllers.v1
         public async Task<IActionResult> confirmAccount()
         {
             return Ok(await Mediator.Send(new ConfirmAccount()));
+<<<<<<< Updated upstream
         }
 <<<<<<< Updated upstream
 =======
@@ -39,6 +43,19 @@ namespace auth0rize.auth.api.Controllers.v1
         [HttpPost("verification-2fa")]
         public async Task<IActionResult> Verification2FA()
         {
+=======
+        }
+
+        [HttpPost("register-2fa")]
+        public async Task<IActionResult> register2FA()
+        {
+            return Ok(await Mediator.Send(new Register2fa()));
+        }
+
+        [HttpPost("verification-2fa")]
+        public async Task<IActionResult> Verification2FA()
+        {
+>>>>>>> Stashed changes
             return Ok(await Mediator.Send(new Verification2fa()));
         }
 >>>>>>> Stashed changes

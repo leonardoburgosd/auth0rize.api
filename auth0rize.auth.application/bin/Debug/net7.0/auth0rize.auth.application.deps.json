@@ -20,6 +20,9 @@
           "System.IdentityModel.Tokens.Jwt": "8.0.1",
           "auth0rize.auth.domain": "1.0.0",
           "auth0rize.auth.notification": "1.0.0"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         },
         "runtime": {
@@ -98,8 +101,11 @@
         }
       },
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "Microsoft.IdentityModel.Abstractions/7.2.0": {
 =======
+=======
+>>>>>>> Stashed changes
       "Microsoft.Extensions.FileProviders.Abstractions/7.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "8.0.0"
@@ -113,6 +119,25 @@
         }
       },
       "Microsoft.Extensions.Logging.Abstractions/7.0.1": {
+<<<<<<< Updated upstream
+=======
+        "runtime": {
+          "lib/net7.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.723.27404"
+          }
+        }
+      },
+      "Microsoft.Extensions.Primitives/8.0.0": {
+        "runtime": {
+          "lib/net7.0/Microsoft.Extensions.Primitives.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Abstractions/8.0.1": {
+>>>>>>> Stashed changes
         "runtime": {
           "lib/net7.0/Microsoft.Extensions.Logging.Abstractions.dll": {
             "assemblyVersion": "7.0.0.0",
@@ -189,6 +214,24 @@
 =======
           "auth0rize.auth.domain.dll": {
             "assemblyVersion": "1.0.0.0",
+<<<<<<< Updated upstream
+=======
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "auth0rize.auth.notification/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Hosting.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
+          "auth0rize.auth.domain": "1.0.0"
+        },
+        "runtime": {
+          "auth0rize.auth.notification.dll": {
+            "assemblyVersion": "1.0.0.0",
+>>>>>>> Stashed changes
             "fileVersion": "1.0.0.0"
           }
         }
@@ -267,8 +310,11 @@
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
     },
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "Microsoft.IdentityModel.Abstractions/7.2.0": {
 =======
+=======
+>>>>>>> Stashed changes
     "Microsoft.Extensions.FileProviders.Abstractions/7.0.0": {
       "type": "package",
       "serviceable": true,

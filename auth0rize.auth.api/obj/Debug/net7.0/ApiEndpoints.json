@@ -23,9 +23,12 @@
   {
     "ContainingType": "auth0rize.auth.api.Controllers.v1.AuthController",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "Method": "validationUser",
     "RelativePath": "api/v{version}/Auth/user",
 =======
+=======
+>>>>>>> Stashed changes
     "Method": "confirmAccount",
     "RelativePath": "api/v{version}/Auth/confirm-account",
     "HttpMethod": "POST",
@@ -76,6 +79,9 @@
     "ContainingType": "auth0rize.auth.api.Controllers.v1.UserController",
     "Method": "login",
     "RelativePath": "api/v{version}/User/first-register",
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     "HttpMethod": "POST",
     "IsController": true,
@@ -83,6 +89,7 @@
     "Parameters": [
       {
         "Name": "user",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         "Type": "auth0rize.auth.application.Features.Autentication.Queries.BasicUser.BasicUserRequest",
         "IsRequired": true
@@ -143,6 +150,9 @@
       {
         "Name": "user",
         "Type": "auth0rize.auth.application.Features.User.Command.UserRegister.UserRegisterRequest",
+=======
+        "Type": "auth0rize.auth.application.Features.User.Command.FirstAdminCreate.FirstAdminCreateRequest",
+>>>>>>> Stashed changes
 =======
         "Type": "auth0rize.auth.application.Features.User.Command.FirstAdminCreate.FirstAdminCreateRequest",
 >>>>>>> Stashed changes

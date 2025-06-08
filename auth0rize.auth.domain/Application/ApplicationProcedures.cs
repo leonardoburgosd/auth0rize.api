@@ -7,6 +7,9 @@
         public static string GET = "organization.Application_Get";
 =======
         private static string table = "organization.application";
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
 }

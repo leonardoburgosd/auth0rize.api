@@ -11,6 +11,7 @@
     "C:\\Users\\Leo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
   ],
+<<<<<<< Updated upstream
   "logs": [
     {
       "code": "Undefined",
@@ -19,4 +20,7 @@
       "message": "Problema al leer el archivo de caché H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.notification\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
     }
   ]
+=======
+  "logs": []
+>>>>>>> Stashed changes
 }

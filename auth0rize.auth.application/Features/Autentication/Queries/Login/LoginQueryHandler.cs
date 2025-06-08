@@ -1,6 +1,10 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ﻿using auth0rize.auth.application.Common.Security;
 using auth0rize.auth.application.Wrappers;
+=======
+﻿using auth0rize.auth.application.Wrappers;
+>>>>>>> Stashed changes
 =======
 ﻿using auth0rize.auth.application.Wrappers;
 >>>>>>> Stashed changes
@@ -23,6 +27,7 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
         public async Task<Response<LoginResponse>> Handle(LoginQuery request, CancellationToken cancellationToken)
         {
             Response<LoginResponse> response = new Response<LoginResponse>();
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
             
             UserDetail user = await _unitOfWork.User.get(request.userName);
@@ -64,6 +69,10 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
             }
             else
                 doubleFactorCode = 123;
+=======
+
+            var users = await _unitOfWork.Repository<domain.User.User>().QueryAsync<domain.User.User>(new Dictionary<string, object> { { "Type", 2 } }, "security");
+>>>>>>> Stashed changes
 =======
 
             var users = await _unitOfWork.Repository<domain.User.User>().QueryAsync<domain.User.User>(new Dictionary<string, object> { { "Type", 2 } }, "security");

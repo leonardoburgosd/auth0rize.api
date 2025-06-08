@@ -464,9 +464,16 @@
           "FluentValidation.AspNetCore": "11.3.0",
           "MediatR": "12.2.0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "Microsoft.IdentityModel.Tokens": "7.2.0",
           "System.IdentityModel.Tokens.Jwt": "7.2.0",
           "auth0rize.auth.domain": "1.0.0"
+=======
+          "Microsoft.IdentityModel.Tokens": "8.0.1",
+          "System.IdentityModel.Tokens.Jwt": "8.0.1",
+          "auth0rize.auth.domain": "1.0.0",
+          "auth0rize.auth.notification": "1.0.0"
+>>>>>>> Stashed changes
         },
         "runtime": {
           "auth0rize.auth.application.dll": {}
@@ -510,6 +517,24 @@
 =======
           "auth0rize.auth.infraestructure.dll": {
             "assemblyVersion": "1.0.0.0",
+<<<<<<< Updated upstream
+=======
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "auth0rize.auth.notification/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Hosting.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
+          "auth0rize.auth.domain": "1.0.0"
+        },
+        "runtime": {
+          "auth0rize.auth.notification.dll": {
+            "assemblyVersion": "1.0.0.0",
+>>>>>>> Stashed changes
             "fileVersion": "1.0.0.0"
           }
         }

@@ -16,6 +16,9 @@ namespace auth0rize.auth.infraestructure.Extensions
             services.AddScoped<IDbConnection>(_ => new NpgsqlConnection(connectionString));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             return services;
         }

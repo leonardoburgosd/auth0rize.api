@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ﻿using auth0rize.auth.domain.Application;
 using auth0rize.auth.domain.Domain;
 using auth0rize.auth.domain.Menu;
@@ -9,6 +10,8 @@ using auth0rize.auth.domain.User;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 =======
+=======
+>>>>>>> Stashed changes
 ﻿using auth0rize.auth.domain.Primitives;
 using System.Data;
 >>>>>>> Stashed changes
@@ -17,6 +20,7 @@ namespace auth0rize.auth.infraestructure.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         public IUserRepository User { get; private set; }
         public ITypeUserRepository TypeUser { get; private set; }
@@ -36,6 +40,8 @@ namespace auth0rize.auth.infraestructure.Persistence
             Domain = new DomainRepository(_connection);
             TypeUser = new TypeUserRepository(_connection);
 =======
+=======
+>>>>>>> Stashed changes
 
         private readonly IDbConnection _connection;
         private readonly Dictionary<Type, object> _repositories = new();
@@ -64,14 +70,20 @@ namespace auth0rize.auth.infraestructure.Persistence
             }
 
             return (IGenericRepository<T>)_repositories[type];
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         }
 
         public void Dispose()
         {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             _connection.Dispose();
 =======
+=======
+>>>>>>> Stashed changes
             _connection?.Dispose();
 >>>>>>> Stashed changes
         }

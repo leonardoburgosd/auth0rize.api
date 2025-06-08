@@ -3,7 +3,10 @@
     public interface IApplicationRepository
     {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         Task<List<ApplicationGet>> get(long userId);
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     }

@@ -4,6 +4,7 @@
     {
         private readonly static string table = "security.user";
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
         public readonly static string CREATE = $"INSERT INTO {table} ({EConsulting.parametersRows})" +
                                       $"VALUES({EConsulting.parametersValues}) RETURNING id;";
@@ -20,6 +21,8 @@
                                                     $"WHERE u.isdeleted = false AND userName = [username]";
         public readonly static string COUNT_BY_USERNAME = $"SELECT COUNT(id) FROM {table} WHERE isdeleted = false AND userName = '[username]'";
         public readonly static string COUNT_BY_EMAIL = $"SELECT COUNT(id) FROM {table} WHERE isdeleted = false AND email = '[email]'";
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     }

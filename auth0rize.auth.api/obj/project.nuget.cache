@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< Updated upstream
   "dgSpecHash": "TbiWJbxYMVw=",
+=======
+  "dgSpecHash": "X7UaUQnxwoE=",
+>>>>>>> Stashed changes
   "success": true,
   "projectFilePath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj",
   "expectedPackageFiles": [
