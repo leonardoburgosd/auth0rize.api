@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Application\Common\" />
+    <Folder Include="Features\Application\Queries\" />
+    <Folder Include="Features\Domain\Command\" />
+    <Folder Include="Features\Domain\Queries\" />
     <Folder Include="Features\Menu\" />
+    <Folder Include="Features\User\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\auth0rize.auth.domain\auth0rize.auth.domain.csproj" />
+    <ProjectReference Include="..\auth0rize.auth.notification\auth0rize.auth.notification.csproj" />
   </ItemGroup>
 
 </Project>

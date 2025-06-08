@@ -1,6 +1,12 @@
 ﻿using Asp.Versioning;
-using auth0rize.auth.application.Features.Autentication.Queries.BasicUser;
+using auth0rize.auth.application.Features.Autentication.Command.ConfirmAccount;
+using auth0rize.auth.application.Features.Autentication.Command.Register2fa;
+using auth0rize.auth.application.Features.Autentication.Command.Verification2fa;
 using auth0rize.auth.application.Features.Autentication.Queries.Login;
+<<<<<<< Updated upstream
+=======
+using Microsoft.AspNetCore.Authorization;
+>>>>>>> Stashed changes
 using Microsoft.AspNetCore.Mvc;
 
 namespace auth0rize.auth.api.Controllers.v1
@@ -10,15 +16,31 @@ namespace auth0rize.auth.api.Controllers.v1
     public class AuthController : BaseApiController
     {
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> login([FromBody] LoginRequest login)
         {
-            return Ok(await Mediator.Send(new LoginQuery(login.UserName, login.Password, login.Application)));
+            return Ok(await Mediator.Send(new LoginQuery(login.UserName, login.Password)));
         }
 
-        [HttpPost("user")]
-        public async Task<IActionResult> validationUser([FromBody] BasicUserRequest user)
+        [HttpPost("confirm-account")]
+        public async Task<IActionResult> confirmAccount()
         {
-            return Ok(await Mediator.Send(new BasicUserQuery(user.UserName, user.Application)));
+            return Ok(await Mediator.Send(new ConfirmAccount()));
         }
+<<<<<<< Updated upstream
+=======
+
+        [HttpPost("register-2fa")]
+        public async Task<IActionResult> register2FA()
+        {
+            return Ok(await Mediator.Send(new Register2fa()));
+        }
+
+        [HttpPost("verification-2fa")]
+        public async Task<IActionResult> Verification2FA()
+        {
+            return Ok(await Mediator.Send(new Verification2fa()));
+        }
+>>>>>>> Stashed changes
     }
 }

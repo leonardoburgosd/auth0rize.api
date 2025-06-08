@@ -53,5 +53,29 @@ namespace auth0rize.auth.application.Common.Security
                                              signingCredentials: credentials);
             return token;
         }
+
+        public static JwtSecurityToken generateTokenVerification(TokenParametersVerification tokenParams)
+        {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenParams.SecretKey));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            Claim[] claims = new[] {
+                new Claim("user_id", tokenParams.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.UniqueName, tokenParams.UserName),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim("user_rol", tokenParams.Role),
+                new Claim("email", tokenParams.Email),
+                new Claim("name",tokenParams.Name.ToString()),
+                new Claim("lastname",tokenParams.LastName.ToString()),
+                new Claim("motherlastname",tokenParams.MotherLastName.ToString()),
+                new Claim("username",tokenParams.UserName.ToString()),
+            };
+            JwtSecurityToken token = new JwtSecurityToken(
+                                             issuer: "verificationissuerauthorize",
+                                             audience: "verificationaudienceautorize",
+                                             claims: claims,
+                                             expires: DateTime.Now.AddHours(1),
+                                             signingCredentials: credentials);
+            return token;
+        }
     }
 }

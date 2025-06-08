@@ -2,7 +2,6 @@
 {
     public class LoginResponse
     {
-        public int DoubleFactorCode { get; set; }
         public string Token { get; set; }
     }
 }

@@ -1,10 +1,11 @@
+<<<<<<< Updated upstream
 ﻿using auth0rize.auth.application.Common.Security;
 using auth0rize.auth.application.Wrappers;
+=======
+﻿using auth0rize.auth.application.Wrappers;
+>>>>>>> Stashed changes
 using auth0rize.auth.domain.Primitives;
-using auth0rize.auth.domain.User.Business;
 using MediatR;
-using Microsoft.Extensions.Configuration;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace auth0rize.auth.application.Features.Autentication.Queries.Login
 {
@@ -12,18 +13,17 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
     {
         #region Inyeccion
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IConfiguration _configuration;
 
-        public LoginQueryHandler(IUnitOfWork unitOfWork, IConfiguration configuration)
+        public LoginQueryHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _configuration = configuration;
         }
         #endregion 
 
         public async Task<Response<LoginResponse>> Handle(LoginQuery request, CancellationToken cancellationToken)
         {
             Response<LoginResponse> response = new Response<LoginResponse>();
+<<<<<<< Updated upstream
             
             UserDetail user = await _unitOfWork.User.get(request.userName);
             if (user is null) throw new KeyNotFoundException("Usuario no existe.");
@@ -64,17 +64,19 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
             }
             else
                 doubleFactorCode = 123;
+=======
+
+            var users = await _unitOfWork.Repository<domain.User.User>().QueryAsync<domain.User.User>(new Dictionary<string, object> { { "Type", 2 } }, "security");
+>>>>>>> Stashed changes
 
             response.Success = true;
             response.Message = "Usuario autenticado correctamente.";
             response.Data = new LoginResponse()
             {
-                Token = token,
-                DoubleFactorCode = doubleFactorCode
+
             };
 
             return response;
         }
-        public async Task<int> CodeGenerate() { return 0; }
     }
 }

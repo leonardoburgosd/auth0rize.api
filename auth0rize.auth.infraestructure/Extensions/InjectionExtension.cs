@@ -9,7 +9,14 @@ namespace auth0rize.auth.infraestructure.Extensions
     {
         public static IServiceCollection AddInjectionInfraestructure(this IServiceCollection services, IConfiguration configuration)
         {
+<<<<<<< Updated upstream
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+=======
+            string? connectionString = Environment.GetEnvironmentVariable(configuration["connection:postgres"]!.ToString());
+            services.AddScoped<IDbConnection>(_ => new NpgsqlConnection(connectionString));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+>>>>>>> Stashed changes
             return services;
         }
     }

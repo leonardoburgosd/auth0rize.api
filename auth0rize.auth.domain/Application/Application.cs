@@ -5,5 +5,8 @@
         public string Name { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
+        public string Avatar { get; set; }
+
+        public virtual ICollection<ApplicationCompany.ApplicationCompany> ApplicationsCompanies { get; set; }
     }
 }

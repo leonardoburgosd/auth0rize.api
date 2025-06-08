@@ -2,6 +2,9 @@
 {
     public class Domain : BaseEntity
     {
-        public string Name { get; set; }
+        public Guid Code { get; set; } = new Guid();
+
+        public virtual ICollection<UserDomain.UserDomain> UsersDomains { get; set; }
+        public virtual ICollection<Company.Company> Companies { get; set; }
     }
 }

@@ -1,13 +1,18 @@
 using auth0rize.auth.api.Extensions;
 using auth0rize.auth.application;
 using auth0rize.auth.infraestructure.Extensions;
+using auth0rize.auth.notification;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 builder.Services
                 .AddInjectionApplication()
                 .AddInjectionInfraestructure(configuration)
+<<<<<<< Updated upstream
                 .AddPresentation(configuration)
+=======
+                .AddInjectionNotification(configuration)
+>>>>>>> Stashed changes
                 ;
 
 builder.Services.AddControllers();

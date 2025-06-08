@@ -1,21 +1,5 @@
 [
   {
-    "ContainingType": "auth0rize.auth.api.Controllers.v1.ApplicationController",
-    "Method": "Get",
-    "RelativePath": "api/v{version}/Application",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "version",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "auth0rize.auth.api.Controllers.v1.AuthController",
     "Method": "login",
     "RelativePath": "api/v{version}/Auth",
@@ -38,14 +22,68 @@
   },
   {
     "ContainingType": "auth0rize.auth.api.Controllers.v1.AuthController",
+<<<<<<< Updated upstream
     "Method": "validationUser",
     "RelativePath": "api/v{version}/Auth/user",
+=======
+    "Method": "confirmAccount",
+    "RelativePath": "api/v{version}/Auth/confirm-account",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.AuthController",
+    "Method": "register2FA",
+    "RelativePath": "api/v{version}/Auth/register-2fa",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.AuthController",
+    "Method": "Verification2FA",
+    "RelativePath": "api/v{version}/Auth/verification-2fa",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.UserController",
+    "Method": "login",
+    "RelativePath": "api/v{version}/User/first-register",
+>>>>>>> Stashed changes
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "user",
+<<<<<<< Updated upstream
         "Type": "auth0rize.auth.application.Features.Autentication.Queries.BasicUser.BasicUserRequest",
         "IsRequired": true
       },
@@ -105,6 +143,9 @@
       {
         "Name": "user",
         "Type": "auth0rize.auth.application.Features.User.Command.UserRegister.UserRegisterRequest",
+=======
+        "Type": "auth0rize.auth.application.Features.User.Command.FirstAdminCreate.FirstAdminCreateRequest",
+>>>>>>> Stashed changes
         "IsRequired": true
       },
       {

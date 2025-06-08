@@ -134,3 +134,9 @@ H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\bin\Debug\net7.0\Dapper.dl
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\bin\Debug\net7.0\Npgsql.dll
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\auth0riz.688098B6.Up2Date
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\bin\Debug\net7.0\auth0rize.auth.notification.dll
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\bin\Debug\net7.0\auth0rize.auth.notification.pdb
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\bin\Debug\net7.0\auth0rize.auth.api.staticwebassets.endpoints.json
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets.build.endpoints.json
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets\msbuild.auth0rize.auth.api.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets.upToDateCheck.txt

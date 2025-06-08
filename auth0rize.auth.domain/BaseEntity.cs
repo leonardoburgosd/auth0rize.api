@@ -2,14 +2,14 @@
 {
     public class BaseEntity
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         public DateTime RegistrationDate { get; set; }
-        public long UserRegistration { get; set; }
+        public int UserRegistration { get; set; }
         public DateTime DateUpdate { get; set; }
-        public long UserUpdate { get; set; }
+        public int UserUpdate { get; set; }
         public DateTime DateDeleted { get; set; }
-        public long UserDeleted { get; set; }
+        public int UserDeleted { get; set; }
         public bool IsDeleted { get; set; }
     }
 }

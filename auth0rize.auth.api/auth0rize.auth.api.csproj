@@ -25,6 +25,7 @@
     <ProjectReference Include="..\auth0rize.auth.application\auth0rize.auth.application.csproj" />
     <ProjectReference Include="..\auth0rize.auth.domain\auth0rize.auth.domain.csproj" />
     <ProjectReference Include="..\auth0rize.auth.infraestructure\auth0rize.auth.infraestructure.csproj" />
+    <ProjectReference Include="..\auth0rize.auth.notification\auth0rize.auth.notification.csproj" />
   </ItemGroup>
 
 </Project>

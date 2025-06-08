@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ﻿using auth0rize.auth.domain.Application;
 using auth0rize.auth.domain.Domain;
 using auth0rize.auth.domain.Menu;
@@ -7,11 +8,16 @@ using auth0rize.auth.domain.TypeUser;
 using auth0rize.auth.domain.User;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
+=======
+﻿using auth0rize.auth.domain.Primitives;
+using System.Data;
+>>>>>>> Stashed changes
 
 namespace auth0rize.auth.infraestructure.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
+<<<<<<< Updated upstream
         public IUserRepository User { get; private set; }
         public ITypeUserRepository TypeUser { get; private set; }
         public IOptionRepository Option { get; private set; }
@@ -29,11 +35,45 @@ namespace auth0rize.auth.infraestructure.Persistence
             Application = new ApplicationRepository(_connection);
             Domain = new DomainRepository(_connection);
             TypeUser = new TypeUserRepository(_connection);
+=======
+
+        private readonly IDbConnection _connection;
+        private readonly Dictionary<Type, object> _repositories = new();
+
+        public UnitOfWork(IDbConnection connection)
+        {
+            _connection = connection ?? throw new ArgumentException(nameof(connection));
+            _connection.Open();
+        }
+
+        public IDbConnection Connection => _connection;
+
+        public Task<int> Complete()
+        {
+            return Task.FromResult(0);
+        }
+
+        public IGenericRepository<T> Repository<T>() where T : class
+        {
+            var type = typeof(T);
+
+            if (!_repositories.ContainsKey(type))
+            {
+                var repoInstance = new GenericRepository<T>(_connection);
+                _repositories.Add(type, repoInstance);
+            }
+
+            return (IGenericRepository<T>)_repositories[type];
+>>>>>>> Stashed changes
         }
 
         public void Dispose()
         {
+<<<<<<< Updated upstream
             _connection.Dispose();
+=======
+            _connection?.Dispose();
+>>>>>>> Stashed changes
         }
     }
 }
