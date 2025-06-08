@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RmfaBP6nUr8=",
+  "dgSpecHash": "1Ro4ovLb9ic=",
   "success": true,
-  "projectFilePath": "F:\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\lebur\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.20\\microsoft.windowsdesktop.app.ref.7.0.20.nupkg.sha512",
-    "C:\\Users\\lebur\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.20\\microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
-    "C:\\Users\\lebur\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.20\\microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512"
-  ],
+  "projectFilePath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
