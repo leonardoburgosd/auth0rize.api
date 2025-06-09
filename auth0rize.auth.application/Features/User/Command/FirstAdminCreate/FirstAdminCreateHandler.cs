@@ -8,7 +8,6 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
 {
@@ -30,8 +29,8 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
             _serviceProvider = serviceProvider;
             _configuration = configuration;
             symmetricKey = Environment.GetEnvironmentVariable(_configuration["security:symmetricKey"]!.ToString());
-            url = Environment.GetEnvironmentVariable(_configuration["security:urlDeployAuth0rize"]!.ToString());
-            
+            url = Environment.GetEnvironmentVariable(_configuration["notification:url"]!.ToString());
+
         }
         #endregion 
 
@@ -63,7 +62,7 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
 
                 PasswordHash = generate.password,
                 PasswordSalt = generate.salt,
-                
+
                 TypeId = userTypes.First().Id,
                 UserRegistration = 0
             }, "security");
@@ -75,7 +74,7 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
             }, "security");
 
             //registro el usuario y el dominio
-            await _unitOfWork.Repository<domain.UserDomain.UserDomain>().InsertNonIdAsync(new UserDomain()
+            await _unitOfWork.Repository<UserDomain>().InsertNonIdAsync(new UserDomain()
             {
                 UserId = idUser,
                 DomainId = idDomain,
@@ -83,20 +82,9 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
                 UserRegistration = idUser
             }, "security");
 
-            //genero un token para enviar por correo
-            JwtSecurityToken tokenGenerated = Encrypt.generateTokenVerification(new TokenParametersVerification()
-            {
-                Id = idUser,
-                Name = request.name,
-                LastName = request.lastName,
-                MotherLastName= request.motherLastName,
-                UserName = request.userName,
-                Email = request.email,
-                Role = "superadmin",
-                SecretKey = symmetricKey,
-            });
-            string tokenValidation = new JwtSecurityTokenHandler().WriteToken(tokenGenerated);
+            //genero GUID para enviar por correo
 
+            Guid guidCode = Guid.NewGuid();
 
             //envío el correo
             _ = _taskQueue.QueueBackgroundWorkItemAsync(async cancellationToken =>
@@ -104,11 +92,26 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
                 using (var scope = _serviceProvider.CreateScope())
                 {
                     var notificationRepository = scope.ServiceProvider.GetRequiredService<IUserNotificationRepository>();
+                    var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
                     try
                     {
                         _logger.LogInformation($"Enviando correo de registro en segundo plano a: {request.email}");
-                        await notificationRepository.Registration(tokenValidation, request.email);
+                        await notificationRepository.Registration(url + guidCode.ToString(), request.email);
                         _logger.LogInformation($"Correo de registro enviado a: {request.email}");
+
+                        _logger.LogInformation($"Registro de confirmacion: {request.email}");
+                        await unitOfWork.Repository<domain.ConfirmAccount.ConfirmAccount>().InsertNonIdAsync(
+                            new domain.ConfirmAccount.ConfirmAccount
+                            {
+                                code = guidCode,
+                                UserId = idUser,
+                                UserRegistration = idUser,
+                                RegistrationDate = DateTime.Now,
+                                ExpirationDate = DateTime.Now.AddHours(1),
+                            },
+                            "security"
+                        );
+                        _logger.LogInformation($"Registro de confirmacion realizado");
                     }
                     catch (Exception ex)
                     {

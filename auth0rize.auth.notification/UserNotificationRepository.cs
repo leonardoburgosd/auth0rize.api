@@ -35,11 +35,11 @@ namespace auth0rize.auth.notification
                                         margin: 0;
                                         padding: 0;
                                         box-sizing: border-box;
+                                        background: linear-gradient(135deg, #0f172a 0%, #14b8a6 100%);
                                     }}
 
                                     body {{
                                         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-                                        background: linear-gradient(135deg, #0f172a 0%, #14b8a6 100%);
                                         min-height: 100vh;
                                         display: flex;
                                         align-items: center;

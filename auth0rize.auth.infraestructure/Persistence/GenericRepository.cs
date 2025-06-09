@@ -58,6 +58,7 @@ namespace auth0rize.auth.infraestructure.Persistence
                         return p.DeclaringType != typeof(BaseEntity);
                     }
                 })
+                .Where(p => p.Name != "Id")
                 .ToList();
 
             var columns = string.Join(", ", props.Select(p => p.Name));
@@ -86,6 +87,7 @@ namespace auth0rize.auth.infraestructure.Persistence
                         return p.DeclaringType != typeof(BaseEntity); // O simplemente true si no te importa BaseEntity
                     }
                 })
+                .Where(p => p.Name != "Id")
                 .ToList();
 
             var columns = string.Join(", ", props.Select(p => p.Name));

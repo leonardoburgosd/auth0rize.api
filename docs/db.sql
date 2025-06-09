@@ -64,13 +64,13 @@ CREATE TABLE security.user (
 */
 CREATE TABLE security.ConfirmAccount (
     Id               SERIAL    PRIMARY KEY,
-    Code             UUID      NOT NULL DEFAULT gen_random_uuid(),
+    Code             UUID      NOT NULL,
     UserId           INT       NOT NULL REFERENCES security.user(Id),
-    ExpirationDate   TIMESTAMP NOT NULL DEFAULT (CURRENT_TIMESTAMP + INTERVAL '1 day'),
+    ExpirationDate   TIMESTAMP NOT NULL,
 
-    RegistrationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    RegistrationDate TIMESTAMP NOT NULL,
     UserRegistration INT       NOT NULL REFERENCES security.user(Id) DEFERRABLE INITIALLY DEFERRED,
-    DateUpdate       TIMESTAMP,
+    DateUpdate       TIMESTAMP NULL,
     IsConfirm        BOOLEAN   NOT NULL DEFAULT FALSE
 );
 
