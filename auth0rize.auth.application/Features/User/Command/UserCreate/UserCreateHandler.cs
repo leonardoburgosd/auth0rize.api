@@ -1,5 +1,6 @@
 ﻿using auth0rize.auth.application.Common.Security;
 using auth0rize.auth.application.Extensions;
+using auth0rize.auth.application.Features.User.Command.FirstAdminCreate;
 using auth0rize.auth.application.Wrappers;
 using auth0rize.auth.domain.Primitives;
 using auth0rize.auth.domain.User;
@@ -9,9 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
+namespace auth0rize.auth.application.Features.User.Command.UserCreate
 {
-    internal class FirstAdminCreateHandler : IRequestHandler<FirstAdminCreate, Response<FirstAdminCreateResponse>>
+    internal class UserCreateHandler : IRequestHandler<UserCreate, Response<UserCreateResponse>>
     {
         #region Inyeccion
         private readonly IUnitOfWork _unitOfWork;
@@ -21,7 +22,7 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
         private readonly IConfiguration _configuration;
         private string? symmetricKey = "";
         private string? url = "";
-        public FirstAdminCreateHandler(IUnitOfWork unitOfWork, IBackgroundTaskQueue taskQueue, ILogger<FirstAdminCreateHandler> logger, IServiceProvider serviceProvider, IConfiguration configuration)
+        public UserCreateHandler(IUnitOfWork unitOfWork, IBackgroundTaskQueue taskQueue, ILogger<FirstAdminCreateHandler> logger, IServiceProvider serviceProvider, IConfiguration configuration)
         {
             _unitOfWork = unitOfWork;
             _taskQueue = taskQueue;
@@ -33,21 +34,21 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
         }
         #endregion 
 
-        public async Task<Response<FirstAdminCreateResponse>> Handle(FirstAdminCreate request, CancellationToken cancellationToken)
+        public async Task<Response<UserCreateResponse>> Handle(UserCreate request, CancellationToken cancellationToken)
         {
-            Response<FirstAdminCreateResponse> response = new Response<FirstAdminCreateResponse>();
+            Response<UserCreateResponse> response = new Response<UserCreateResponse>();
 
             //obtengo el id del superadmin
             var userTypes = await _unitOfWork.Repository<domain.UserType.UserType>().QueryAsync<domain.UserType.UserType>(new Dictionary<string, object>
             {
-                { "name", "superadmin" }
+                { "id", request.typeUserId }
             },
             Schemas.Security);
             if (userTypes.Count() == 0 || userTypes.Count() > 1) throw new ApiException("Tipo de usuario no encontrado.");
 
-            //verifico si existen superadmins registrados
-            var users = await _unitOfWork.Repository<domain.User.User>().QueryAsync<domain.User.User>(new Dictionary<string, object> { { "TypeId", 2 } }, Schemas.Security);
-            if (users.Count() > 0) throw new ApiException("Administrador registrado.");
+            //Obtengo el domain por Id
+            var domain = await _unitOfWork.Repository<domain.Domain.Domain>().QueryAsync<domain.Domain.Domain>(new Dictionary<string, object> { { "id", request.domainId } }, Schemas.Security);
+            if (domain.Count() == 0) throw new ApiException("Dominio no existe.");
 
             //creo al usuario
             (byte[] salt, byte[] password) generate = Encrypt.generateHash(request.password);
@@ -63,22 +64,16 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
                 PasswordSalt = generate.salt,
 
                 TypeId = userTypes.First().Id,
-                UserRegistration = 0
-            }, Schemas.Security);
-
-            //creo el dominio
-            int idDomain = await _unitOfWork.Repository<domain.Domain.Domain>().InsertAsync(new domain.Domain.Domain()
-            {
-                UserRegistration = idUser
+                UserRegistration = request.userRegister,
             }, Schemas.Security);
 
             //registro el usuario y el dominio
             await _unitOfWork.Repository<UserDomain>().InsertNonIdAsync(new UserDomain()
             {
                 UserId = idUser,
-                DomainId = idDomain,
+                DomainId = request.domainId,
                 RoleId = userTypes.First().Id,
-                UserRegistration = idUser
+                UserRegistration = request.userRegister,
             }, Schemas.Security);
 
             //envío el correo
@@ -119,14 +114,16 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
 
             response.Success = true;
             response.Message = "Usuario registrado correctamente.";
-            response.Data = new FirstAdminCreateResponse()
+            response.Data = new UserCreateResponse()
             {
                 Id = idUser,
                 Email = request.email,
                 LastName = request.lastName,
                 MotherLastName = request.motherLastName,
                 UserName = request.userName,
-                Name = request.name
+                Name = request.name,
+                DomainId = request.domainId,
+                TypeUserId = request.typeUserId,
             };
 
             return response;

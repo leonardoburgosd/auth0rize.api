@@ -32,6 +32,37 @@ namespace auth0rize.auth.infraestructure.Persistence
             return await _connection.ExecuteAsync(sql, entities);
         }
 
+        public async Task DeleteHardAsync<T1>(Dictionary<string, object> conditions, string schema = "public") where T1 : class, new()
+        {
+            var tableName = GetTableName<T1>(schema);
+
+            var props = typeof(T1).GetProperties()
+                .Select(p => p.Name)
+                .ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+            // Validar que todas las claves del diccionario sean propiedades válidas
+            foreach (var key in conditions.Keys)
+            {
+                if (!props.Contains(key))
+                    throw new ArgumentException($"La columna '{key}' no existe en el tipo '{typeof(T1).Name}'.");
+            }
+
+            // Construir condiciones WHERE dinámicas
+            var whereClauses = conditions.Keys.Select((key, index) => $"{key} = @param{index}").ToList();
+            var sql = $"DELETE FROM {tableName} WHERE {string.Join(" AND ", whereClauses)}";
+
+            // Crear objeto anónimo con parámetros nombrados
+            var paramValues = new DynamicParameters();
+            int i = 0;
+            foreach (var pair in conditions)
+            {
+                paramValues.Add($"param{i}", pair.Value);
+                i++;
+            }
+
+            await _connection.ExecuteAsync(sql, paramValues);
+        }
+
         public async Task<int> DeleteAsync<T1>(int id, int userId, string schema = "public") where T1 : class, new()
         {
             var tableName = GetTableName<T>(schema);
@@ -68,8 +99,7 @@ namespace auth0rize.auth.infraestructure.Persistence
 
             await _connection.ExecuteAsync(sql, entity);
         }
-
-
+        
         public async Task<int> InsertAsync<T1>(T1 entity, string schema = "public") where T1 : class, new()
         {
             var tableName = GetTableName<T>(schema);
@@ -119,7 +149,7 @@ namespace auth0rize.auth.infraestructure.Persistence
             var sql = $"SELECT * FROM {tableName} {whereClause}";
             return await _connection.QueryAsync<T1>(sql, parameters);
         }
-
+        
         public async Task<IEnumerable<T1>> QueryWithRelationsAsync<T1>(string entitySql, Dictionary<string, RelationQuery> relations) where T1 : class, new()
         {
             // 1. Traer entidades principales

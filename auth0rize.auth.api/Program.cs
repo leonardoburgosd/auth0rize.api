@@ -10,7 +10,6 @@ builder.Services
                 .AddInjectionInfraestructure(configuration)
                 .AddPresentation(configuration)
                 .AddInjectionNotification(configuration)
-                .AddInjectionNotification(configuration)
                 ;
 
 builder.Services.AddControllers();

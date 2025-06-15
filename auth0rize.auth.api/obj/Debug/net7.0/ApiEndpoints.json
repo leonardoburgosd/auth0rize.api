@@ -29,6 +29,11 @@
     "Order": 0,
     "Parameters": [
       {
+        "Name": "confirmAccount",
+        "Type": "auth0rize.auth.application.Features.Autentication.Command.ConfirmAccount.ConfirmAccountRequest",
+        "IsRequired": true
+      },
+      {
         "Name": "version",
         "Type": "",
         "IsRequired": true

@@ -19,9 +19,9 @@ namespace auth0rize.auth.api.Controllers.v1
         }
 
         [HttpPost("confirm-account")]
-        public async Task<IActionResult> confirmAccount()
+        public async Task<IActionResult> confirmAccount([FromBody] ConfirmAccountRequest confirmAccount)
         {
-            return Ok(await Mediator.Send(new ConfirmAccount()));
+            return Ok(await Mediator.Send(new ConfirmAccount(confirmAccount.Code)));
         }
 
         [HttpPost("register-2fa")]
