@@ -1,7 +1,4 @@
-﻿using auth0rize.auth.domain.Application;
-using auth0rize.auth.domain.Domain;
-using auth0rize.auth.domain.Primitives;
-using auth0rize.auth.domain.User;
+﻿using auth0rize.auth.domain.Primitives;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using System.Data;
@@ -10,9 +7,6 @@ namespace auth0rize.auth.infraestructure.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public IUserRepository User { get; private set; }
-        public IApplicationRepository Application { get; private set; }
-        public IDomainRepository Domain { get; private set; }
         private readonly Dictionary<Type, object> _repositories = new();
         private readonly NpgsqlConnection _connection;
         

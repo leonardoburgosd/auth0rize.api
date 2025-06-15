@@ -1,12 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "btorfR7ssyvrrL2bvgJiXUSxRM433SrQgaoDMTdq7O0=",
-  "Source": "auth0rize.auth.api",
-  "BasePath": "_content/auth0rize.auth.api",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
-}
+{"Version":1,"Hash":"btorfR7ssyvrrL2bvgJiXUSxRM433SrQgaoDMTdq7O0=","Source":"auth0rize.auth.api","BasePath":"_content/auth0rize.auth.api","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

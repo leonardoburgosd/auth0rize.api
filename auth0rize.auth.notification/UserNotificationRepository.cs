@@ -285,5 +285,15 @@ namespace auth0rize.auth.notification
                 smtp.Send(message);
             }
         }
+
+        public Task RegistrationConfirm(string url, string to)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RegistrationError(string url, string to)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -75,7 +75,28 @@
   },
   {
     "ContainingType": "auth0rize.auth.api.Controllers.v1.UserController",
-    "Method": "login",
+    "Method": "userRegister",
+    "RelativePath": "api/v{version}/User",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "auth0rize.auth.application.Features.User.Command.UserCreate.UserCreateRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.UserController",
+    "Method": "firstRegister",
     "RelativePath": "api/v{version}/User/first-register",
     "HttpMethod": "POST",
     "IsController": true,

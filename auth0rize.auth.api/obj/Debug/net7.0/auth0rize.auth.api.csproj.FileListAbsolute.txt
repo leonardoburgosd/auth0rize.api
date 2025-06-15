@@ -116,11 +116,6 @@ H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\auth0rize
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\auth0rize.auth.api.csproj.CoreCompileInputs.cache
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\auth0rize.auth.api.MvcApplicationPartsAssemblyInfo.cs
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\auth0rize.auth.api.MvcApplicationPartsAssemblyInfo.cache
-H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets\msbuild.auth0rize.auth.api.Microsoft.AspNetCore.StaticWebAssets.props
-H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets\msbuild.build.auth0rize.auth.api.props
-H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.auth0rize.auth.api.props
-H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.auth0rize.auth.api.props
-H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets.pack.json
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets.build.json
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets.development.json
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\scopedcss\bundle\auth0rize.auth.api.styles.css
@@ -138,6 +133,10 @@ H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\bin\Debug\net7.0\auth0rize
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\bin\Debug\net7.0\auth0rize.auth.notification.pdb
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\bin\Debug\net7.0\auth0rize.auth.api.staticwebassets.endpoints.json
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets.build.endpoints.json
-H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets\msbuild.auth0rize.auth.api.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets.upToDateCheck.txt
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\rpswa.dswa.cache.json
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\rjimswa.dswa.cache.json
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\rjsmrazor.dswa.cache.json
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\rjsmcshtml.dswa.cache.json
+H:\Proyectos propios\auth0rize.api\auth0rize.auth.api\obj\Debug\net7.0\staticwebassets.build.json.cache

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("auth0rize.auth.api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e20318ebfdf2b968e4b360a36a278640139063e4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2ca54242e4e09437abe06e05c473dfd6cad42c43")]
 [assembly: System.Reflection.AssemblyProductAttribute("auth0rize.auth.api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("auth0rize.auth.api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
