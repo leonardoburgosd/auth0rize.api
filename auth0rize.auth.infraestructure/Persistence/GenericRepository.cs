@@ -2,7 +2,10 @@
 using auth0rize.auth.domain;
 using auth0rize.auth.domain.Primitives;
 using Dapper;
+using System.Collections;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
+using System.Reflection;
 
 namespace auth0rize.auth.infraestructure.Persistence
 {
@@ -99,7 +102,7 @@ namespace auth0rize.auth.infraestructure.Persistence
 
             await _connection.ExecuteAsync(sql, entity);
         }
-        
+
         public async Task<int> InsertAsync<T1>(T1 entity, string schema = "public") where T1 : class, new()
         {
             var tableName = GetTableName<T>(schema);
@@ -149,71 +152,24 @@ namespace auth0rize.auth.infraestructure.Persistence
             var sql = $"SELECT * FROM {tableName} {whereClause}";
             return await _connection.QueryAsync<T1>(sql, parameters);
         }
-        
-        public async Task<IEnumerable<T1>> QueryWithRelationsAsync<T1>(string entitySql, Dictionary<string, RelationQuery> relations) where T1 : class, new()
+
+        public async Task<IEnumerable<T1>> QueryWithRelationsAsync<T1>(string entitySql, object? parameters = null, params string[] relationsPaths ) where T1 : class, new()
         {
             // 1. Traer entidades principales
-            var entities = (await _connection.QueryAsync<T1>(entitySql)).ToList();
-
-            if (!entities.Any() || relations == null || !relations.Any())
+            var entities = (await _connection.QueryAsync<T1>(entitySql, parameters)).ToList();
+            if (!entities.Any() || relationsPaths == null || relationsPaths.Length == 0)
                 return entities;
 
-            // 2. Obtener los Ids
-            var idProp = typeof(T1).GetProperty("Id");
-            var ids = entities.Select(e => (int)idProp.GetValue(e)).Distinct().ToArray();
+            var idProp = typeof(T1).GetProperty("Id")!;
+            var entityType = typeof(T1);
+            var idValues = entities.Select(e => (int)idProp.GetValue(e)!).Distinct().ToArray();
 
-            // 3. Procesar relaciones (1-1 y 1-N)
-            foreach (var relation in relations)
-            {
-                var propInfo = typeof(T1).GetProperty(relation.Key);
-                bool isCollection = IsCollectionType(propInfo.PropertyType);
-
-                // Ejecutar SQL con IDs
-                var relatedData = (await _connection.QueryAsync(
-                    relation.Value.Sql, new { Ids = ids }
-                )).ToList();
-
-                if (isCollection)
-                {
-                    // 1-N: Asignar colección
-                    foreach (var entity in entities)
-                    {
-                        var entityId = (int)idProp.GetValue(entity);
-
-                        var relatedItems = relatedData
-                            .Where(r => MatchRelationKey(r, relation.Value.ForeignKey, entityId))
-                            .Select(r => MapDynamicToType(r, propInfo.PropertyType.GenericTypeArguments[0]))
-                            .ToList();
-
-                        var typedList = Activator.CreateInstance(
-                            typeof(List<>).MakeGenericType(propInfo.PropertyType.GenericTypeArguments[0]),
-                            relatedItems
-                        );
-
-                        propInfo.SetValue(entity, typedList);
-                    }
-                }
-                else
-                {
-                    // 1-1: Asignar objeto único
-                    foreach (var entity in entities)
-                    {
-                        var entityId = (int)idProp.GetValue(entity);
-
-                        var relatedItem = relatedData
-                            .FirstOrDefault(r => MatchRelationKey(r, relation.Value.ForeignKey, entityId));
-
-                        if (relatedItem != null)
-                        {
-                            var mapped = MapDynamicToType(relatedItem, propInfo.PropertyType);
-                            propInfo.SetValue(entity, mapped);
-                        }
-                    }
-                }
-            }
+            // 2. Cargar relaciones de manera recursiva
+            await LoadRelationsRecursiveAsync(entities, entityType, idValues, relationsPaths);
 
             return entities;
         }
+
 
         public async Task<int> UpdateAsync<T1>(T1 entity, string schema = "public") where T1 : class, new()
         {
@@ -275,5 +231,134 @@ namespace auth0rize.auth.infraestructure.Persistence
             return type.IsClass && type != typeof(string);
         }
         #endregion
+
+        private async Task LoadRelationsRecursiveAsync(
+                                IEnumerable<object> parentEntities,
+                                Type parentType,
+                                int[] parentIds,
+                                string[] relationPaths,
+                                string currentPrefix = ""
+                            )
+        {
+            // Agrupar paths por su primer nivel
+            var grouped = relationPaths
+                .Where(p => p.StartsWith(currentPrefix))
+                .Select(p => p.Substring(currentPrefix.Length))
+                .Where(p => !string.IsNullOrWhiteSpace(p))
+                .GroupBy(p => p.Split('.')[0]);
+
+            foreach (var group in grouped)
+            {
+                string propertyName = group.Key;
+                string fullPath = currentPrefix + propertyName;
+
+                PropertyInfo? propInfo = parentType.GetProperty(propertyName);
+                if (propInfo == null) continue;
+
+                bool isCollection = IsCollectionType(propInfo.PropertyType);
+                Type childType = isCollection
+                    ? propInfo.PropertyType.GenericTypeArguments[0]
+                    : propInfo.PropertyType;
+
+                string tableName = GetTableNameFromType(childType); // Necesita convención o atributo [Table]
+                string foreignKey = GetForeignKeyName(parentType);  // Ej: UserId si el padre es User
+
+                // Generar SQL
+                string sql = $"SELECT * FROM {tableName} WHERE {foreignKey} = ANY(@Ids::int[])";
+                var relatedRaw = (await _connection.QueryAsync(sql, new { Ids = parentIds })).ToList();
+
+                // Agrupar por ID foráneo
+                var relatedGrouped = relatedRaw
+                    .GroupBy(r => GetPropertyValue(r, foreignKey))
+                    .ToDictionary(g => (int)g.Key, g => g.ToList());
+
+                // Asignar al objeto padre
+                foreach (var parent in parentEntities)
+                {
+                    var parentId = (int)parent.GetType().GetProperty("Id")!.GetValue(parent)!;
+                    if (!relatedGrouped.ContainsKey(parentId)) continue;
+
+                    var rawItems = relatedGrouped[parentId];
+                    if (isCollection)
+                    {
+                        var typedList = Activator.CreateInstance(
+                            typeof(List<>).MakeGenericType(childType)
+                        ) as IList;
+
+                        foreach (var item in rawItems)
+                        {
+                            var typed = MapDynamicToType(item, childType);
+                            typedList!.Add(typed);
+                        }
+
+                        propInfo.SetValue(parent, typedList);
+                    }
+                    else
+                    {
+                        var typed = MapDynamicToType(rawItems.First(), childType);
+                        propInfo.SetValue(parent, typed);
+                    }
+                }
+
+                // Reunir hijos para procesar relaciones anidadas
+                var allChildren = parentEntities
+                    .SelectMany(p =>
+                    {
+                        var value = propInfo.GetValue(p);
+                        if (value == null) return Enumerable.Empty<object>();
+                        return isCollection ? (value as IEnumerable<object>)! : new[] { value };
+                    })
+                    .Distinct()
+                    .ToList();
+                var idPropertyName = GetIdPropertyName(childType);
+                var childIds = allChildren
+                            .Select(c => c?.GetType().GetProperty(idPropertyName)?.GetValue(c))
+                            .Where(id => id != null)
+                            .Select(id => Convert.ToInt32(id))
+                            .Distinct()
+                            .ToArray();
+
+                // Procesar relaciones hijas recursivamente
+                var nestedPaths = group
+                    .Select(p => p.Contains('.') ? p.Substring(p.IndexOf('.') + 1) : null)
+                    .Where(p => !string.IsNullOrWhiteSpace(p))
+                    .ToArray();
+
+                if (nestedPaths.Any())
+                {
+                    await LoadRelationsRecursiveAsync(allChildren, childType, childIds, nestedPaths, currentPrefix + propertyName + ".");
+                }
+            }
+        }
+
+        private string GetIdPropertyName(Type type)
+        {
+            // 1. Si existe "Id"
+            var idProp = type.GetProperty("Id");
+            if (idProp != null) return "Id";
+
+            // 2. Buscar una propiedad que termine en "Id" y sea del tipo primario
+            var match = type.GetProperties().FirstOrDefault(p => p.Name.ToLower().EndsWith("id"));
+            if (match != null) return match.Name;
+
+            throw new Exception($"No se pudo encontrar propiedad Id en {type.Name}");
+        }
+
+        private string GetTableNameFromType(Type type)
+        {
+            var attr = type.GetCustomAttribute<TableAttribute>();
+            if (attr != null) return attr.Name;
+
+            // Convención fallback: "security." + nombre en minúscula
+            return "security." + type.Name.ToLower();
+        }
+
+        private string GetForeignKeyName(Type parentType) => (parentType.Name + "Id").ToLower();
+
+        private object? GetPropertyValue(object obj, string propertyName)
+        {
+            var dict = obj as IDictionary<string, object>;
+            return dict?[propertyName];
+        }
     }
 }

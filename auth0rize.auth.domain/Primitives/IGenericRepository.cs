@@ -2,7 +2,7 @@
 {
     public interface IGenericRepository<T> where T : class
     {
-        Task<IEnumerable<T>> QueryWithRelationsAsync<T>(string entitySql, Dictionary<string, RelationQuery> relations) where T : class, new();
+        Task<IEnumerable<T>> QueryWithRelationsAsync<T>(string entitySql, object? parameters = null, params string[] relationsPaths) where T : class, new();
         Task<IEnumerable<T>> QueryAsync<T>(Dictionary<string, object> filters = null, string schema = "public") where T : class, new();
         Task<int> InsertAsync<T>(T entity, string schema = "public") where T : class, new();
         Task InsertNonIdAsync<T1>(T1 entity, string schema = "public") where T1 : class, new();
