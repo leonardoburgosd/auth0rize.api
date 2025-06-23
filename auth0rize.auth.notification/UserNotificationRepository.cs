@@ -295,5 +295,10 @@ namespace auth0rize.auth.notification
         {
             throw new NotImplementedException();
         }
+
+        public Task LoginCorrect(string to)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

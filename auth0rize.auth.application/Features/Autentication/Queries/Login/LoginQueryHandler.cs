@@ -3,8 +3,11 @@ using auth0rize.auth.application.Extensions;
 using auth0rize.auth.application.Wrappers;
 using auth0rize.auth.domain.Domain;
 using auth0rize.auth.domain.Primitives;
+using auth0rize.auth.domain.User;
 using MediatR;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace auth0rize.auth.application.Features.Autentication.Queries.Login
@@ -14,11 +17,14 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
         #region Inyeccion
         private readonly IUnitOfWork _unitOfWork;
         private readonly IConfiguration _configuration;
+        private readonly IBackgroundTaskQueue _taskQueue;
+        private readonly ILogger<LoginQueryHandler> _logger;
+        private readonly IServiceProvider _serviceProvider;
         private string? issuer = "";
         private string? symmetricKey = "";
         private int hours = 0;
         string? audience = "";
-        public LoginQueryHandler(IUnitOfWork unitOfWork, IConfiguration configuration)
+        public LoginQueryHandler(IUnitOfWork unitOfWork, IConfiguration configuration, IBackgroundTaskQueue taskQueue, ILogger<LoginQueryHandler> logger, IServiceProvider serviceProvider)
         {
             _unitOfWork = unitOfWork;
             _configuration = configuration;
@@ -26,6 +32,9 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
             audience = Environment.GetEnvironmentVariable(_configuration["security:audience"]!.ToString());
             symmetricKey = Environment.GetEnvironmentVariable(_configuration["security:symmetricKey"]!.ToString());
             hours = Convert.ToInt32(Environment.GetEnvironmentVariable(_configuration["security:hourExpiring"]));
+            _taskQueue = taskQueue;
+            _logger = logger;
+            _serviceProvider = serviceProvider;
         }
         #endregion 
 
@@ -65,8 +74,27 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
                 Avatar = user.Avatar,
                 Domain = domain.Code.ToString()
             });
-            
+
             string token = new JwtSecurityTokenHandler().WriteToken(tokenGenerated);
+
+            _ = _taskQueue.QueueBackgroundWorkItemAsync(async cancellationToken =>
+            {
+                using (var scope = _serviceProvider.CreateScope())
+                {
+                    var notificationRepository = scope.ServiceProvider.GetRequiredService<IUserNotificationRepository>();
+
+                    try
+                    {
+                        _logger.LogInformation($"Enviando correo de registro en segundo plano a: {request.email}");
+                        await notificationRepository.LoginCorrect(request.email);
+                        _logger.LogInformation($"Enviando correo de registro en segundo plano a: {request.email}");
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, $"Error al enviar el correo de registro a: {request.email}");
+                    }
+                }
+            });
 
             response.Success = true;
             response.Message = "Usuario autenticado correctamente.";
