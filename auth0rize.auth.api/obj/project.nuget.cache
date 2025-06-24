@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+PB9eHOsQ44=",
+  "dgSpecHash": "oszdhOEwGK4=",
   "success": true,
-  "projectFilePath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj",
+  "projectFilePath": "H:\\Proyectos propios\\Auth0rize\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Leo\\.nuget\\packages\\asp.versioning.abstractions\\7.0.0\\asp.versioning.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\asp.versioning.http\\7.1.0\\asp.versioning.http.7.1.0.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YUnW1Y9WO/c=",
+  "dgSpecHash": "hfRcIWSs+Rk=",
   "success": true,
-  "projectFilePath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj",
+  "projectFilePath": "H:\\Proyectos propios\\Auth0rize\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Leo\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",

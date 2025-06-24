@@ -2,6 +2,7 @@
 using auth0rize.auth.application.Features.Autentication.Command.Register2fa;
 using auth0rize.auth.application.Features.Autentication.Command.Verification2fa;
 using auth0rize.auth.application.Features.Autentication.Queries.Login;
+using auth0rize.auth.application.Features.User.Queries.UserVerification;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,13 @@ namespace auth0rize.auth.api.Controllers.v1
     [ApiController]
     public class AuthController : BaseApiController
     {
+        [HttpPost("user")]
+        [AllowAnonymous]
+        public async Task<IActionResult> userVerification([FromBody] UserVerificationRequest user)
+        {
+            return Ok(await Mediator.Send(new UserVerification(user.UserName)));
+        }
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> login([FromBody] LoginRequest login)

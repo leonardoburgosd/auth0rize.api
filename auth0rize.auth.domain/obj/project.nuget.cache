@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WqXl3zFy1vM=",
+  "dgSpecHash": "rNfgW4ZcjzU=",
   "success": true,
-  "projectFilePath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
+  "projectFilePath": "H:\\Proyectos propios\\Auth0rize\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -21,3 +21,15 @@ H:\Proyectos propios\auth0rize.api\auth0rize.auth.domain\obj\Debug\net7.0\refint
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.domain\obj\Debug\net7.0\auth0rize.auth.domain.pdb
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.domain\obj\Debug\net7.0\ref\auth0rize.auth.domain.dll
 H:\Proyectos propios\auth0rize.api\auth0rize.auth.domain\obj\Debug\net7.0\auth0rize.auth.domain.sourcelink.json
+H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.domain\bin\Debug\net7.0\auth0rize.auth.domain.deps.json
+H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.domain\bin\Debug\net7.0\auth0rize.auth.domain.dll
+H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.domain\bin\Debug\net7.0\auth0rize.auth.domain.pdb
+H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.domain\obj\Debug\net7.0\auth0rize.auth.domain.GeneratedMSBuildEditorConfig.editorconfig
+H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.domain\obj\Debug\net7.0\auth0rize.auth.domain.AssemblyInfoInputs.cache
+H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.domain\obj\Debug\net7.0\auth0rize.auth.domain.AssemblyInfo.cs
+H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.domain\obj\Debug\net7.0\auth0rize.auth.domain.csproj.CoreCompileInputs.cache
+H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.domain\obj\Debug\net7.0\auth0rize.auth.domain.sourcelink.json
+H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.domain\obj\Debug\net7.0\auth0rize.auth.domain.dll
+H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.domain\obj\Debug\net7.0\refint\auth0rize.auth.domain.dll
+H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.domain\obj\Debug\net7.0\auth0rize.auth.domain.pdb
+H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.domain\obj\Debug\net7.0\ref\auth0rize.auth.domain.dll

@@ -59,6 +59,27 @@
   },
   {
     "ContainingType": "auth0rize.auth.api.Controllers.v1.AuthController",
+    "Method": "userVerification",
+    "RelativePath": "api/v{version}/Auth/user",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "auth0rize.auth.application.Features.User.Queries.UserVerification.UserVerificationRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.AuthController",
     "Method": "Verification2FA",
     "RelativePath": "api/v{version}/Auth/verification-2fa",
     "HttpMethod": "POST",
@@ -107,6 +128,22 @@
         "Type": "auth0rize.auth.application.Features.User.Command.FirstAdminCreate.FirstAdminCreateRequest",
         "IsRequired": true
       },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.UserController",
+    "Method": "verification",
+    "RelativePath": "api/v{version}/User/verification",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
         "Name": "version",
         "Type": "",

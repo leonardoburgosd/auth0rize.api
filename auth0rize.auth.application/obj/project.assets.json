@@ -751,11 +751,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj",
+      "projectUniqueName": "H:\\Proyectos propios\\Auth0rize\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj",
       "projectName": "auth0rize.auth.application",
-      "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj",
+      "projectPath": "H:\\Proyectos propios\\Auth0rize\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj",
       "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-      "outputPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.application\\obj\\",
+      "outputPath": "H:\\Proyectos propios\\Auth0rize\\auth0rize.api\\auth0rize.auth.application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -778,11 +778,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
-              "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
+            "H:\\Proyectos propios\\Auth0rize\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
+              "projectPath": "H:\\Proyectos propios\\Auth0rize\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
             },
-            "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj": {
-              "projectPath": "H:\\Proyectos propios\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj"
+            "H:\\Proyectos propios\\Auth0rize\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj": {
+              "projectPath": "H:\\Proyectos propios\\Auth0rize\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj"
             }
           }
         }
