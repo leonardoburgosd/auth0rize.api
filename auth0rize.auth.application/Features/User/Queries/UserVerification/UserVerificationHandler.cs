@@ -17,11 +17,7 @@ namespace auth0rize.auth.application.Features.User.Queries.UserVerification
         {
             Response<UserVerificationResponse> response = new Response<UserVerificationResponse>();
 
-            var users = await _unitOfWork.Repository<domain.User.User>().QueryWithRelationsAsync<domain.User.User>(
-                entitySql: "SELECT * FROM security.user WHERE isDeleted = false and email = @Email",
-                parameters: new { Email = request.userName },
-                relationsPaths: new string[] { "UsersDomains" }
-            );
+            var users = await _unitOfWork.Repository<domain.User.User>().QueryAsync<domain.User.User>(new Dictionary<string, object> { { "Email", request.userName } }, Schemas.Security);
 
             response.Success = true;
             response.Data = new UserVerificationResponse()

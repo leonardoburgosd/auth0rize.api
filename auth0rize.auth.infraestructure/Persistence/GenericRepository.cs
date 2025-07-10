@@ -11,12 +11,71 @@ namespace auth0rize.auth.infraestructure.Persistence
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
+        #region Inyeccion
         private readonly IDbConnection _connection;
 
         public GenericRepository(IDbConnection connection)
         {
             _connection = connection;
         }
+        #endregion
+
+        public async Task<(IEnumerable<T> data, int totalCount)> QueryPagedAsync<T>(
+                                                                                        Dictionary<string, object> filters = null,
+                                                                                        string orderBy = null,
+                                                                                        bool ascending = true,
+                                                                                        int skip = 0,
+                                                                                        int take = 10,
+                                                                                        bool includeDeleted = false,
+                                                                                        bool useLikeFilter = false,
+                                                                                        string schema = "public"
+                                                                                    ) where T : class, new()
+        {
+            var tableName = GetTableName<T>(schema);
+            var props = typeof(T).GetProperties();
+
+            string whereClause = "WHERE 1=1";
+            DynamicParameters parameters = new DynamicParameters();
+
+            // 🔎 Añadir filtros dinámicos
+            if (filters != null && filters.Count > 0)
+            {
+                foreach (var f in filters)
+                {
+                    var clause = useLikeFilter
+                        ? $"{f.Key} ILIKE @{f.Key}"
+                        : $"{f.Key} = @{f.Key}";
+                    whereClause += $" AND {clause}";
+                    parameters.Add(f.Key, useLikeFilter ? $"%{f.Value}%" : f.Value);
+                }
+            }
+
+            // 🔄 Soft Delete Global
+            var isSoftDelete = props.Any(p => p.Name == "IsDeleted");
+            if (isSoftDelete && !includeDeleted)
+            {
+                whereClause += " AND IsDeleted = false";
+            }
+
+            // 🔠 Orden dinámico
+            string orderClause = !string.IsNullOrEmpty(orderBy)
+                ? $"ORDER BY {orderBy} {(ascending ? "ASC" : "DESC")}"
+                : "ORDER BY Id ASC";
+
+            // ⚡ Paginación
+            string limitClause = $"OFFSET {skip} LIMIT {take}";
+
+            // 🚀 Consulta total
+            var countSql = $"SELECT COUNT(*) FROM {tableName} {whereClause}";
+            var totalCount = await _connection.ExecuteScalarAsync<int>(countSql, parameters);
+
+            // 🚀 Consulta datos
+            var dataSql = $"SELECT * FROM {tableName} {whereClause} {orderClause} {limitClause}";
+            var data = await _connection.QueryAsync<T>(dataSql, parameters);
+
+            return (data, totalCount);
+        }
+
 
         public async Task<int> BulkInsertAsync<T1>(IEnumerable<T1> entities, string schema = "public") where T1 : class, new()
         {
@@ -169,7 +228,6 @@ namespace auth0rize.auth.infraestructure.Persistence
 
             return entities;
         }
-
 
         public async Task<int> UpdateAsync<T1>(T1 entity, string schema = "public") where T1 : class, new()
         {

@@ -2,6 +2,15 @@
 {
     public interface IGenericRepository<T> where T : class
     {
+        Task<(IEnumerable<T> data, int totalCount)> QueryPagedAsync<T>(Dictionary<string, object> filters = null,
+                                                                       string orderBy = null,
+                                                                       bool ascending = true,
+                                                                       int skip = 0,
+                                                                       int take = 10,
+                                                                       bool includeDeleted = false,
+                                                                       bool useLikeFilter = false,
+                                                                       string schema = "public"
+                                                                   ) where T : class, new();
         Task<IEnumerable<T>> QueryWithRelationsAsync<T>(string entitySql, object? parameters = null, params string[] relationsPaths) where T : class, new();
         Task<IEnumerable<T>> QueryAsync<T>(Dictionary<string, object> filters = null, string schema = "public") where T : class, new();
         Task<int> InsertAsync<T>(T entity, string schema = "public") where T : class, new();

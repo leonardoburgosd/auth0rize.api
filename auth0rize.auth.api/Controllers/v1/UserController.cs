@@ -1,6 +1,7 @@
 ﻿using auth0rize.auth.application.Features.User.Command.FirstAdminCreate;
 using auth0rize.auth.application.Features.User.Command.UserCreate;
 using auth0rize.auth.application.Features.User.Command.VerificationUser;
+using auth0rize.auth.application.Features.User.Queries.UserGet;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,14 @@ namespace auth0rize.auth.api.Controllers.v1
         public async Task<IActionResult> verification()
         {
             return Ok(await Mediator.Send(new VerificationUser()));
+        }
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> get(string? search, string? type, bool? deleted, int page = 1, int size = 10)
+        {
+            return Ok(await Mediator.Send(new UserGet(search, type, deleted, page, size)));
         }
     }
 }
