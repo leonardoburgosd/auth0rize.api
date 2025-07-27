@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Features\Domain\**" />
     <Compile Remove="Features\Menu\**" />
-    <EmbeddedResource Remove="Features\Domain\**" />
     <EmbeddedResource Remove="Features\Menu\**" />
-    <None Remove="Features\Domain\**" />
     <None Remove="Features\Menu\**" />
   </ItemGroup>
 

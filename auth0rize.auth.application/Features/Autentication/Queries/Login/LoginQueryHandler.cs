@@ -1,7 +1,6 @@
 ﻿using auth0rize.auth.application.Common.Security;
 using auth0rize.auth.application.Extensions;
 using auth0rize.auth.application.Wrappers;
-using auth0rize.auth.domain.Domain;
 using auth0rize.auth.domain.Primitives;
 using auth0rize.auth.domain.User;
 using MediatR;
@@ -50,11 +49,12 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
 
             if (users.Count() == 0) throw new ApiException("Correo o contraseña incorrecto(s).");
             domain.User.User user = users.First();
-
+            user.LastLogin = DateTime.Now;
             if (!Encrypt.compareHash(request.password, user.PasswordHash, user.PasswordSalt))
                 throw new KeyNotFoundException("Correo o contraseña incorrecto(s).");
 
-            Domain domain = await getDomainByUser(user.UsersDomains.First().DomainId);
+
+            domain.Domain.Domain domain = await getDomainByUser(user.UsersDomains.First().DomainId);
             domain.UserType.UserType type = await getUser(user.TypeId);
 
             JwtSecurityToken tokenGenerated = Encrypt.generateTokenValidation(new TokenParameters()
@@ -82,12 +82,18 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
                 using (var scope = _serviceProvider.CreateScope())
                 {
                     var notificationRepository = scope.ServiceProvider.GetRequiredService<IUserNotificationRepository>();
-
+                    var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
                     try
                     {
+                        _logger.LogInformation($"Actualiza el ultimo logueo correcto del usuario a: {request.email}");
+                        await _unitOfWork.Repository<domain.User.User>().UpdateAsync(user, Schemas.Security);
+                        _logger.LogInformation($"Ultimo logueo correcto del usuario registrado a: {request.email}");
+
                         _logger.LogInformation($"Enviando correo de registro en segundo plano a: {request.email}");
                         await notificationRepository.LoginCorrect(request.email);
                         _logger.LogInformation($"Enviando correo de registro en segundo plano a: {request.email}");
+
+                        
                     }
                     catch (Exception ex)
                     {
@@ -108,7 +114,7 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
             return response;
         }
 
-        private async Task<Domain> getDomainByUser(int domainId)
+        private async Task<domain.Domain.Domain> getDomainByUser(int domainId)
         {
             var domain = await _unitOfWork.Repository<domain.Domain.Domain>().QueryAsync<domain.Domain.Domain>(new Dictionary<string, object> { { "Id", domainId } }, schema: Schemas.Security);
             return domain.First();

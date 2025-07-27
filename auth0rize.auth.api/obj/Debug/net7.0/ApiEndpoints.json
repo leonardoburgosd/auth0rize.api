@@ -95,6 +95,74 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.DomainController",
+    "Method": "Get",
+    "RelativePath": "api/v{version}/Domain",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "state",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "size",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.DomainController",
+    "Method": "Create",
+    "RelativePath": "api/v{version}/Domain",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.TypeController",
+    "Method": "get",
+    "RelativePath": "api/v{version}/Type",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "auth0rize.auth.api.Controllers.v1.UserController",
     "Method": "userRegister",
     "RelativePath": "api/v{version}/User",

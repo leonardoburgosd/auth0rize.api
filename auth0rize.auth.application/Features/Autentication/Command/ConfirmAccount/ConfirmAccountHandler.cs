@@ -6,7 +6,6 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System;
 
 namespace auth0rize.auth.application.Features.Autentication.Command.ConfirmAccount
 {

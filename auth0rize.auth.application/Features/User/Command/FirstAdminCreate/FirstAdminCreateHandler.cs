@@ -1,5 +1,6 @@
 ﻿using auth0rize.auth.application.Common.Security;
 using auth0rize.auth.application.Extensions;
+using auth0rize.auth.application.Features.Domain.Command.DomainCreate;
 using auth0rize.auth.application.Wrappers;
 using auth0rize.auth.domain.Primitives;
 using auth0rize.auth.domain.User;
@@ -21,7 +22,8 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
         private readonly IConfiguration _configuration;
         private string? symmetricKey = "";
         private string? url = "";
-        public FirstAdminCreateHandler(IUnitOfWork unitOfWork, IBackgroundTaskQueue taskQueue, ILogger<FirstAdminCreateHandler> logger, IServiceProvider serviceProvider, IConfiguration configuration)
+        private IMediator _mediator;
+        public FirstAdminCreateHandler(IUnitOfWork unitOfWork, IBackgroundTaskQueue taskQueue, ILogger<FirstAdminCreateHandler> logger, IServiceProvider serviceProvider, IConfiguration configuration, IMediator mediator)
         {
             _unitOfWork = unitOfWork;
             _taskQueue = taskQueue;
@@ -30,6 +32,7 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
             _configuration = configuration;
             symmetricKey = Environment.GetEnvironmentVariable(_configuration["security:symmetricKey"]!.ToString());
             url = Environment.GetEnvironmentVariable(_configuration["notification:url"]!.ToString());
+            _mediator = mediator;
         }
         #endregion 
 
@@ -67,16 +70,22 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
             }, Schemas.Security);
 
             //creo el dominio
-            int idDomain = await _unitOfWork.Repository<domain.Domain.Domain>().InsertAsync(new domain.Domain.Domain()
-            {
-                UserRegistration = idUser
-            }, Schemas.Security);
+            
+            //Pendiente por probar
+            Response<DomainCreateResponse> domain = await _mediator.Send(new DomainCreate(idUser));
+
+            //Pendiente por reemplazar 
+            //int idDomain = await _unitOfWork.Repository<domain.Domain.Domain>().InsertAsync(new domain.Domain.Domain()
+            //{
+            //    UserRegistration = idUser
+            //}, Schemas.Security);
 
             //registro el usuario y el dominio
             await _unitOfWork.Repository<UserDomain>().InsertNonIdAsync(new UserDomain()
             {
                 UserId = idUser,
-                DomainId = idDomain,
+                //DomainId = idDomain,
+                DomainId = domain.Data.Id,
                 RoleId = userTypes.First().Id,
                 UserRegistration = idUser
             }, Schemas.Security);

@@ -40,13 +40,22 @@ namespace auth0rize.auth.infraestructure.Persistence
             // 🔎 Añadir filtros dinámicos
             if (filters != null && filters.Count > 0)
             {
+                // Reemplaza el fragmento seleccionado para que cada filtro sea opcional (permite valores nulos)
                 foreach (var f in filters)
                 {
-                    var clause = useLikeFilter
-                        ? $"{f.Key} ILIKE @{f.Key}"
-                        : $"{f.Key} = @{f.Key}";
-                    whereClause += $" AND {clause}";
-                    parameters.Add(f.Key, useLikeFilter ? $"%{f.Value}%" : f.Value);
+                    if (f.Value != null)
+                    {
+                        var clause = useLikeFilter
+                            ? $"{f.Key} ILIKE @{f.Key}"
+                            : $"{f.Key} = @{f.Key}";
+                        whereClause += $" AND {clause}";
+                        parameters.Add(f.Key, useLikeFilter ? $"%{f.Value}%" : f.Value);
+                    }
+                    //else
+                    //{
+                    //    // Si el valor es null, filtra por IS NULL
+                    //    whereClause += $" AND {f.Key} IS NULL";
+                    //}
                 }
             }
 

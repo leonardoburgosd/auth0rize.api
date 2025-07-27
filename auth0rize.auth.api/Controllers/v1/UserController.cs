@@ -30,14 +30,13 @@ namespace auth0rize.auth.api.Controllers.v1
 
         [HttpGet("verification")]
         [AllowAnonymous]
-        public async Task<IActionResult> verification()
+        public async Task<IActionResult> verification() 
         {
             return Ok(await Mediator.Send(new VerificationUser()));
         }
 
 
         [HttpGet]
-        [AllowAnonymous]
         public async Task<IActionResult> get(string? search, string? type, bool? deleted, int page = 1, int size = 10)
         {
             return Ok(await Mediator.Send(new UserGet(search, type, deleted, page, size)));

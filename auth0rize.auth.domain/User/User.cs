@@ -18,6 +18,7 @@
         public bool IsConfirmed { get; set; } = false;
         public string DoubleFactorActiveCode { get; set; } = "";
 
+        public DateTime? LastLogin { get; set; }
 
         public virtual UserType.UserType UserType { get; set; }
 

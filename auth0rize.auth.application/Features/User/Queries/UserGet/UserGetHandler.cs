@@ -1,4 +1,5 @@
-﻿using auth0rize.auth.application.Wrappers;
+﻿using auth0rize.auth.application.Features.Role.Queries.RoleGet;
+using auth0rize.auth.application.Wrappers;
 using auth0rize.auth.domain.Primitives;
 using MediatR;
 
@@ -8,10 +9,11 @@ namespace auth0rize.auth.application.Features.User.Queries.UserGet
     {
         #region Inyeccion
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IServiceProvider _serviceProvider;
-        public UserGetHandler(IUnitOfWork unitOfWork)
+        private readonly IMediator _mediator;
+        public UserGetHandler(IUnitOfWork unitOfWork, IMediator mediator)
         {
             _unitOfWork = unitOfWork;
+            _mediator = mediator;
         }
         #endregion 
 
@@ -20,13 +22,18 @@ namespace auth0rize.auth.application.Features.User.Queries.UserGet
             Response<UserGetResponse> response = new Response<UserGetResponse>();
 
             var datos = await _unitOfWork.Repository<domain.User.User>().QueryPagedAsync<domain.User.User>(
-                //filters: new Dictionary<string, object> { { "FirstName", "Email" } }, 
+                filters: new Dictionary<string, object> {
+                    { "FirstName", request.search },
+                    { "IsDeleted", request.deleted },
+                    { "TypeId", request.type }
+                },
                 skip: request.page - 1,
                 take: request.size,
                 orderBy: "FirstName",
                 ascending: true,
                 schema: Schemas.Security);
 
+            var types = await _mediator.Send(new TypeGet());
             List<UserListResponse> usersList = new List<UserListResponse>();
             foreach (var item in datos.data)
             {
@@ -36,8 +43,8 @@ namespace auth0rize.auth.application.Features.User.Queries.UserGet
                     Name = item.FirstName + " " + item.LastName,
                     Email = item.Email,
                     Deleted = item.IsDeleted,
-                    //LastLogin = item.?.ToString("yyyy-MM-dd HH:mm:ss") ?? "Never",
-                    Type = item.TypeId.ToString()
+                    LastLogin = item.LastLogin?.ToString("dd-MM-yyyy HH:mm:ss") ?? "Nunca",
+                    Type = types.Data.FirstOrDefault(t => t.Id == item.TypeId).Name ?? "No encontrado"
                 });
             }
 
@@ -47,9 +54,9 @@ namespace auth0rize.auth.application.Features.User.Queries.UserGet
             {
                 Total = usersList.Count(),
                 Page = request.page,
-                Active = datos.data.Where(u => u.IsDeleted == false).Count(),
-                Pending = datos.data.Where(u=> u.IsConfirmed == false || u.IsDeleted == false).Count(),
-                Confirmed = datos.data.Where(u => u.IsConfirmed == true || u.IsDeleted == false).Count(),
+                Active = datos.data.Where(u => u.IsConfirmed == true && u.IsDeleted == false).Count(),
+                Pending = datos.data.Where(u => u.IsConfirmed == false).Count(),
+                Deleted = datos.data.Where(u => u.IsDeleted == true).Count(),
                 Users = usersList
             };
 

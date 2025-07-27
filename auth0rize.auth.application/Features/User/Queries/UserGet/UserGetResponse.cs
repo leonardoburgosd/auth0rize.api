@@ -6,7 +6,7 @@
         public int Page { get; set; }
         public int Active { get; set; }
         public int Pending { get; set; }
-        public int Confirmed { get; set; }
+        public int Deleted { get; set; }
         public List<UserListResponse> Users { get; set; }
     }
 

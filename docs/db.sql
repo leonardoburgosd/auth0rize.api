@@ -48,6 +48,7 @@ CREATE TABLE security.user (
     TypeId               INT          NOT NULL REFERENCES security.UserType(Id),
     IsDoubleFactorActive BOOLEAN      NOT NULL DEFAULT FALSE,
     DoubleFactorActiveCode VARCHAR(20),
+    LastLogin            TIMESTAMP NULL,
     IsConfirmed          BOOLEAN      NOT NULL DEFAULT FALSE,
     RegistrationDate     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     UserRegistration     INT          NOT NULL REFERENCES security.user(Id) DEFERRABLE INITIALLY DEFERRED,

@@ -2,7 +2,6 @@
 using auth0rize.auth.application.Features.Autentication.Command.Register2fa;
 using auth0rize.auth.application.Features.Autentication.Command.Verification2fa;
 using auth0rize.auth.application.Features.Autentication.Queries.Login;
-using auth0rize.auth.application.Features.User.Queries.UserGet;
 using auth0rize.auth.application.Features.User.Queries.UserVerification;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
