@@ -4,5 +4,6 @@
     {
         public static string Default = "public";
         public static string Security = "security";
+        public static string History = "history";
     }
 }

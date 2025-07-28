@@ -3,6 +3,7 @@ using auth0rize.auth.application.Features.Autentication.Command.Register2fa;
 using auth0rize.auth.application.Features.Autentication.Command.Verification2fa;
 using auth0rize.auth.application.Features.Autentication.Queries.Login;
 using auth0rize.auth.application.Features.User.Queries.UserVerification;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,7 @@ namespace auth0rize.auth.api.Controllers.v1
 {
     [Asp.Versioning.ApiVersion("1.0")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AuthController : BaseApiController
     {
         [HttpPost("user")]

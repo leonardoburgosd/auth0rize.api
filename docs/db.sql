@@ -1,6 +1,7 @@
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 CREATE SCHEMA security;
 CREATE SCHEMA organization;
+CREATE SCHEMA history;
 /*
                 TABLAS ESQUEMA SEGURITY
 */
@@ -209,3 +210,14 @@ INSERT INTO security.UserType(Name)
 VALUES('admin')
 INSERT INTO security.UserType(Name) 
 VALUES('user')
+
+/*
+    Registra historial de inicios de sesion o verificacion de usuario
+*/
+CREATE TABLE history.Login (
+    Id SERIAL PRIMARY KEY,
+    Type VARCHAR(150) NOT NULL, -- Puede ser 'Verification user', 'Login', etc.
+    Description VARCHAR(255) NOT NULL,
+    Checked BOOLEAN NOT NULL,
+    RegistrationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+)

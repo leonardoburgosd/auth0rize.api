@@ -1,6 +1,7 @@
 ﻿
 using auth0rize.auth.domain;
 using auth0rize.auth.domain.Primitives;
+using auth0rize.auth.infraestructure.Extensions;
 using Dapper;
 using System.Collections;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,6 +20,102 @@ namespace auth0rize.auth.infraestructure.Persistence
             _connection = connection;
         }
         #endregion
+
+        public async Task<(IEnumerable<T> data, int totalCount)> QueryPagedAsync<T>(
+                                                                                         Dictionary<string, FilterOption> filters = null,
+                                                                                        string orderBy = null,
+                                                                                        bool ascending = true,
+                                                                                        int skip = 0,
+                                                                                        int take = 10,
+                                                                                        bool includeDeleted = false,
+                                                                                        bool useLikeFilter = false,
+                                                                                        string schema = "public"
+                                                                                    ) where T : class, new()
+        {
+            var tableName = GetTableName<T>(schema);
+            var props = typeof(T).GetProperties();
+
+            string whereClause = "WHERE 1=1";
+            DynamicParameters parameters = new DynamicParameters();
+
+            // 🔎 Añadir filtros dinámicos
+            if (filters != null && filters.Count > 0)
+            {
+                foreach (var f in filters)
+                {
+                    var key = f.Key;
+                    var filter = f.Value;
+
+                    if (filter.Value != null ||
+                        filter.Operator == FilterOperator.IsNull ||
+                        filter.Operator == FilterOperator.IsNotNull)
+                    {
+                        string clause = null;
+
+                        switch (filter.Operator)
+                        {
+                            case FilterOperator.Equals:
+                                clause = $"{key} = @{key}";
+                                parameters.Add(key, filter.Value);
+                                break;
+
+                            case FilterOperator.Contains:
+                                clause = $"{key} ILIKE @{key}";
+                                parameters.Add(key, $"%{filter.Value}%");
+                                break;
+
+                            case FilterOperator.StartsWith:
+                                clause = $"{key} ILIKE @{key}";
+                                parameters.Add(key, $"{filter.Value}%");
+                                break;
+
+                            case FilterOperator.EndsWith:
+                                clause = $"{key} ILIKE @{key}";
+                                parameters.Add(key, $"%{filter.Value}");
+                                break;
+
+                            case FilterOperator.IsNull:
+                                clause = $"{key} IS NULL";
+                                break;
+
+                            case FilterOperator.IsNotNull:
+                                clause = $"{key} IS NOT NULL";
+                                break;
+                        }
+
+                        if (clause != null)
+                            whereClause += $" AND {clause}";
+                    }
+                }
+            }
+
+
+            // 🔄 Soft Delete Global
+            var isSoftDelete = props.Any(p => p.Name == "IsDeleted");
+            if (isSoftDelete && !includeDeleted)
+            {
+                whereClause += " AND IsDeleted = false";
+            }
+
+            // 🔠 Orden dinámico
+            string orderClause = !string.IsNullOrEmpty(orderBy)
+                ? $"ORDER BY {orderBy} {(ascending ? "ASC" : "DESC")}"
+                : "ORDER BY Id ASC";
+
+            // ⚡ Paginación
+            string limitClause = $"OFFSET {skip} LIMIT {take}";
+
+            // 🚀 Consulta total
+            var countSql = $"SELECT COUNT(*) FROM {tableName} {whereClause}";
+            var totalCount = await _connection.ExecuteScalarAsync<int>(countSql, parameters);
+
+            // 🚀 Consulta datos
+            var dataSql = $"SELECT * FROM {tableName} {whereClause} {orderClause} {limitClause}";
+            var data = await _connection.QueryAsync<T>(dataSql, parameters);
+
+            return (data, totalCount);
+        }
+
 
         public async Task<(IEnumerable<T> data, int totalCount)> QueryPagedAsync<T>(
                                                                                         Dictionary<string, object> filters = null,

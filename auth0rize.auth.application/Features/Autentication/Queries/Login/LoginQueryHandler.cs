@@ -1,6 +1,7 @@
 ﻿using auth0rize.auth.application.Common.Security;
 using auth0rize.auth.application.Extensions;
 using auth0rize.auth.application.Wrappers;
+using auth0rize.auth.domain.Login;
 using auth0rize.auth.domain.Primitives;
 using auth0rize.auth.domain.User;
 using MediatR;
@@ -47,11 +48,18 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
                     relationsPaths: new string[] { "UsersDomains" }
             );
 
-            if (users.Count() == 0) throw new ApiException("Correo o contraseña incorrecto(s).");
+            if (users.Count() == 0)
+            {
+                EnqueueUsernameNonExist(request.email);
+                throw new ApiException("Correo o contraseña incorrecto(s).");
+            }
             domain.User.User user = users.First();
             user.LastLogin = DateTime.Now;
             if (!Encrypt.compareHash(request.password, user.PasswordHash, user.PasswordSalt))
+            {
+                EnqueuePasswordIncorrect(request.email);
                 throw new KeyNotFoundException("Correo o contraseña incorrecto(s).");
+            }
 
 
             domain.Domain.Domain domain = await getDomainByUser(user.UsersDomains.First().DomainId);
@@ -77,30 +85,7 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
 
             string token = new JwtSecurityTokenHandler().WriteToken(tokenGenerated);
 
-            _ = _taskQueue.QueueBackgroundWorkItemAsync(async cancellationToken =>
-            {
-                using (var scope = _serviceProvider.CreateScope())
-                {
-                    var notificationRepository = scope.ServiceProvider.GetRequiredService<IUserNotificationRepository>();
-                    var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                    try
-                    {
-                        _logger.LogInformation($"Actualiza el ultimo logueo correcto del usuario a: {request.email}");
-                        await _unitOfWork.Repository<domain.User.User>().UpdateAsync(user, Schemas.Security);
-                        _logger.LogInformation($"Ultimo logueo correcto del usuario registrado a: {request.email}");
-
-                        _logger.LogInformation($"Enviando correo de registro en segundo plano a: {request.email}");
-                        await notificationRepository.LoginCorrect(request.email);
-                        _logger.LogInformation($"Enviando correo de registro en segundo plano a: {request.email}");
-
-                        
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.LogError(ex, $"Error al enviar el correo de registro a: {request.email}");
-                    }
-                }
-            });
+            EnqueueNotification(request.email, user);
 
             response.Success = true;
             response.Message = "Usuario autenticado correctamente.";
@@ -114,6 +99,101 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
             return response;
         }
 
+        #region Background service
+
+        private void EnqueueUsernameNonExist(string username)
+        {
+            _taskQueue.QueueBackgroundWorkItemAsync(async token =>
+            {
+                using var scope = _serviceProvider.CreateScope();
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                var logger = scope.ServiceProvider.GetRequiredService<ILogger<LoginQueryHandler>>();
+
+                try
+                {
+                    logger.LogInformation($"Registra el historial de username: {username}");
+                    var login = new domain.Login.Login
+                    {
+                        Checked = false,
+                        Description = $"Usuario no encontrado: {username}",
+                        Type = LoginHistoryType.VerificacionUser
+                    };
+
+                    await unitOfWork.Repository<domain.Login.Login>().InsertNonIdAsync(login, Schemas.History);
+                    logger.LogInformation($"Registrado el historial de username: {username}");
+                }
+                catch (Exception ex)
+                {
+                    logger.LogError(ex, $"Error al verificar el username: {username}");
+                }
+            });
+        }
+
+        private void EnqueuePasswordIncorrect(string username)
+        {
+            _taskQueue.QueueBackgroundWorkItemAsync(async token =>
+            {
+                using var scope = _serviceProvider.CreateScope();
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+                var logger = scope.ServiceProvider.GetRequiredService<ILogger<LoginQueryHandler>>();
+
+                try
+                {
+                    logger.LogInformation($"Registra el historial de contraseña incorrecta: {username}");
+                    var login = new domain.Login.Login
+                    {
+                        Checked = false,
+                        Description = $"Contraseña incorrecta para usuario: {username}",
+                        Type = LoginHistoryType.VerificacionUser
+                    };
+
+                    await unitOfWork.Repository<domain.Login.Login>().InsertNonIdAsync(login, Schemas.History);
+                    logger.LogInformation($"Registro de contraseña incorrecta guardado: {username}");
+                }
+                catch (Exception ex)
+                {
+                    logger.LogError(ex, $"Error al registrar contraseña incorrecta para: {username}");
+                }
+            });
+        }
+
+        private void EnqueueNotification(string email, domain.User.User user)
+        {
+            _taskQueue.QueueBackgroundWorkItemAsync(async token =>
+            {
+                using var scope = _serviceProvider.CreateScope();
+                var logger = scope.ServiceProvider.GetRequiredService<ILogger<LoginQueryHandler>>();
+                var notificationRepository = scope.ServiceProvider.GetRequiredService<IUserNotificationRepository>();
+                var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+
+                try
+                {
+                    logger.LogInformation($"Actualiza el último logueo del usuario: {email}");
+                    await unitOfWork.Repository<domain.User.User>().UpdateAsync(user, Schemas.Security);
+
+                    logger.LogInformation($"Enviando correo de registro a: {email}");
+                    await notificationRepository.LoginCorrect(email);
+
+                    logger.LogInformation($"Registrando historial de login: {email}");
+                    var login = new domain.Login.Login
+                    {
+                        Checked = true,
+                        Description = $"Login correcto de usuario: {email}",
+                        Type = LoginHistoryType.Login
+                    };
+
+                    await unitOfWork.Repository<domain.Login.Login>().InsertNonIdAsync(login, Schemas.History);
+                    logger.LogInformation($"Historial de login registrado: {email}");
+                }
+                catch (Exception ex)
+                {
+                    logger.LogError(ex, $"Error en la notificación de login para: {email}");
+                }
+            });
+        }
+
+        #endregion
+        
         private async Task<domain.Domain.Domain> getDomainByUser(int domainId)
         {
             var domain = await _unitOfWork.Repository<domain.Domain.Domain>().QueryAsync<domain.Domain.Domain>(new Dictionary<string, object> { { "Id", domainId } }, schema: Schemas.Security);

@@ -1,6 +1,8 @@
-﻿using auth0rize.auth.application.Wrappers;
+﻿using auth0rize.auth.application.Extensions;
+using auth0rize.auth.application.Wrappers;
 using auth0rize.auth.domain.Primitives;
 using MediatR;
+using System.Text.RegularExpressions;
 
 namespace auth0rize.auth.application.Features.Domain.Queries.DomainGet
 {
@@ -20,10 +22,17 @@ namespace auth0rize.auth.application.Features.Domain.Queries.DomainGet
         {
             Response<DomainGetResponse> response = new Response<DomainGetResponse>();
 
+            if (request.search is not null)
+            {
+                bool isValid = Regex.IsMatch(request.search, @"^[a-fA-F0-9]{8}\-[a-fA-F0-9]{4}\-[a-fA-F0-9]{4}\-[a-fA-F0-9]{4}\-[a-fA-F0-9]{12}$");
+                if (!isValid) throw new ApiException("El formato de código tiene al menos 32 caracteres.");
+            }
+
             var domain = await _unitOfWork.Repository<domain.Domain.Domain>().QueryPagedAsync<domain.Domain.Domain>(
-                filters: new Dictionary<string, object> {
-                    { "Code", request.search is not null ? new Guid(request.search) : null },
-                    { "IsDeleted", request.state is not null ? (request.state.Equals("active") ? false : true) : null }
+                filters: new Dictionary<string, FilterOption>
+                {
+                    ["Code"] = new FilterOption { Value = request.search is not null ? new Guid(request.search) : null, Operator = FilterOperator.Equals },
+                    ["IsDeleted"] = new FilterOption { Value = request.state is not null ? (request.state.Equals("active") ? false : true) : null, Operator = FilterOperator.Equals }
                 },
                 skip: request.page - 1,
                 take: request.size,

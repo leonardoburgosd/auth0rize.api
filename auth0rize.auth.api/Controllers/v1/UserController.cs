@@ -24,7 +24,12 @@ namespace auth0rize.auth.api.Controllers.v1
         [HttpPost]
         public async Task<IActionResult> userRegister([FromBody] UserCreateRequest user)
         {
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "user_id");
             int userId = 0;
+            if (userIdClaim != null && int.TryParse(userIdClaim.Value, out int parsedId))
+            {
+                userId = parsedId;
+            }
             return Ok(await Mediator.Send(new UserCreate(user.Name, user.MotherLastName, user.LastName, user.UserName, user.Email, user.Password, user.TypeUserId, user.DomainId, userId)));
         }
 
@@ -34,7 +39,6 @@ namespace auth0rize.auth.api.Controllers.v1
         {
             return Ok(await Mediator.Send(new VerificationUser()));
         }
-
 
         [HttpGet]
         public async Task<IActionResult> get(string? search, string? type, bool? deleted, int page = 1, int size = 10)

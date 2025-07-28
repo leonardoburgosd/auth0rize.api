@@ -2,6 +2,16 @@
 {
     public interface IGenericRepository<T> where T : class
     {
+        Task<(IEnumerable<T> data, int totalCount)> QueryPagedAsync<T>(
+                                                                                         Dictionary<string, FilterOption> filters = null,
+                                                                                        string orderBy = null,
+                                                                                        bool ascending = true,
+                                                                                        int skip = 0,
+                                                                                        int take = 10,
+                                                                                        bool includeDeleted = false,
+                                                                                        bool useLikeFilter = false,
+                                                                                        string schema = "public"
+                                                                                    ) where T : class, new();
         Task<(IEnumerable<T> data, int totalCount)> QueryPagedAsync<T>(Dictionary<string, object> filters = null,
                                                                        string orderBy = null,
                                                                        bool ascending = true,
