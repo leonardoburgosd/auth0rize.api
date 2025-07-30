@@ -11,6 +11,7 @@ namespace auth0rize.auth.application.Features.User.Queries.UserVerification
 {
     internal class UserVerificationHandler : IRequestHandler<UserVerification, Response<UserVerificationResponse>>
     {
+        #region Inyeccion
         private readonly IUnitOfWork _unitOfWork;
         private readonly IBackgroundTaskQueue _taskQueue;
         private readonly IServiceProvider _serviceProvider;
@@ -22,6 +23,7 @@ namespace auth0rize.auth.application.Features.User.Queries.UserVerification
             _serviceProvider = serviceProvider;
             _logger = logger;
         }
+        #endregion
 
         public async Task<Response<UserVerificationResponse>> Handle(UserVerification request, CancellationToken cancellationToken)
         {
@@ -59,10 +61,12 @@ namespace auth0rize.auth.application.Features.User.Queries.UserVerification
                 try
                 {
                     _logger.LogInformation($"Registra la verificacion del username: {username}");
-                    domain.Login.Login login = new domain.Login.Login();
-                    login.Checked = false;
-                    login.Description = $"Verificacion incorrecta de usuario: {username}";
-                    login.Type = LoginHistoryType.VerificacionUser;
+                    domain.Login.Login login = new domain.Login.Login() {
+                        Checked = false,
+                        Description = $"Verificacion incorrecta de usuario: {username}",
+                        Type = LoginHistoryType.VerificacionUser,
+                        UserName = username,
+                    };
                     await unitOfWork.Repository<domain.Login.Login>().InsertNonIdAsync(login, Schemas.History);
                     _logger.LogInformation($"Enviando correo de registro en segundo plano a: {username}");
                 }
@@ -83,10 +87,13 @@ namespace auth0rize.auth.application.Features.User.Queries.UserVerification
                     try
                     {
                         _logger.LogInformation($"Registra la verificacion del username: {username}");
-                        domain.Login.Login login = new domain.Login.Login();
-                        login.Checked = true;
-                        login.Description = $"Verificacion correcta de usuario: {username}";
-                        login.Type = LoginHistoryType.VerificacionUser;
+                        domain.Login.Login login = new domain.Login.Login()
+                        {
+                            Checked = true,
+                            Description = $"Verificacion correcta de usuario: {username}",
+                            Type = LoginHistoryType.VerificacionUser,
+                            UserName = username,
+                        };
                         await unitOfWork.Repository<domain.Login.Login>().InsertNonIdAsync(login, Schemas.History);
                         _logger.LogInformation($"Enviando correo de registro en segundo plano a: {username}");
                     }

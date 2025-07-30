@@ -116,7 +116,8 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
                     {
                         Checked = false,
                         Description = $"Usuario no encontrado: {username}",
-                        Type = LoginHistoryType.VerificacionUser
+                        Type = LoginHistoryType.VerificacionUser,
+                        UserName = username
                     };
 
                     await unitOfWork.Repository<domain.Login.Login>().InsertNonIdAsync(login, Schemas.History);
@@ -144,7 +145,8 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
                     {
                         Checked = false,
                         Description = $"Contraseña incorrecta para usuario: {username}",
-                        Type = LoginHistoryType.VerificacionUser
+                        Type = LoginHistoryType.VerificacionUser,
+                        UserName = username
                     };
 
                     await unitOfWork.Repository<domain.Login.Login>().InsertNonIdAsync(login, Schemas.History);
@@ -179,7 +181,8 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
                     {
                         Checked = true,
                         Description = $"Login correcto de usuario: {email}",
-                        Type = LoginHistoryType.Login
+                        Type = LoginHistoryType.Login,
+                        UserName = email
                     };
 
                     await unitOfWork.Repository<domain.Login.Login>().InsertNonIdAsync(login, Schemas.History);
@@ -193,7 +196,7 @@ namespace auth0rize.auth.application.Features.Autentication.Queries.Login
         }
 
         #endregion
-        
+
         private async Task<domain.Domain.Domain> getDomainByUser(int domainId)
         {
             var domain = await _unitOfWork.Repository<domain.Domain.Domain>().QueryAsync<domain.Domain.Domain>(new Dictionary<string, object> { { "Id", domainId } }, schema: Schemas.Security);

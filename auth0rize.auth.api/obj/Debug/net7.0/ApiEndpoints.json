@@ -95,6 +95,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "auth0rize.auth.api.Controllers.v1.DashboardController",
+    "Method": "counter",
+    "RelativePath": "api/v{version}/Dashboard/counter",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "auth0rize.auth.api.Controllers.v1.DomainController",
     "Method": "Get",
     "RelativePath": "api/v{version}/Domain",
