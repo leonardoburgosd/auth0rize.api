@@ -40,7 +40,8 @@ namespace auth0rize.auth.application.Features.User.Queries.UserGet
                 usersList.Add(new UserListResponse()
                 {
                     Id = item.Id,
-                    Name = item.FirstName + " " + item.LastName,
+                    Name = $"{item.FirstName} {item.LastName}",
+                    Initial = $"{item.FirstName.Substring(0, 1).ToUpper()} {item.LastName.Substring(0, 1).ToUpper()}",
                     Email = item.Email,
                     Deleted = item.IsDeleted,
                     LastLogin = item.LastLogin?.ToString("dd-MM-yyyy HH:mm:ss") ?? "Nunca",

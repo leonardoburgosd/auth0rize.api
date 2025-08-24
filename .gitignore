@@ -49,3 +49,5 @@ Thumbs.db
 /firebase.json
 /.firebaserc
 /functions
+
+/.vs

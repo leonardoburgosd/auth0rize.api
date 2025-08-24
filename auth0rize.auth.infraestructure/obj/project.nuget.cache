@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Q3UOf1B3kYA=",
+  "dgSpecHash": "aA3/H6rZFbM=",
   "success": true,
-  "projectFilePath": "H:\\Proyectos propios\\Auth0rize\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj",
+  "projectFilePath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Leo\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",

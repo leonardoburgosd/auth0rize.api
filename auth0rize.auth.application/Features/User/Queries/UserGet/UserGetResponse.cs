@@ -18,5 +18,6 @@
         public bool Deleted { get; set; }
         public string LastLogin { get; set; }
         public string Type { get; set; }
+        public string Initial { get; set; }
     }
 }

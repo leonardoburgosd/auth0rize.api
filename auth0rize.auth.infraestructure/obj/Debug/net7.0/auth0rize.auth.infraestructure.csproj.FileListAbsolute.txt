@@ -45,3 +45,19 @@ H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.infraestructure\obj\
 H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\refint\auth0rize.auth.infraestructure.dll
 H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.pdb
 H:\Proyectos propios\Auth0rize\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\ref\auth0rize.auth.infraestructure.dll
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\bin\Debug\net7.0\auth0rize.auth.infraestructure.deps.json
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\bin\Debug\net7.0\auth0rize.auth.infraestructure.dll
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\bin\Debug\net7.0\auth0rize.auth.infraestructure.pdb
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\bin\Debug\net7.0\auth0rize.auth.domain.dll
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\bin\Debug\net7.0\auth0rize.auth.domain.pdb
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.csproj.AssemblyReference.cache
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.AssemblyInfoInputs.cache
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.AssemblyInfo.cs
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.csproj.CoreCompileInputs.cache
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.sourcelink.json
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0riz.A1D87B74.Up2Date
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.dll
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\refint\auth0rize.auth.infraestructure.dll
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\auth0rize.auth.infraestructure.pdb
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.infraestructure\obj\Debug\net7.0\ref\auth0rize.auth.infraestructure.dll
