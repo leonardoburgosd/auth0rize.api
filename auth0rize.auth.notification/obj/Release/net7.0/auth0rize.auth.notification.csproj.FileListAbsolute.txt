@@ -1,0 +1,16 @@
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\bin\Release\net7.0\auth0rize.auth.notification.deps.json
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\bin\Release\net7.0\auth0rize.auth.notification.dll
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\bin\Release\net7.0\auth0rize.auth.notification.pdb
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\bin\Release\net7.0\auth0rize.auth.domain.dll
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\bin\Release\net7.0\auth0rize.auth.domain.pdb
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\obj\Release\net7.0\auth0rize.auth.notification.csproj.AssemblyReference.cache
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\obj\Release\net7.0\auth0rize.auth.notification.GeneratedMSBuildEditorConfig.editorconfig
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\obj\Release\net7.0\auth0rize.auth.notification.AssemblyInfoInputs.cache
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\obj\Release\net7.0\auth0rize.auth.notification.AssemblyInfo.cs
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\obj\Release\net7.0\auth0rize.auth.notification.csproj.CoreCompileInputs.cache
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\obj\Release\net7.0\auth0rize.auth.notification.sourcelink.json
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\obj\Release\net7.0\auth0riz.F6C3E8D3.Up2Date
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\obj\Release\net7.0\auth0rize.auth.notification.dll
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\obj\Release\net7.0\refint\auth0rize.auth.notification.dll
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\obj\Release\net7.0\auth0rize.auth.notification.pdb
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.notification\obj\Release\net7.0\ref\auth0rize.auth.notification.dll
