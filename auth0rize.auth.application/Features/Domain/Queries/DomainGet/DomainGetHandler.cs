@@ -57,8 +57,17 @@ namespace auth0rize.auth.application.Features.Domain.Queries.DomainGet
                     PrincipalEmail = users.FirstOrDefault(u => u.Id == d.UserRegistration)?.Email ?? "No encontrado",
                     PrincipalName = users.FirstOrDefault(u => u.Id == d.UserRegistration)?.FirstName + " " + users.FirstOrDefault(u => u.Id == d.UserRegistration)?.LastName
                                     ?? "No encontrado",
+                    Initial = users.FirstOrDefault(u => u.Id == d.UserRegistration)?.FirstName.Substring(0, 1).ToUpper() + users.FirstOrDefault(u => u.Id == d.UserRegistration)?.LastName.Substring(0, 1).ToUpper()
+                                    ?? "No encontrado",
                     Count = usersDomain.Where(ud => ud.DomainId == d.Id).Count(),
                     IsActive = !d.IsDeleted,
+                    Users = usersDomain.Where(u => u.UserId != d.UserRegistration && !u.IsDeleted)
+                                        .Select(u => new DomainUsersResponse()
+                                        {
+                                            Id = u.UserId,
+                                            Email = users.Where(us => us.Id == u.UserId).FirstOrDefault().Email ?? "",
+                                            Name = $"{users.Where(us => us.Id == u.UserId).FirstOrDefault().FirstName ?? ""} {users.Where(us => us.Id == u.UserId).FirstOrDefault().LastName ?? ""}"
+                                        }).ToList()
                 }).ToList()
             };
 

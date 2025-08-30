@@ -1,0 +1,12 @@
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.domain\bin\Release\net7.0\auth0rize.auth.domain.deps.json
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.domain\bin\Release\net7.0\auth0rize.auth.domain.dll
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.domain\bin\Release\net7.0\auth0rize.auth.domain.pdb
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.domain\obj\Release\net7.0\auth0rize.auth.domain.GeneratedMSBuildEditorConfig.editorconfig
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.domain\obj\Release\net7.0\auth0rize.auth.domain.AssemblyInfoInputs.cache
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.domain\obj\Release\net7.0\auth0rize.auth.domain.AssemblyInfo.cs
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.domain\obj\Release\net7.0\auth0rize.auth.domain.csproj.CoreCompileInputs.cache
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.domain\obj\Release\net7.0\auth0rize.auth.domain.sourcelink.json
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.domain\obj\Release\net7.0\auth0rize.auth.domain.dll
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.domain\obj\Release\net7.0\refint\auth0rize.auth.domain.dll
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.domain\obj\Release\net7.0\auth0rize.auth.domain.pdb
+H:\ALIBASE\AUTH0RIZE\auth0rize.api\auth0rize.auth.domain\obj\Release\net7.0\ref\auth0rize.auth.domain.dll
