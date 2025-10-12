@@ -52,7 +52,7 @@ CREATE TABLE security.user (
     LastLogin            TIMESTAMP NULL,
     IsConfirmed          BOOLEAN      NOT NULL DEFAULT FALSE,
     RegistrationDate     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    UserRegistration     INT          NOT NULL REFERENCES security.user(Id) DEFERRABLE INITIALLY DEFERRED,
+    UserRegistration     INT          NULL REFERENCES security.user(Id) DEFERRABLE INITIALLY DEFERRED,
     DateUpdate           TIMESTAMP,
     UserUpdate           INT          REFERENCES security.user(Id),
     DateDeleted          TIMESTAMP,

@@ -2,6 +2,8 @@
 using auth0rize.auth.application.Features.User.Command.UserCreate;
 using auth0rize.auth.application.Features.User.Command.VerificationUser;
 using auth0rize.auth.application.Features.User.Queries.UserGet;
+using auth0rize.auth.application.Features.User.Queries.UserNameVerification;
+using auth0rize.auth.application.Features.User.Queries.UserVerification;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -40,10 +42,17 @@ namespace auth0rize.auth.api.Controllers.v1
             return Ok(await Mediator.Send(new VerificationUser()));
         }
 
+        [HttpGet("verification/{userName}")]
+        public async Task<IActionResult> verificationUserName(string userName)
+        {
+            return Ok(await Mediator.Send(new UserNameVerification(userName)));
+        }
+
         [HttpGet]
         public async Task<IActionResult> get(string? search, string? type, bool? deleted, int page = 1, int size = 10)
         {
             return Ok(await Mediator.Send(new UserGet(search, type, deleted, page, size)));
         }
+
     }
 }

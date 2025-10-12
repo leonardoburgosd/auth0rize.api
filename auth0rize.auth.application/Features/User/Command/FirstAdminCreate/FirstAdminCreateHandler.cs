@@ -66,11 +66,9 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
                 PasswordSalt = generate.salt,
 
                 TypeId = userTypes.First().Id,
-                UserRegistration = 0
             }, Schemas.Security);
 
             //creo el dominio
-            
             //Pendiente por probar
             Response<DomainCreateResponse> domain = await _mediator.Send(new DomainCreate(idUser));
 
@@ -102,7 +100,7 @@ namespace auth0rize.auth.application.Features.User.Command.FirstAdminCreate
                     try
                     {
                         _logger.LogInformation($"Enviando correo de registro en segundo plano a: {request.email}");
-                        await notificationRepository.Registration(url + guidCode.ToString(), request.email);
+                        await notificationRepository.Registration(url +"/"+ guidCode.ToString(), request.email);
                         _logger.LogInformation($"Correo de registro enviado a: {request.email}");
 
                         _logger.LogInformation($"Registro de confirmacion: {request.email}");

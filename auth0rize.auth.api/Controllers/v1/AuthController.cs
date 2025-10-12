@@ -46,5 +46,6 @@ namespace auth0rize.auth.api.Controllers.v1
             return Ok(await Mediator.Send(new Verification2fa()));
         }
 
+        
     }
 }

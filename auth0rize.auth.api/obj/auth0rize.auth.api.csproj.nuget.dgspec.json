@@ -1,21 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj": {}
+    "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj": {}
   },
   "projects": {
-    "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj": {
+    "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj",
+        "projectUniqueName": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj",
         "projectName": "auth0rize.auth.api",
-        "projectPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj",
+        "projectPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.api\\auth0rize.auth.api.csproj",
         "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-        "outputPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.api\\obj\\",
+        "outputPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,24 +26,23 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj": {
-                "projectPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj"
+              "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj": {
+                "projectPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj"
               },
-              "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
-                "projectPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
+              "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
+                "projectPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
               },
-              "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj": {
-                "projectPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj"
+              "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj": {
+                "projectPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj"
               },
-              "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj": {
-                "projectPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj"
+              "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj": {
+                "projectPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj"
               }
             }
           }
@@ -119,22 +117,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj": {
+    "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj",
+        "projectUniqueName": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj",
         "projectName": "auth0rize.auth.application",
-        "projectPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj",
+        "projectPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.application\\auth0rize.auth.application.csproj",
         "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-        "outputPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.application\\obj\\",
+        "outputPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -146,18 +143,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
-                "projectPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
+              "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
+                "projectPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
               },
-              "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj": {
-                "projectPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj"
+              "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj": {
+                "projectPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj"
               }
             }
           }
@@ -215,22 +211,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
+    "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
+        "projectUniqueName": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
         "projectName": "auth0rize.auth.domain",
-        "projectPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
+        "projectPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
         "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-        "outputPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\obj\\",
+        "outputPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -242,7 +237,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -282,22 +276,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj": {
+    "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj",
+        "projectUniqueName": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj",
         "projectName": "auth0rize.auth.infraestructure",
-        "projectPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj",
+        "projectPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.infraestructure\\auth0rize.auth.infraestructure.csproj",
         "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-        "outputPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.infraestructure\\obj\\",
+        "outputPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.infraestructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -309,15 +302,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
-                "projectPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
+              "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
+                "projectPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
               }
             }
           }
@@ -371,22 +363,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj": {
+    "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj",
+        "projectUniqueName": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj",
         "projectName": "auth0rize.auth.notification",
-        "projectPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj",
+        "projectPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.notification\\auth0rize.auth.notification.csproj",
         "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-        "outputPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.notification\\obj\\",
+        "outputPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.notification\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -398,15 +389,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
-                "projectPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
+              "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
+                "projectPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj"
               }
             }
           }
@@ -460,7 +450,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\RuntimeIdentifierGraph.json"
         }
       }
     }
