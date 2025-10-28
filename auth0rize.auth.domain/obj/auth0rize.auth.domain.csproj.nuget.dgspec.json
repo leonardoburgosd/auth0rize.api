@@ -1,20 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {}
+    "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
+    "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
+        "projectUniqueName": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
         "projectName": "auth0rize.auth.domain",
-        "projectPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
+        "projectPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\auth0rize.auth.domain.csproj",
         "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Leo\\Documents\\Github\\Propio\\auth0rize.api\\auth0rize.auth.domain\\obj\\",
+        "outputPath": "H:\\ALIBASE\\AUTH0RIZE\\auth0rize.api\\auth0rize.auth.domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -26,6 +27,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -65,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }
