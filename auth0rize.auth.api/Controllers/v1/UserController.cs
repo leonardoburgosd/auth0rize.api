@@ -3,6 +3,7 @@ using auth0rize.auth.application.Features.User.Command.UserCreate;
 using auth0rize.auth.application.Features.User.Command.VerificationAccount;
 using auth0rize.auth.application.Features.User.Command.VerificationUser;
 using auth0rize.auth.application.Features.User.Queries.UserGet;
+using auth0rize.auth.application.Features.User.Queries.UserGetById;
 using auth0rize.auth.application.Features.User.Queries.UserNameVerification;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -62,5 +63,10 @@ namespace auth0rize.auth.api.Controllers.v1
             return Ok(await Mediator.Send(new UserGet(search, type, deleted, page, size)));
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> getById(int id)
+        {
+            return Ok(await Mediator.Send(new UserGetById(id)));
+        }
     }
 }
