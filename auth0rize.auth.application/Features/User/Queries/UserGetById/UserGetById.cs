@@ -1,4 +1,5 @@
-﻿using auth0rize.auth.application.Wrappers;
+﻿using auth0rize.auth.application.Features.User.Queries.UserGet;
+using auth0rize.auth.application.Wrappers;
 using MediatR;
 
 namespace auth0rize.auth.application.Features.User.Queries.UserGetById

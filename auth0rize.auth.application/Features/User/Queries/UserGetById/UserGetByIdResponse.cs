@@ -1,14 +1,14 @@
-﻿using auth0rize.auth.application.Features.User.Queries.UserGet;
-
-namespace auth0rize.auth.application.Features.User.Queries.UserGetById
+﻿namespace auth0rize.auth.application.Features.User.Queries.UserGetById
 {
     public class UserGetByIdResponse
     {
-        public int Total { get; set; }
-        public int Page { get; set; }
-        public int Active { get; set; }
-        public int Pending { get; set; }
-        public int Deleted { get; set; }
-        public List<UserListResponse> Users { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MotherLastName { get; set; }
+        public string Email { get; set; }
+        public bool Deleted { get; set; }
+        public string LastLogin { get; set; }
+        public int TypeId { get; set; }
     }
 }

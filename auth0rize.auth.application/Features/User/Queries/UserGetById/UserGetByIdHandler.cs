@@ -1,4 +1,5 @@
-﻿using auth0rize.auth.application.Wrappers;
+﻿using auth0rize.auth.application.Features.User.Queries.UserGet;
+using auth0rize.auth.application.Wrappers;
 using auth0rize.auth.domain.Primitives;
 using MediatR;
 
@@ -25,8 +26,24 @@ namespace auth0rize.auth.application.Features.User.Queries.UserGetById
                     { "id", request.id}
                 }
                 );
-            if(datos.Count() == 0) 
-            
+            if (datos.Count() == 0)
+            {
+                response.Message = "Usuario no encontrado.";
+                response.Success = false;
+                return response;
+            }
+
+            response.Data = new UserGetByIdResponse()
+            {
+                Id = datos.First().Id,
+                Email = datos.First().Email,
+                LastLogin = datos.First().LastLogin.ToString(),
+                FirstName = datos.First().FirstName,
+                LastName = datos.First().LastName,
+                MotherLastName = datos.First().MotherLastName,
+                Deleted = datos.First().IsDeleted,
+                TypeId = datos.First().TypeId
+            };
 
             return response;
         }
