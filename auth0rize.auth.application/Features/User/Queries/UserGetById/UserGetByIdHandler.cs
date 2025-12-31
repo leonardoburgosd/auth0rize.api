@@ -45,6 +45,8 @@ namespace auth0rize.auth.application.Features.User.Queries.UserGetById
                 Deleted = datos.First().IsDeleted,
                 TypeId = datos.First().TypeId
             };
+            response.Success = true;
+            response.Message = "Usuario encontrado.";
 
             return response;
         }
