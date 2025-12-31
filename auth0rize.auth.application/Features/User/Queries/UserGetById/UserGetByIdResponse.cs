@@ -10,5 +10,6 @@
         public bool Deleted { get; set; }
         public string LastLogin { get; set; }
         public int TypeId { get; set; }
+        public string UserName { get; set; }
     }
 }

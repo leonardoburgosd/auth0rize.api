@@ -43,7 +43,8 @@ namespace auth0rize.auth.application.Features.User.Queries.UserGetById
                 LastName = datos.First().LastName,
                 MotherLastName = datos.First().MotherLastName,
                 Deleted = datos.First().IsDeleted,
-                TypeId = datos.First().TypeId
+                TypeId = datos.First().TypeId,
+                UserName = datos.First().UserName,
             };
             response.Success = true;
             response.Message = "Usuario encontrado.";
