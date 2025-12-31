@@ -24,7 +24,8 @@ namespace auth0rize.auth.application.Features.User.Queries.UserGetById
                 filters: new Dictionary<string, object>
                 {
                     { "id", request.id}
-                }
+                },
+                schema: Schemas.Security
                 );
             if (datos.Count() == 0)
             {
