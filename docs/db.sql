@@ -52,7 +52,7 @@ CREATE TABLE security.user (
     LastLogin            TIMESTAMP NULL,
     IsConfirmed          BOOLEAN      NOT NULL DEFAULT FALSE,
     RegistrationDate     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    UserRegistration     INT          NOT NULL REFERENCES security.user(Id) DEFERRABLE INITIALLY DEFERRED,
+    UserRegistration     INT          REFERENCES security.user(Id) DEFERRABLE INITIALLY DEFERRED,
     DateUpdate           TIMESTAMP,
     UserUpdate           INT          REFERENCES security.user(Id),
     DateDeleted          TIMESTAMP,
@@ -219,5 +219,5 @@ CREATE TABLE history.Login (
     Type VARCHAR(150) NOT NULL, -- Puede ser 'Verification user', 'Login', etc.
     Description VARCHAR(255) NOT NULL,
     Checked BOOLEAN NOT NULL,
-    RegistrationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    RegistrationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 )
