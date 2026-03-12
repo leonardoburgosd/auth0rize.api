@@ -1,7 +1,10 @@
-﻿using auth0rize.auth.application.Features.User.Command.FirstAdminCreate;
+using auth0rize.auth.application.Features.User.Command.FirstAdminCreate;
 using auth0rize.auth.application.Features.User.Command.UserCreate;
 using auth0rize.auth.application.Features.User.Command.VerificationUser;
 using auth0rize.auth.application.Features.User.Queries.UserGet;
+using auth0rize.auth.application.Features.User.Queries.UserInfoGet;
+using auth0rize.auth.application.Features.User.Command.UserUpdateDoubleFactor;
+using auth0rize.auth.application.Features.User.Command.UserUpdate;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +47,47 @@ namespace auth0rize.auth.api.Controllers.v1
         public async Task<IActionResult> get(string? search, string? type, bool? deleted, int page = 1, int size = 10)
         {
             return Ok(await Mediator.Send(new UserGet(search, type, deleted, page, size)));
+        }
+
+        [HttpGet("info")]
+        public async Task<IActionResult> getUserInfo()
+        {
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "user_id");
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
+            {
+                return Unauthorized();
+            }
+            return Ok(await Mediator.Send(new UserInfoGet(userId)));
+        }
+
+        [HttpPut("double-factor")]
+        public async Task<IActionResult> updateDoubleFactor([FromBody] bool isActive)
+        {
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "user_id");
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
+            {
+                return Unauthorized();
+            }
+            return Ok(await Mediator.Send(new UserUpdateDoubleFactor(userId, isActive)));
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> update([FromBody] UserUpdateRequest request)
+        {
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "user_id");
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
+            {
+                return Unauthorized();
+            }
+            return Ok(await Mediator.Send(new UserUpdate(
+                userId, 
+                request.FirstName, 
+                request.LastName, 
+                request.MotherLastName, 
+                request.UserName, 
+                request.Email, 
+                request.TypeId
+            )));
         }
     }
 }

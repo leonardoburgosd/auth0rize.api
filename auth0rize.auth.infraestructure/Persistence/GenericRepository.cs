@@ -1,4 +1,4 @@
-﻿
+
 using auth0rize.auth.domain;
 using auth0rize.auth.domain.Primitives;
 using auth0rize.auth.infraestructure.Extensions;
@@ -258,6 +258,7 @@ namespace auth0rize.auth.infraestructure.Persistence
                     }
                 })
                 .Where(p => p.Name != "Id")
+                .Where(p => p.GetCustomAttribute<DatabaseGeneratedAttribute>()?.DatabaseGeneratedOption != DatabaseGeneratedOption.Identity)
                 .ToList();
 
             var columns = string.Join(", ", props.Select(p => p.Name));
@@ -282,10 +283,11 @@ namespace auth0rize.auth.infraestructure.Persistence
                     }
                     else
                     {
-                        return p.DeclaringType != typeof(BaseEntity); // O simplemente true si no te importa BaseEntity
+                        return p.DeclaringType != typeof(BaseEntity);
                     }
                 })
                 .Where(p => p.Name != "Id")
+                .Where(p => p.GetCustomAttribute<DatabaseGeneratedAttribute>()?.DatabaseGeneratedOption != DatabaseGeneratedOption.Identity)
                 .ToList();
 
             var columns = string.Join(", ", props.Select(p => p.Name));
