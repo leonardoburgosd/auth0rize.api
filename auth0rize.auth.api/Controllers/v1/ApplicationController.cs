@@ -1,7 +1,10 @@
 using auth0rize.auth.application.Features.Application.Command.ApplicationCreate;
 using auth0rize.auth.application.Features.Application.Command.ApplicationDelete;
 using auth0rize.auth.application.Features.Application.Command.ApplicationUpdate;
+using auth0rize.auth.application.Features.Application.Command.ApplicationAddCompany;
+using auth0rize.auth.application.Features.Application.Command.ApplicationRemoveCompany;
 using auth0rize.auth.application.Features.Application.Queries.ApplicationGet;
+using auth0rize.auth.application.Features.Application.Queries.ApplicationGetCompanies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -61,6 +64,29 @@ namespace auth0rize.auth.api.Controllers.v1
         {
             int userId = GetUserIdFromToken();
             return Ok(await Mediator.Send(new ApplicationDelete(id, userId)));
+        }
+
+        /// <summary>Listar compañías asociadas a una aplicación.</summary>
+        [HttpGet("{id:int}/companies")]
+        public async Task<IActionResult> getCompanies(int id, int page = 1, int size = 10)
+        {
+            return Ok(await Mediator.Send(new ApplicationGetCompanies(id, page, size)));
+        }
+
+        /// <summary>Asociar una compañía a una aplicación.</summary>
+        [HttpPost("{id:int}/companies")]
+        public async Task<IActionResult> addCompany(int id, [FromBody] ApplicationAddCompanyRequest request)
+        {
+            int userId = GetUserIdFromToken();
+            return Ok(await Mediator.Send(new ApplicationAddCompany(id, request.CompanyId, userId)));
+        }
+
+        /// <summary>Desasociar una compañía de una aplicación.</summary>
+        [HttpDelete("{id:int}/companies/{companyId:int}")]
+        public async Task<IActionResult> removeCompany(int id, int companyId)
+        {
+            int userId = GetUserIdFromToken();
+            return Ok(await Mediator.Send(new ApplicationRemoveCompany(id, companyId, userId)));
         }
     }
 }
