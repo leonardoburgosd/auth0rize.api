@@ -219,5 +219,5 @@ CREATE TABLE history.Login (
     Type VARCHAR(150) NOT NULL, -- Puede ser 'Verification user', 'Login', etc.
     Description VARCHAR(255) NOT NULL,
     Checked BOOLEAN NOT NULL,
-    RegistrationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    RegistrationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 )
