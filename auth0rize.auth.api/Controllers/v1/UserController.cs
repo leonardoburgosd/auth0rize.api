@@ -1,12 +1,15 @@
 using auth0rize.auth.application.Features.User.Command.FirstAdminCreate;
 using auth0rize.auth.application.Features.User.Command.UserCreate;
 using auth0rize.auth.application.Features.User.Command.UserDomainDelete;
+using auth0rize.auth.application.Features.User.Command.UserUpdate;
+using auth0rize.auth.application.Features.User.Command.UserUpdateDoubleFactor;
+using auth0rize.auth.application.Features.User.Command.VerificationAccount;
 using auth0rize.auth.application.Features.User.Command.VerificationUser;
 using auth0rize.auth.application.Features.User.Queries.UserGet;
 using auth0rize.auth.application.Features.User.Queries.UserGetByDomain;
+using auth0rize.auth.application.Features.User.Queries.UserGetById;
 using auth0rize.auth.application.Features.User.Queries.UserInfoGet;
-using auth0rize.auth.application.Features.User.Command.UserUpdateDoubleFactor;
-using auth0rize.auth.application.Features.User.Command.UserUpdate;
+using auth0rize.auth.application.Features.User.Queries.UserNameVerification;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -47,9 +50,23 @@ namespace auth0rize.auth.api.Controllers.v1
 
         [HttpGet("verification")]
         [AllowAnonymous]
-        public async Task<IActionResult> verification() 
+        public async Task<IActionResult> verification()
         {
             return Ok(await Mediator.Send(new VerificationUser()));
+        }
+
+        [HttpGet("verification/{userName}")]
+        public async Task<IActionResult> verificationUserName(string userName)
+        {
+            return Ok(await Mediator.Send(new UserNameVerification(userName)));
+        }
+
+        //Me sirve para poder activar la cuenta del usuario
+        [HttpPost("verification-account")]
+        [AllowAnonymous]
+        public async Task<IActionResult> verificationAccount([FromBody] VerificationAccountRequest account, [FromHeader(Name = "complement")] string complementToken)
+        {
+            return Ok(await Mediator.Send(new VerificationAccount(account.UserName, complementToken)));
         }
 
         [HttpGet]
@@ -111,6 +128,12 @@ namespace auth0rize.auth.api.Controllers.v1
                 request.Email, 
                 request.TypeId
             )));
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> getById(int id)
+        {
+            return Ok(await Mediator.Send(new UserGetById(id)));
         }
     }
 }

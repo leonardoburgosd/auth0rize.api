@@ -24,9 +24,16 @@ namespace auth0rize.auth.application.Features.User.Command.VerificationUser
             Schemas.Security);
             if (userTypes.Count() == 0 || userTypes.Count() > 1) throw new ApiException("Tipo de usuario no encontrado.");
 
-            var users = await _unitOfWork.Repository<domain.User.User>().QueryAsync<domain.User.User>(new Dictionary<string, object> { { "TypeId", 2 } }, Schemas.Security);
-            if (users.Count() > 0) throw new ApiException("Administrador registrado.");
-            
+            var users = await _unitOfWork.Repository<domain.User.User>().QueryAsync<domain.User.User>(new Dictionary<string, object> { { "TypeId", userTypes.First().Id } }, Schemas.Security);
+            if (users.Count() == 0)
+            {
+                response.Data = false;
+                response.Message = "No se encontraron registros.";
+                response.Success = true;
+
+                return response;
+            }
+
             response.Data = true;
             response.Message = "Verificación exitosa.";
             response.Success = true;
