@@ -43,7 +43,8 @@ namespace auth0rize.auth.application.Features.Application.Command.ApplicationAdd
                 new Dictionary<string, object> 
                 { 
                     { "ApplicationId", request.ApplicationId },
-                    { "CompanyId", request.CompanyId }
+                    { "CompanyId", request.CompanyId },
+                    { "IsDeleted", false }
                 },
                 Schemas.Organization
             );
@@ -53,6 +54,37 @@ namespace auth0rize.auth.application.Features.Application.Command.ApplicationAdd
                 throw new ApiException("La compañía ya está asociada a esta aplicación.");
             }
 
+            // Verificar si existe una relación eliminada para reactivarla
+            var deletedRelation = await _unitOfWork.Repository<domain.ApplicationCompany.ApplicationCompany>().QueryAsync<domain.ApplicationCompany.ApplicationCompany>(
+                new Dictionary<string, object>
+                {
+                    { "ApplicationId", request.ApplicationId },
+                    { "CompanyId", request.CompanyId },
+                    { "IsDeleted", true }
+                },
+                Schemas.Organization
+            );
+
+            if (deletedRelation.Any())
+            {
+                await _unitOfWork.Repository<domain.ApplicationCompany.ApplicationCompany>().UpdateByConditionsAsync<domain.ApplicationCompany.ApplicationCompany>(
+                    conditions: new Dictionary<string, object>
+                    {
+                        { "ApplicationId", request.ApplicationId },
+                        { "CompanyId", request.CompanyId }
+                    },
+                    values: new Dictionary<string, object>
+                    {
+                        { "IsDeleted", false },
+                        { "UserUpdate", request.UserRegistration },
+                        { "DateUpdate", DateTime.Now }
+                    },
+                    Schemas.Organization
+                );
+
+                return new Response<bool>(true, "Compañía asociada a la aplicación exitosamente.");
+            }
+
             // Crear la relación
             await _unitOfWork.Repository<domain.ApplicationCompany.ApplicationCompany>().InsertNonIdAsync(
                 new domain.ApplicationCompany.ApplicationCompany
@@ -60,7 +92,11 @@ namespace auth0rize.auth.application.Features.Application.Command.ApplicationAdd
                     ApplicationId = request.ApplicationId,
                     CompanyId = request.CompanyId,
                     UserRegistration = request.UserRegistration,
-                    RegistrationDate = DateTime.Now
+                    RegistrationDate = DateTime.Now,
+                    UserUpdate = request.UserRegistration,
+                    DateUpdate = DateTime.Now,
+                    UserDeleted = request.UserRegistration,
+                    DateDeleted = DateTime.Now
                 },
                 Schemas.Organization
             );

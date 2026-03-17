@@ -46,9 +46,21 @@ namespace auth0rize.auth.application.Features.User.Command.UserCreate
             Schemas.Security);
             if (userTypes.Count() == 0 || userTypes.Count() > 1) throw new ApiException("Tipo de usuario no encontrado.");
 
-            //Obtengo el domain por Id
-            var domain = await _unitOfWork.Repository<domain.Domain.Domain>().QueryAsync<domain.Domain.Domain>(new Dictionary<string, object> { { "id", request.domainId } }, Schemas.Security);
-            if (domain.Count() == 0) throw new ApiException("Dominio no existe.");
+            //Obtengo el domain por Id, si es 0 tomo el primero registrado
+            IEnumerable<domain.Domain.Domain> domain;
+            if (request.domainId == 0)
+            {
+                var allDomains = await _unitOfWork.Repository<domain.Domain.Domain>().QueryAsync<domain.Domain.Domain>(null, Schemas.Security);
+                domain = allDomains.OrderBy(d => d.Id).Take(1);
+                if (!domain.Any()) throw new ApiException("No existe ningún dominio registrado.");
+            }
+            else
+            {
+                domain = await _unitOfWork.Repository<domain.Domain.Domain>().QueryAsync<domain.Domain.Domain>(new Dictionary<string, object> { { "id", request.domainId } }, Schemas.Security);
+                if (!domain.Any()) throw new ApiException("Dominio no existe.");
+            }
+
+            int resolvedDomainId = domain.First().Id;
 
             //creo al usuario
             (byte[] salt, byte[] password) generate = Encrypt.generateHash(request.password);
@@ -71,7 +83,7 @@ namespace auth0rize.auth.application.Features.User.Command.UserCreate
             await _unitOfWork.Repository<UserDomain>().InsertNonIdAsync(new UserDomain()
             {
                 UserId = idUser,
-                DomainId = request.domainId,
+                DomainId = resolvedDomainId,
                 RoleId = userTypes.First().Id,
                 UserRegistration = request.userRegister,
             }, Schemas.Security);
@@ -122,7 +134,7 @@ namespace auth0rize.auth.application.Features.User.Command.UserCreate
                 MotherLastName = request.motherLastName,
                 UserName = request.userName,
                 Name = request.name,
-                DomainId = request.domainId,
+                DomainId = resolvedDomainId,
                 TypeUserId = request.typeUserId,
             };
 

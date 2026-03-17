@@ -45,11 +45,20 @@ namespace auth0rize.auth.application.Features.Application.Command.ApplicationRem
             }
 
             // Soft delete de la relación
-            relation.IsDeleted = true;
-            relation.DateDeleted = DateTime.Now;
-            relation.UserDeleted = request.UserDeleted;
-
-            await _unitOfWork.Repository<domain.ApplicationCompany.ApplicationCompany>().UpdateAsync(relation, Schemas.Organization);
+            await _unitOfWork.Repository<domain.ApplicationCompany.ApplicationCompany>().UpdateByConditionsAsync<domain.ApplicationCompany.ApplicationCompany>(
+                conditions: new Dictionary<string, object>
+                {
+                    { "ApplicationId", request.ApplicationId },
+                    { "CompanyId", request.CompanyId }
+                },
+                values: new Dictionary<string, object>
+                {
+                    { "IsDeleted", true },
+                    { "DateDeleted", DateTime.Now },
+                    { "UserDeleted", request.UserDeleted }
+                },
+                Schemas.Organization
+            );
 
             return new Response<bool>(true, "Compañía desasociada de la aplicación exitosamente.");
         }

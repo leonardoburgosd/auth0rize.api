@@ -200,6 +200,31 @@ namespace auth0rize.auth.infraestructure.Persistence
             return await _connection.ExecuteAsync(sql, entities);
         }
 
+        public async Task UpdateByConditionsAsync<T1>(Dictionary<string, object> conditions, Dictionary<string, object> values, string schema = "public") where T1 : class, new()
+        {
+            var tableName = GetTableName<T1>(schema);
+
+            var props = typeof(T1).GetProperties()
+                .Select(p => p.Name)
+                .ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+            foreach (var key in conditions.Keys.Concat(values.Keys))
+            {
+                if (!props.Contains(key))
+                    throw new ArgumentException($"La columna '{key}' no existe en el tipo '{typeof(T1).Name}'.");
+            }
+
+            var paramValues = new DynamicParameters();
+            int i = 0;
+
+            var setClauses = values.Keys.Select(key => { paramValues.Add($"set{i}", values[key]); return $"{key} = @set{i++}"; }).ToList();
+            var whereClauses = conditions.Keys.Select(key => { paramValues.Add($"where{i}", conditions[key]); return $"{key} = @where{i++}"; }).ToList();
+
+            var sql = $"UPDATE {tableName} SET {string.Join(", ", setClauses)} WHERE {string.Join(" AND ", whereClauses)}";
+
+            await _connection.ExecuteAsync(sql, paramValues);
+        }
+
         public async Task DeleteHardAsync<T1>(Dictionary<string, object> conditions, string schema = "public") where T1 : class, new()
         {
             var tableName = GetTableName<T1>(schema);

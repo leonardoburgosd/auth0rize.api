@@ -1,7 +1,9 @@
 using auth0rize.auth.application.Features.User.Command.FirstAdminCreate;
 using auth0rize.auth.application.Features.User.Command.UserCreate;
+using auth0rize.auth.application.Features.User.Command.UserDomainDelete;
 using auth0rize.auth.application.Features.User.Command.VerificationUser;
 using auth0rize.auth.application.Features.User.Queries.UserGet;
+using auth0rize.auth.application.Features.User.Queries.UserGetByDomain;
 using auth0rize.auth.application.Features.User.Queries.UserInfoGet;
 using auth0rize.auth.application.Features.User.Command.UserUpdateDoubleFactor;
 using auth0rize.auth.application.Features.User.Command.UserUpdate;
@@ -16,6 +18,13 @@ namespace auth0rize.auth.api.Controllers.v1
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class UserController : BaseApiController
     {
+        private int GetUserIdFromToken()
+        {
+            var claim = User.Claims.FirstOrDefault(c => c.Type == "user_id");
+            if (claim == null || !int.TryParse(claim.Value, out int userId))
+                throw new UnauthorizedAccessException();
+            return userId;
+        }
 
         [HttpPost("first-register")]
         [AllowAnonymous]
@@ -58,6 +67,20 @@ namespace auth0rize.auth.api.Controllers.v1
                 return Unauthorized();
             }
             return Ok(await Mediator.Send(new UserInfoGet(userId)));
+        }
+
+        [HttpGet("domain/{code}")]
+        public async Task<IActionResult> getByDomain(string code, string? search, int page = 1, int size = 10)
+        {
+            return Ok(await Mediator.Send(new UserGetByDomain(code, search, page, size)));
+        }
+
+        /// <summary>Desasociar un usuario de un dominio (soft delete en UserDomain).</summary>
+        [HttpDelete("domain/{code}/{userId:int}")]
+        public async Task<IActionResult> removeFromDomain(string code, int userId)
+        {
+            int currentUserId = GetUserIdFromToken();
+            return Ok(await Mediator.Send(new UserDomainDelete(userId, code, currentUserId)));
         }
 
         [HttpPut("double-factor")]
