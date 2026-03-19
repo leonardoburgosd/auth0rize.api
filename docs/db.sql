@@ -82,10 +82,14 @@ CREATE TABLE security.ConfirmAccount (
     pero el superadmin puede crear otros dominios para que los usuarios puedan registrarse por separado, tambien puede asignar
     a un admin para que administre solo los usuarios relacionados con dicho dominio ya sea uno o varios dominios
     Code: servira para identificar el dominio al que pertenece el login que se va a implementar
+    HtmlTemplate: almacena el código HTML personalizado para el login del dominio
+    CssTemplate: almacena el código CSS personalizado para el login del dominio
 */
 CREATE TABLE security.Domain (
     Id               SERIAL       PRIMARY KEY,
     Code             UUID         NOT NULL DEFAULT gen_random_uuid() UNIQUE,
+    HtmlTemplate     TEXT,
+    CssTemplate      TEXT,
 
     RegistrationDate TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     UserRegistration INT           NOT NULL REFERENCES security.user(Id) DEFERRABLE INITIALLY DEFERRED,
