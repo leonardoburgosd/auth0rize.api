@@ -44,6 +44,7 @@ namespace auth0rize.auth.application.Features.User.Queries.UserVerification
             {
                 Email = users.First().Email,
                 UserName = users.First().UserName,
+                IsDoubleFactorActive = users.First().IsDoubleFactorActive
             };
             response.Message = "Usuario verificado correctamente.";
 
