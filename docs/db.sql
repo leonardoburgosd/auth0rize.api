@@ -88,8 +88,6 @@ CREATE TABLE security.ConfirmAccount (
 CREATE TABLE security.Domain (
     Id               SERIAL       PRIMARY KEY,
     Code             UUID         NOT NULL DEFAULT gen_random_uuid() UNIQUE,
-    HtmlTemplate     TEXT,
-    CssTemplate      TEXT,
 
     RegistrationDate TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     UserRegistration INT           NOT NULL REFERENCES security.user(Id) DEFERRABLE INITIALLY DEFERRED,
@@ -100,8 +98,59 @@ CREATE TABLE security.Domain (
     IsDeleted        BOOLEAN      NOT NULL DEFAULT FALSE
 );
 
+/*
+    Tabla para identificar las páginas del SSO que pueden tener diseño.
+    Ejemplos: login, register, forgot-password, confirm-account.
+*/
+CREATE TABLE security.SsoPage (
+    Id               SERIAL PRIMARY KEY,
+    DomainId         INT NOT NULL REFERENCES security.Domain(Id),
+    PageKey          VARCHAR(100) NOT NULL,
+    Name             VARCHAR(150) NOT NULL,
 
+    RegistrationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UserRegistration INT NOT NULL REFERENCES security.user(Id) DEFERRABLE INITIALLY DEFERRED,
+    DateUpdate       TIMESTAMP,
+    UserUpdate       INT REFERENCES security.user(Id),
+    DateDeleted      TIMESTAMP,
+    UserDeleted      INT REFERENCES security.user(Id),
+    IsDeleted        BOOLEAN NOT NULL DEFAULT FALSE,
 
+    CONSTRAINT UQ_SsoPage_Domain_PageKey UNIQUE (DomainId, PageKey)
+);
+
+/*
+    Plantillas de diseño para una página del SSO.
+    Se conserva el diseño original como plantilla por defecto y se pueden crear
+    versiones personalizadas sin reemplazar la original. Para volver al diseño
+    por defecto basta con activar nuevamente la plantilla marcada como default.
+*/
+CREATE TABLE security.SsoTemplate (
+    Id               SERIAL PRIMARY KEY,
+    SsoPageId        INT NOT NULL REFERENCES security.SsoPage(Id),
+    Name             VARCHAR(150) NOT NULL,
+    HtmlTemplate     TEXT NOT NULL,
+    CssTemplate      TEXT NOT NULL,
+    IsDefault        BOOLEAN NOT NULL DEFAULT FALSE,
+    IsActive         BOOLEAN NOT NULL DEFAULT FALSE,
+    ParentTemplateId INT NULL REFERENCES security.SsoTemplate(Id),
+
+    RegistrationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UserRegistration INT NOT NULL REFERENCES security.user(Id) DEFERRABLE INITIALLY DEFERRED,
+    DateUpdate       TIMESTAMP,
+    UserUpdate       INT REFERENCES security.user(Id),
+    DateDeleted      TIMESTAMP,
+    UserDeleted      INT REFERENCES security.user(Id),
+    IsDeleted        BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+CREATE UNIQUE INDEX UQ_SsoTemplate_DefaultPerPage
+    ON security.SsoTemplate (SsoPageId)
+    WHERE IsDefault = TRUE AND IsDeleted = FALSE;
+
+CREATE UNIQUE INDEX UQ_SsoTemplate_ActivePerPage
+    ON security.SsoTemplate (SsoPageId)
+    WHERE IsActive = TRUE AND IsDeleted = FALSE;
 
 /*
     Mejora disponible para la busqueda de dominios por el codigo
